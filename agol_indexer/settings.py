@@ -38,6 +38,13 @@ INSTALLED_APPS = [
 	'django.contrib.messages',
 	'django.contrib.staticfiles',
 	'agol',
+	'groups',
+	'layer_source',
+	'mxd',
+	'users',
+	'web_adapter',
+	'web_service',
+	'webmap',
 ]
 
 MIDDLEWARE = [
