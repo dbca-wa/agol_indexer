@@ -27,7 +27,7 @@ class AGOL_Item(models.Model):
     type = models.ForeignKey(AGOL_Item_Type)
     creator = models.CharField(max_length=20)
     owner = models.ForeignKey(AGOL_Item_Owner)
-    comments = models.CharField(max_length=255)
+    comments = models.CharField(max_length=255, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
@@ -35,6 +35,6 @@ class AGOL_Item(models.Model):
         return self.name
 
 class AGOL_Group(models.Model):
-    agol_item_id = models.ManyToManyField(AGOL_Item)
-    group_id = models.ManyToManyField(g.Group)
-    comments = models.TextField()
+    agol_item = models.ManyToManyField(AGOL_Item)
+    group = models.ManyToManyField(g.Group)
+    comments = models.TextField(blank=True)

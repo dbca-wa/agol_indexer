@@ -22,25 +22,25 @@ class Webmap_App(models.Model):
 	purpose = models.CharField(max_length=50)
 	url = models.URLField()
 	contact = models.CharField(max_length=20)
-	webmap_id = models.ForeignKey(Webmap)
+	webmap = models.ForeignKey(Webmap)
 
 	def __str__(self):
 		return self.name
 
 #--AGO_WEBMAP Many2Many
-class Webmap_Item(models.model):
-    agol_item_id = models.ManyToManyField(a.AGOL_Item)
-    webmap_id = models.ManyToManyField(Webmap)
-    map_comments = models.TextField()
+class Webmap_Item(models.Model):
+	webmap = models.ManyToManyField(Webmap)
+	agol_item = models.ManyToManyField(a.AGOL_Item)
+	map_comments = models.TextField(blank=True)
 
 #--WEBMAP GROUP
-class Webmap_Group(models.model):
-	webmap_id = models.ManyToManyField(Webmap)
-	group_id = models.ManyToManyField(g.Group)
-	comments = models.TextField()
+class Webmap_Group(models.Model):
+	webmap = models.ManyToManyField(Webmap)
+	group = models.ManyToManyField(g.Group)
+	comments = models.TextField(blank=True)
 
 #--WEBMAP APP GROUP
-class Webmap_Group(models.model):
-	webmap_app_id = models.ManyToManyField(Webmap_App)
-	group_id = models.ManyToManyField(g.Group)
-	comments = models.TextField()
+class Webmap_App_Group(models.Model):
+	webmap_app = models.ManyToManyField(Webmap_App)
+	group = models.ManyToManyField(g.Group)
+	comments = models.TextField(blank=True)

@@ -15,7 +15,7 @@ class Roles(models.Model):
 class Users(models.Model):
 	name = models.CharField(max_length=20)
 	comments = models.TextField(max_length=255)
-	role_id = models.ForeignKey(Roles)
+	role = models.ForeignKey(Roles)
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)
 

@@ -9,8 +9,8 @@ class Web_Service(models.Model):
 	level = models.CharField(max_length=50)
 	actual_url = models.URLField()
 	alias_url = models.URLField()
-	mxd_id = models.ForeignKey(m.MXD)
-	web_adapter_id = models.ForeignKey(wa.Web_Adapter)
+	mxd = models.ForeignKey(m.MXD)
+	web_adapter = models.ForeignKey(wa.Web_Adapter)
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)
 
