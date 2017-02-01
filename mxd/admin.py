@@ -1,3 +1,4 @@
 from django.contrib import admin
+from mxd.models import MXD
 
-# Register your models here.
+admin.site.register(MXD)

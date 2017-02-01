@@ -1,3 +1,4 @@
 from django.contrib import admin
+from web_adapter.models import Web_Adapter
 
-# Register your models here.
+admin.site.register(Web_Adapter)
