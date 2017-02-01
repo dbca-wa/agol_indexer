@@ -6,6 +6,9 @@ class Layer_Source_Format(models.Model):
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)
 
+	class Meta:
+		verbose_name = 'Layer Source Format'
+
 	def __str__(self):
 		return self.formats
 
@@ -13,6 +16,9 @@ class Layer_Source_Format_Type(models.Model):
 	format_type = models.CharField(max_length=100)
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)
+
+	class Meta:
+		verbose_name = 'Layer Source Format Type'
 
 	def __str__(self):
 		return self.format_type
@@ -24,6 +30,9 @@ class Layer_Source(models.Model):
 	feature_type = models.ForeignKey(Layer_Source_Format_Type)
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)
+
+	class Meta:
+		verbose_name = 'Layer Source'
 
 	def __str__(self):
 		return self.name

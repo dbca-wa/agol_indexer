@@ -9,6 +9,9 @@ class AGOL_Item_Type(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = 'ArcGIS Online Item Type'
+
     def __str__(self):
         return self.type
 
@@ -23,6 +26,9 @@ class AGOL_Item(models.Model):
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
+    class Meta:
+        verbose_name = 'ArcGIS Online Item'
+
     def __str__(self):
         return self.name
 
@@ -30,3 +36,6 @@ class AGOL_Group(models.Model):
     agol_item = models.ManyToManyField(AGOL_Item)
     group = models.ManyToManyField(g.Group)
     comments = models.TextField(blank=True)
+
+    class Meta:
+        verbose_name = 'ArcGIS Online Item Group'

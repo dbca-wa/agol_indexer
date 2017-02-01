@@ -24,6 +24,9 @@ class Webmap_App(models.Model):
 	contact = models.CharField(max_length=20)
 	webmap = models.ForeignKey(Webmap)
 
+	class Meta:
+		verbose_name = 'Webmap App'
+
 	def __str__(self):
 		return self.name
 
@@ -33,14 +36,23 @@ class Webmap_Item(models.Model):
 	agol_item = models.ManyToManyField(a.AGOL_Item)
 	map_comments = models.TextField(blank=True)
 
+	class Meta:
+		verbose_name = 'Webmap Item'
+
 #--WEBMAP GROUP
 class Webmap_Group(models.Model):
 	webmap = models.ManyToManyField(Webmap)
 	group = models.ManyToManyField(g.Group)
 	comments = models.TextField(blank=True)
 
+	class Meta:
+		verbose_name = 'Webmap Group'
+
 #--WEBMAP APP GROUP
 class Webmap_App_Group(models.Model):
 	webmap_app = models.ManyToManyField(Webmap_App)
 	group = models.ManyToManyField(g.Group)
 	comments = models.TextField(blank=True)
+
+	class Meta:
+		verbose_name = 'Webmap App Group'
