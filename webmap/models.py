@@ -1,7 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
-from agol import models as a
-from groups import models as g
+from agol.models import AGOL_Item
 
 #--WEBMAP TABLE
 class Webmap(models.Model):
@@ -33,26 +32,8 @@ class Webmap_App(models.Model):
 #--AGO_WEBMAP Many2Many
 class Webmap_Item(models.Model):
 	webmap = models.ManyToManyField(Webmap)
-	agol_item = models.ManyToManyField(a.AGOL_Item)
+	agol_item = models.ManyToManyField(AGOL_Item)
 	map_comments = models.TextField(blank=True)
 
 	class Meta:
 		verbose_name = 'Webmap Item'
-
-#--WEBMAP GROUP
-class Webmap_Group(models.Model):
-	webmap = models.ManyToManyField(Webmap)
-	group = models.ManyToManyField(g.Group)
-	comments = models.TextField(blank=True)
-
-	class Meta:
-		verbose_name = 'Webmap Group'
-
-#--WEBMAP APP GROUP
-class Webmap_App_Group(models.Model):
-	webmap_app = models.ManyToManyField(Webmap_App)
-	group = models.ManyToManyField(g.Group)
-	comments = models.TextField(blank=True)
-
-	class Meta:
-		verbose_name = 'Webmap App Group'

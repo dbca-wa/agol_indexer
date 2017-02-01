@@ -3,8 +3,8 @@ from django.db import models
 
 #--Users - Roles
 class Role(models.Model):
-	level = models.CharField(max_length=10)
-	description = models.TextField(max_length=255)
+	level = models.CharField(max_length=30)
+	description = models.TextField(max_length=255, blank=True)
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)
 
@@ -13,8 +13,8 @@ class Role(models.Model):
 
 #--Users - Main
 class User(models.Model):
-	name = models.CharField(max_length=20)
-	comments = models.TextField(max_length=255)
+	name = models.CharField(max_length=60)
+	comments = models.TextField(max_length=255, blank=True)
 	role = models.ForeignKey(Role)
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)

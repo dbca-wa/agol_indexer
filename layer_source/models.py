@@ -24,8 +24,8 @@ class Layer_Source_Format_Type(models.Model):
 		return self.format_type
 
 class Layer_Source(models.Model):
-	name = models.CharField(max_length=20)
-	location = models.CharField(max_length=50)
+	name = models.CharField(max_length=30)
+	location = models.CharField(max_length=50, verbose_name='Location or Database')
 	formats = models.ForeignKey(Layer_Source_Format, verbose_name='format')
 	feature_type = models.ForeignKey(Layer_Source_Format_Type)
 	created_date = models.DateTimeField(auto_now_add=True)
