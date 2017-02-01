@@ -1,6 +1,8 @@
 from __future__ import unicode_literals
 from django.db import models
 from users.models import User
+from web_service.models import Web_Service
+from mxd.models import MXD
 
 #--ARCGIS ONLINE Item - Type
 class AGOL_Item_Type(models.Model):
@@ -17,9 +19,9 @@ class AGOL_Item_Type(models.Model):
 #--ARCGIS ONLINE TABLE - Main
 class AGOL_Item(models.Model):
     name = models.CharField(max_length=30)
-    url = models.URLField()
+    url = models.ForeignKey(Web_Service)
     type = models.ForeignKey(AGOL_Item_Type)
-    creator = models.CharField(max_length=20)
+    creator = models.ForeignKey(MXD)
     owner = models.ForeignKey(User)
     comments = models.CharField(max_length=255, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)

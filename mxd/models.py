@@ -17,4 +17,4 @@ class MXD(models.Model):
 		verbose_name = 'MXD'
 
 	def __str__(self):
-		return self.name
+		return "%s - %s" % (self.name, self.created_by)
