@@ -17,5 +17,5 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-	url(r'^$', views.home, name='view-index'),
+	url(r'^$', views.viewer_home),
 ]

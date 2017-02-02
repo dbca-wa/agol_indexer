@@ -1,7 +1,9 @@
 <div class="main-menu ui fixed menu">
 	<div class="ui container">
 		<a href="{% url 'index' %}" class="header item">
-			<img src="assets/images/DPaW_logo.jpg" alt="dpaw logo" class="logo">
+			{% load static %}
+			{% get_static_prefix as STATIC_PREFIX %}
+			<img src="{{ STATIC_PREFIX }}images/DPaW_logo.jpg" alt="dpaw logo" class="logo">
 			<p class="title">ArcGIS Online Indexer</p>
 		</a>
 		<div class="right menu">

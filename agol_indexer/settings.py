@@ -133,6 +133,7 @@ STATICFILES_DIRS = (
 	# Don't forget to use absolute paths, not relative paths.
 	os.path.join(PROJECT_DIR, 'assets'),
 	os.path.join(BASE_DIR, 'assets'),
+	'/home/assets/',
 	'/var/www/assets/',
 )
 
