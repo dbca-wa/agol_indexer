@@ -17,5 +17,13 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-	url(r'^$', views.viewer_home),
+	url(r'^$', views.viewer_home, name="viewer"),
+	url(r'^agol/$', views.viewer_agol, name='viewer_agol'),
+	url(r'^group/$', views.viewer_groups, name='viewer_group'),
+	url(r'^layersource/$', views.viewer_layer_source, name='viewer_layer_source'),
+	url(r'^mxd/$', views.viewer_mxd, name='viewer_mxd'),
+	url(r'^webmap/$', views.viewer_webmap, name='viewer_webmap'),
+	url(r'^webmapapp/$', views.viewer_webmap_app, name='viewer_webmap_app'),
+	url(r'^webadapter/$', views.viewer_web_adapter, name='viewer_web_adapter'),
+	url(r'^webservice/$', views.viewer_web_service, name='viewer_web_service'),
 ]
