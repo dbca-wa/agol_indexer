@@ -1,22 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta charset="UTF-8">
-	<title>ArcGIS Online Indexer</title>
-	{% load static %}
-	{% get_static_prefix as STATIC_PREFIX %}
-	<link rel="icon" type="image/png" href="{{ STATIC_PREFIX }}images/DPaW_favicon.png">
-	<link rel="stylesheet" href="{{ STATIC_PREFIX }}libs/semantic-ui/semantic.min.css">
-	<link rel="stylesheet" href="{{ STATIC_PREFIX }}css/master.min.css">
-	<script type="text/javascript" src="{{ STATIC_PREFIX }}libs/jquery-3.1.1.min.js"></script>
-	<script type="text/javascript" src="{{ STATIC_PREFIX }}libs/semantic-ui/semantic.min.js"></script>
-	<script type="text/javascript" src="{{ STATIC_PREFIX }}js/main.js"></script>
-</head>
-<body>
-	{% include "./partials/nav.html" %}
-	
-	<div class="main-container ui container">
-		{% include "./partials/viewer_list.html" %}
-	</div>
-</body>
-</html>
+{% extends "index.html" %}
+{% block content %}
+
+<h2>Item List</h2>
+
+{% include "./partials/viewer_list.html" %}
+
+{% endblock %}

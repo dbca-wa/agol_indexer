@@ -1,1 +1,10 @@
-<h2>ArcGIS Online Item</h2>
+{% extends "index.html" %}
+{% block content %}
+	
+	{% with location="AGOL" %}
+	{% include "partials/viewer-breadcrumbs.html" %}
+	
+	<h2>{{ location }} Items</h2>
+	
+	{% endwith %}
+{% endblock %}
