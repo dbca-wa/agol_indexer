@@ -1,13 +1,25 @@
-<div class="ui fixed menu">
+<div class="main-menu ui fixed menu">
 	<div class="ui container">
 		<a href="{% url 'index' %}" class="header item">
 			<img src="assets/images/DPaW_logo.jpg" alt="dpaw logo" class="logo">
-			ArcGIS Online Indexer
+			<p class="title">ArcGIS Online Indexer</p>
 		</a>
 		<div class="right menu">
 			<a href="{% url 'index' %}" class="item">Search</a>
-			<a href="{% url 'index' %}" class="item">Admin</a>
+			<div class="ui dropdown item">
+				Viewer <i class="dropdown icon"></i>
+				<div class="menu">
+					<a href="{% url 'index' %}" class="item">Groups</a>
+					<a href="{% url 'index' %}" class="item">Layer Source</a>
+					<a href="{% url 'index' %}" class="item">MXD</a>
+					<a href="{% url 'index' %}" class="item">Webmap</a>
+					<a href="{% url 'index' %}" class="item">Webmap App</a>
+					<a href="{% url 'index' %}" class="item">Web Adapter</a>
+					<a href="{% url 'index' %}" class="item">Web Service</a>
+				</div>
+			</div>
 			<a href="{% url 'index' %}" class="item">Joins</a>
+			<a href="{% url 'index' %}" class="item">Admin</a>
 		</div>
 	</div>
 </div>
