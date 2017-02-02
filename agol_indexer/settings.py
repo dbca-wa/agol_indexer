@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 	'django.contrib.contenttypes',
 	'django.contrib.sessions',
 	'django.contrib.messages',
+	'django_gulp',
 	'django.contrib.staticfiles',
 	'agol',
 	'groups',
@@ -45,6 +46,7 @@ INSTALLED_APPS = [
 	'web_adapter',
 	'web_service',
 	'webmap',
+	'viewer'
 ]
 
 MIDDLEWARE = [
