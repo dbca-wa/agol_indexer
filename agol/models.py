@@ -18,10 +18,11 @@ class AGOL_Item_Type(models.Model):
 
 #--ARCGIS ONLINE TABLE - Main
 class AGOL_Item(models.Model):
-    name = models.CharField(max_length=30)
-    url = models.ForeignKey(Web_Service)
+    name = models.CharField(max_length=50)
     type = models.ForeignKey(AGOL_Item_Type)
-    creator = models.ForeignKey(MXD)
+    url = models.ForeignKey(Web_Service)
+    mxd = models.ForeignKey(MXD, verbose_name='MXD')
+    external_layer_url = models.URLField()
     owner = models.ForeignKey(User)
     comments = models.CharField(max_length=255, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)

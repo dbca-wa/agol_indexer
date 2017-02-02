@@ -6,7 +6,7 @@ class Web_Adapter(models.Model):
 	machine_name = models.CharField(max_length=20)
 	enviroment = models.CharField(max_length=4)
 	alias = models.CharField(max_length=40)
-	description = models.TextField(max_length=255)
+	description = models.TextField(max_length=255, blank=True)
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)
 
