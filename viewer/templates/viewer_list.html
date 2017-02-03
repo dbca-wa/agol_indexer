@@ -1,17 +1,54 @@
 {% extends "index.html" %}
 {% block content %}
 	
-	{% include "partials/viewer_breadcrumbs.html" with location=location %}
+	{# breadcrumbs #}
+	{% include "partials/viewer_breadcrumbs.html" with location=location  %}
 	
-	<h2>{{ location.0 }}s</h2>
+	{# header #}
+	<h2>{{ items.count }} {{ location.0 }}{{ items.count|pluralize }}</h2>
 
+	{# search #}
+	{% include "partials/viewer_search.html" with location=location search_field=search_field  %}
+
+	{# main content #}
 	{% for item in items  %}
-		
-		{% if location.0 == "Layer Source" %}
+		{% if location.0 == "ArcGIS Online Item" %}
+			{% include "partials/viewer_agol.html" with a=item %}
+		{% elif location.0 == "Groups" %}
+			{% include "partials/viewer_groups.html" with g=item %}	
+		{% elif location.0 == "Layer Source" %}
 			{% include "partials/viewer_layer-source.html" with ls=item %}
+		{% elif location.0 == "MXD" %}
+			{% include "partials/viewer_mxd.html" with m=item %}
+		{% elif location.0 == "Webmap" %}
+			{% include "partials/viewer_webmap.html" with w=item %}
+		{% elif location.0 == "Webmap App" %}
+			{% include "partials/viewer_webmap-app.html" with w=item %}
+		{% elif location.0 == "Web Adapter" %}
+			{% include "partials/viewer_web-adapter.html" with w=item %}
+		{% elif location.0 == "Web Service" %}
+			{% include "partials/viewer_web-service.html" with w=item %}
 		{% endif %}
-	
-
 	{% endfor %}
+
+	{# javascript for autocomplete search #}
+	<script type='text/javascript'>
+		var search_data = JSON.parse('{{search_data|safe}}');
+		var content = [];
+
+		for (var i = 0; i < search_data.length; i++) {
+			var res = {}
+			res.title = search_data[i].fields.name
+			var index = content.findIndex(x => x.title == res.title)
+
+			if (index === -1) {
+				content.push(res)
+			}
+		}
+
+		$('.ui.search').search({
+			source: content
+		});
+	</script>
 
 {% endblock %}

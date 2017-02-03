@@ -3,6 +3,25 @@
 	
 	{% for loc in location  %}
 		<i class="right chevron icon divider"></i>
-		<div class="active section">{{ loc }}s</div>
+
+		{% if loc == 'ArcGIS Online Item'  %}
+			<a href="{% url 'viewer_agol' %}" class="section">{{ loc }}</a>
+		{% elif loc == 'Groups' %}
+			<a href="{% url 'viewer_group' %}" class="section">{{ loc }}</a>
+		{% elif loc == 'Layer Source' %}
+			<a href="{% url 'viewer_layer_source' %}" class="section">{{ loc }}</a>
+		{% elif loc == 'MXD' %}
+			<a href="{% url 'viewer_mxd' %}" class="section">{{ loc }}</a>
+		{% elif loc == 'Web Adapter' %}
+			<a href="{% url 'viewer_web_adapter' %}" class="section">{{ loc }}</a>
+		{% elif loc == 'Web Service' %}
+			<a href="{% url 'viewer_web_service' %}" class="section">{{ loc }}</a>
+		{% elif loc == 'Webmap' %}
+			<a href="{% url 'viewer_webmap' %}" class="section">{{ loc }}</a>
+		{% elif loc == 'Webmap App' %}
+			<a href="{% url 'viewer_webmap_app' %}" class="section">{{ loc }}</a>
+		{% else %}
+			<div class="active section">{{ loc }} {{ location.0 }} Result(s)</div>
+		{% endif %}
 	{% endfor %}
 </div>
