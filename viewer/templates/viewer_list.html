@@ -8,6 +8,7 @@
 	<h2>{{ items.count }} {{ location.0 }}{{ items.count|pluralize }}</h2>
 
 	{# search #}
+	{% include "partials/viewer_search.html" with location=location search_field=search_field search_data=search_data  %}
 
 	{# main content #}
 	{% include "partials/viewer_list-content.html" with items=items location=location %}
