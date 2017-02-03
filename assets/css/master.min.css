@@ -4,9 +4,9 @@
 .main-container {
   padding-top: 100px; }
 
-.ui.search .prompt {
-  border-radius: 0.3rem !important; }
+.viewer-search-bar {
+  padding-top: 15px;
+  padding-bottom: 20px; }
 
 .search-button {
-  border-top-right-radius: .3rem !important;
-  border-bottom-right-radius: .3rem !important; }
+  width: 130px; }

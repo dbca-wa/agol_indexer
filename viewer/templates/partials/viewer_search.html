@@ -1,8 +1,26 @@
-<form action="" method="GET">
-	<div class="ui search large fluid action input">
-		<input type="text" placeholder="Search for {{ location.0 }}" name="name" class="prompt" value="{{ search_field }}">
+<form action="" method="GET" class="viewer-search-bar">
+	<div class="ui grid">
+		<div class="eight wide column">
+			<div class="ui fluid search selection dropdown search-dropdown">
+				<input type="hidden" name="name">
+				<i class="dropdown icon"></i>
 
-		<button class="ui primary button search-button" type="submit">Search</button>
-		<div class="results"></div>
+				{% if search_field %}
+					<div value="{{data}}" class="text">{{ search_field }}</div>
+				{% else %}
+					<div class="default text">Search for {{ location.0 }}</div>
+				{% endif %}
+				
+				
+				<div class="menu">
+					{% for data in search_data  %}
+					<div value="{{data}}" class="item">{{ data }}</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="four wide column">
+			<button class="large ui primary button search-button" type="submit">Search</button>
+		</div>
 	</div>
 </form>

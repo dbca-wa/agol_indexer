@@ -8,15 +8,27 @@
 			</p>
 			<p>
 				<b><span>Webmaps: </span></b>
-				{{ g.webmap }}
+				<ul>
+					{% for web in g.webmap.all  %}
+						<li>{{ web }}</li>
+					{% endfor %}
+				</ul>
 			</p>
 			<p>
 				<b><span>Webmap Apps: </span></b>
-				{{ g.webmap_app }}
+				<ul>
+					{% for wa in g.webmap_app.all  %}
+						<li>{{ wa }}</li>
+					{% endfor %}
+				</ul>
 			</p>
 			<p>
 				<b><span>ArcGIS Online Items: </span></b>
-				{{ g.agol }}
+				<ul>				
+					{% for ag in g.agol.all  %}
+						<li>{{ ag }}</li>
+					{% endfor %}
+				</ul>
 			</p>
 		</div>
 	</div>

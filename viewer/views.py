@@ -30,7 +30,7 @@ def viewer_agol(request):
 		agol = agol_all
 	
 	location.append(agol.count)
-	search_data = serializers.serialize("json", agol_all)
+	search_data = AGOL_Item.objects.all().values_list('name', flat=True).distinct()
 	return render(request, 'viewer_list.html',
 	{
 		'location': location,
@@ -56,7 +56,7 @@ def viewer_groups(request):
 		groups = groups_all
 	
 	location.append(groups.count)
-	search_data = serializers.serialize("json", groups_all)
+	search_data = Group.objects.all().values_list('name', flat=True).distinct()
 	return render(request, 'viewer_list.html',
 	{
 		'location': location,
@@ -82,7 +82,8 @@ def viewer_layer_source(request):
 		layer_source = layer_source_all
 	
 	location.append(layer_source.count)
-	search_data = serializers.serialize("json", layer_source_all)
+	search_data = Layer_Source.objects.all().values_list('name', flat=True).distinct()
+	print 'search_data %s' % search_data
 	return render(request, 'viewer_list.html',
 	{
 		'location': location,
@@ -108,7 +109,7 @@ def viewer_mxd(request):
 		mxd = mxd_all
 
 	location.append(mxd.count)
-	search_data = serializers.serialize("json", mxd_all)
+	search_data = MXD.objects.all().values_list('name', flat=True).distinct()
 	return render(request, 'viewer_list.html',
 	{
 		'location': location,
@@ -128,13 +129,13 @@ def viewer_web_adapter(request):
 		if not name:
 			web_adapter = web_adapter_all
 		else:
-			web_adapter = Web_Adapter.objects.filter(name__icontains=name)
+			web_adapter = Web_Adapter.objects.filter(machine_name__icontains=name)
 			search_field = name
 	else:
 		web_adapter = web_adapter_all
 
 	location.append(web_adapter.count)
-	search_data = serializers.serialize("json", web_adapter_all)
+	search_data = Web_Adapter.objects.all().values_list('machine_name', flat=True).distinct()
 	return render(request, 'viewer_list.html',
 	{
 		'location': location,
@@ -160,7 +161,7 @@ def viewer_web_service(request):
 		web_service = web_service_all
 
 	location.append(web_service.count)
-	search_data = serializers.serialize("json", web_service_all)
+	search_data = Web_Service.objects.all().values_list('name', flat=True).distinct()
 	return render(request, 'viewer_list.html',
 	{
 		'location': location,
@@ -186,7 +187,7 @@ def viewer_webmap(request):
 		webmap = webmap_all
 
 	location.append(webmap.count)
-	search_data = serializers.serialize("json", webmap_all)
+	search_data = Webmap.objects.all().values_list('name', flat=True).distinct()
 	return render(request, 'viewer_list.html',
 	{
 		'location': location,
@@ -212,7 +213,7 @@ def viewer_webmap_app(request):
 		webmap_app = webmap_app_all
 
 	location.append(webmap_app.count)
-	search_data = serializers.serialize("json", webmap_app_all)
+	search_data = Webmap_App.objects.all().values_list('name', flat=True).distinct()
 	return render(request, 'viewer_list.html',
 	{
 		'location': location,
