@@ -1,0 +1,29 @@
+<div class="ui fluid card">
+	<div class="content">
+		<div class="header">{{ w.machine_name }}</div>
+		<div class="description">
+			<p>
+				<b><span>Enviroment: </span></b>
+				{{ w.enviroment }}
+			</p>
+			<p>
+				<b><span>Alias: </span></b>
+				{{ w.alias }}
+			</p>
+			<p>
+				<b><span>Description: </span></b>
+				{{ w.description }}
+			</p>
+		</div>
+	</div>
+	<div class="extra content">
+		<div class="meta">
+			<span>Created on: </span>
+			{{ w.created_date }}
+		</div>
+		<div class="meta">
+			<span>Updated on: </span>
+			{{ w.updated_date }}
+		</div>
+	</div>
+</div>

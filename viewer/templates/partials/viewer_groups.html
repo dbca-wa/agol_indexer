@@ -1,0 +1,33 @@
+<div class="ui fluid card">
+	<div class="content">
+		<div class="header">{{ g.name }}</div>
+		<div class="description">
+			<p>
+				<b><span>Description: </span></b>
+				{{ g.description }}
+			</p>
+			<p>
+				<b><span>Webmaps: </span></b>
+				{{ g.webmap }}
+			</p>
+			<p>
+				<b><span>Webmap Apps: </span></b>
+				{{ g.webmap_app }}
+			</p>
+			<p>
+				<b><span>ArcGIS Online Items: </span></b>
+				{{ g.agol }}
+			</p>
+		</div>
+	</div>
+	<div class="extra content">
+		<div class="meta">
+			<span>Created on: </span>
+			{{ g.created_date }}
+		</div>
+		<div class="meta">
+			<span>Updated on: </span>
+			{{ g.updated_date }}
+		</div>
+	</div>
+</div>
