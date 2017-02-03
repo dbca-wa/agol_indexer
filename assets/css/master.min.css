@@ -5,4 +5,11 @@
   padding-top: 100px; }
 
 .viewer-list {
-  margin-top: 20px; }
+  margin-top: 300px !important; }
+
+.ui.search .prompt {
+  border-radius: 0.3rem !important; }
+
+.search-button {
+  border-top-right-radius: .3rem !important;
+  border-bottom-right-radius: .3rem !important; }
