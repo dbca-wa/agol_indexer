@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+{% block content %}
+	
+	{% include "partials/viewer_breadcrumbs.html" with location=location %}
+	
+	<h2>{{ location.0 }}s</h2>
+
+	{% for item in items  %}
+		
+		{% if location.0 == "Layer Source" %}
+			{% include "partials/viewer_layer-source.html" with ls=item %}
+		{% endif %}
+	
+
+	{% endfor %}
+
+{% endblock %}

@@ -1,0 +1,8 @@
+<div class="ui large breadcrumb">
+	<a href="{% url 'viewer' %}" class="section">Items</a>
+	
+	{% for loc in location  %}
+		<i class="right chevron icon divider"></i>
+		<div class="active section">{{ loc }}s</div>
+	{% endfor %}
+</div>

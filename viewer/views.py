@@ -1,29 +1,39 @@
 from django.shortcuts import render
 from django.http import HttpResponse, Http404
+from layer_source.models import Layer_Source
 
 def viewer_home(request):
 	return render(request, 'viewer_index.html')
 
 def viewer_agol(request):
-	return render(request, 'viewer_agol-item.html')
+	location = ['ArcGIS Online Item']
+	return render(request, 'viewer_list.html', {'location': location})
 
 def viewer_groups(request):
-	return render(request, 'viewer_groups.html')
+	location = ['Groups']
+	return render(request, 'viewer_list.html', {'location': location})
 
 def viewer_layer_source(request):
-	return render(request, 'viewer_layer-source.html')
+	location = ['Layer Source']
+	layer_source = Layer_Source.objects.all()
+	return render(request, 'viewer_list.html', {'location': location, 'items': layer_source})
 
 def viewer_mxd(request):
-	return render(request, 'viewer_mxd.html')
+	location = ['MXD']
+	return render(request, 'viewer_list.html', {'location': location})
 
 def viewer_web_adapter(request):
-	return render(request, 'viewer_web-adapter.html')
+	location = ['Web Adapter']
+	return render(request, 'viewer_list.html', {'location': location})
 
 def viewer_web_service(request):
-	return render(request, 'viewer_web-service.html')
+	location = ['Web Service']
+	return render(request, 'viewer_list.html', {'location': location})
 
 def viewer_webmap(request):
-	return render(request, 'viewer_webmap.html')
+	location = ['Webmap']
+	return render(request, 'viewer_list.html', {'location': location})
 
 def viewer_webmap_app(request):
-	return render(request, 'viewer_webmap-app.html')
+	location = ['Webmap App']
+	return render(request, 'viewer_list.html', {'location': location})

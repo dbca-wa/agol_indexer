@@ -1,0 +1,29 @@
+<div class="ui fluid card">
+	<div class="content">
+		<div class="header">{{ ls.name }}</div>
+		<div class="description">
+			<p>
+				<b><span>Location/Database: </span></b>
+				{{ ls.location }}
+			</p>
+			<p>
+				<b><span>Format: </span></b>
+				{{ ls.formats }}
+			</p>
+			<p>
+				<b><span>Feature Type: </span></b>
+				{{ ls.feature_type }}
+			</p>
+		</div>
+	</div>
+	<div class="extra content">
+			<div class="meta">
+				<span>created on: </span>
+				{{ ls.created_date }}
+			</div>
+			<div class="meta">
+				<span>updated on: </span>
+				{{ ls.updated_date }}
+			</div>
+		</div>
+</div>
