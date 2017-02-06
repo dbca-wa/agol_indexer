@@ -21,21 +21,21 @@ def index_home(request):
 	webmap_app = None
 	search_field = ''
 
-	if 'name' in request.GET:
-		name = request.GET['name']
-		if not name:
+	if 'search' in request.GET:
+		s = request.GET['search']
+		if not s:
 			errors = ('Enter a search term.')
 		else:
-			agol = AGOL_Item.objects.filter(Q(name__icontains=name) | Q(external_layer_url__icontains=name) | Q(mxd__name__icontains=name) | Q(owner__name__icontains=name)).distinct()
-			groups = Group.objects.filter(Q(name__icontains=name) | Q(webmap__name__icontains=name) | Q(webmap_app__name__icontains=name)).distinct()
-			layer_source = Layer_Source.objects.filter(name__icontains=name).distinct()
-			mxd = MXD.objects.filter(Q(name__icontains=name) | Q(client__client__icontains=name) | Q(created_by__creator__icontains=name)).distinct()
-			web_adapter = None
-			web_service = None
-			webmap = None
-			webmap_app = None
+			agol = AGOL_Item.objects.filter(Q(name__icontains=s) | Q(url__name__icontains=s) | Q(external_layer_url__icontains=s) | Q(mxd__name__icontains=s) | Q(owner__name__icontains=s)).distinct()
+			groups = Group.objects.filter(Q(name__icontains=s) | Q(webmap__name__icontains=s) | Q(webmap_app__name__icontains=s)).distinct()
+			layer_source = Layer_Source.objects.filter(name__icontains=s).distinct()
+			mxd = MXD.objects.filter(Q(name__icontains=s) | Q(client__client__icontains=s) | Q(created_by__creator__icontains=s)).distinct()
+			web_adapter = Web_Adapter.objects.filter(Q(machine_name__icontains=s) | Q(alias__icontains=s)).distinct()
+			web_service = Web_Service.objects.filter(Q(name__icontains=s)| Q(actual_url__icontains=s) | Q(alias_url__icontains=s) | Q(mxd__name__icontains=s) | Q(web_adapter__machine_name__icontains=s)).distinct()
+			webmap = Webmap.objects.filter(Q(name__icontains=s) | Q(contact__contact_name__icontains=s)).distinct()
+			webmap_app = Webmap_App.objects.filter(Q(name__icontains=s) | Q(url__icontains=s) | Q(contact__contact_name__icontains=s) | Q(webmap__name__icontains=s)).distinct()
 
-			search_field = name
+			search_field = s
 
 	return render(request, 'home_search.html',
 	{
