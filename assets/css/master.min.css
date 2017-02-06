@@ -7,6 +7,9 @@
 .home-container {
   width: 85% !important;
   padding-bottom: 50px; }
+  .home-container .ui.section.divider {
+    margin-top: 1.35em !important;
+    margin-bottom: 1.35em !important; }
 
 .ui.card span {
   font-weight: bold; }

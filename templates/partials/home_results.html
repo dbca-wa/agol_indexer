@@ -1,8 +1,9 @@
-<div class="ui accordion">
+<div class="ui fluid accordion">
 {% if agols %}
+	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui header">{{agols.count}}  ArcGIS Online Items</span>
+		<span class="ui blue header">{{agols.count}}  ArcGIS Online Items</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -14,9 +15,10 @@
 {% endif %}
 
 {% if groups %}
+	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui header">{{groups.count}}  Groups</span>
+		<span class="ui blue header">{{groups.count}}  Groups</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -28,9 +30,10 @@
 {% endif %}
 
 {% if layer_sources %}
+	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui header">{{layer_sources.count}}  Layer Sources</span>
+		<span class="ui blue header">{{layer_sources.count}}  Layer Sources</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -42,9 +45,10 @@
 {% endif %}
 
 {% if mxds %}
+	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui header">{{mxds.count}}  MXDS</span>
+		<span class="ui blue header">{{mxds.count}}  MXDS</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -56,9 +60,10 @@
 {% endif %}
 
 {% if webmaps %}
+	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui header">{{webmaps.count}}  Webmaps</span>
+		<span class="ui blue header">{{webmaps.count}}  Webmaps</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -70,9 +75,10 @@
 {% endif %}
 
 {% if webmap_apps %}
+	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui header">{{webmap_apps.count}}  Webmap Apps</span>
+		<span class="ui blue header">{{webmap_apps.count}}  Webmap Apps</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -84,9 +90,10 @@
 {% endif %}
 
 {% if web_adapters %}
+	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui header">{{web_adapters.count}}  Web Adapters</span>
+		<span class="ui blue header">{{web_adapters.count}}  Web Adapters</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -98,9 +105,10 @@
 {% endif %}
 
 {% if web_services %}
+	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui header">{{web_services.count}}  Web Services</span>
+		<span class="ui blue header">{{web_services.count}}  Web Services</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -110,4 +118,5 @@
 		</p>
 	</div>
 {% endif %}
+<div class="ui section divider"></div>
 </div>
