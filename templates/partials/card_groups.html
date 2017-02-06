@@ -7,10 +7,20 @@
 				{{ g.description }}
 			</p>
 			<p>
+				<span>ArcGIS Online Items: </span>
+				<ul>				
+					{% for ag in g.agol.all  %}
+						<li><a href="/viewer/agol/?id={{ag.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ ag }}</a></li>
+					{% endfor %}
+				</ul>
+			</p>
+			<p>
 				<span>Webmaps: </span>
 				<ul>
 					{% for web in g.webmap.all  %}
-						<li>{{ web }}</li>
+						<li>
+							<a href="/viewer/webmap/?id={{web.id}}" data-tooltip="Link to Webmap view" data-position="right center">{{ web }}</a>
+						</li>
 					{% endfor %}
 				</ul>
 			</p>
@@ -18,15 +28,7 @@
 				<span>Webmap Apps: </span>
 				<ul>
 					{% for wa in g.webmap_app.all  %}
-						<li>{{ wa }}</li>
-					{% endfor %}
-				</ul>
-			</p>
-			<p>
-				<span>ArcGIS Online Items: </span>
-				<ul>				
-					{% for ag in g.agol.all  %}
-						<li>{{ ag }}</li>
+						<li><a href="/viewer/webmapapp/?id={{wa.id}}" data-tooltip="Link to Webmap App view" data-position="right center">{{ wa }}</a></li>
 					{% endfor %}
 				</ul>
 			</p>

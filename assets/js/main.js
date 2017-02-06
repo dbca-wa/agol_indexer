@@ -4,8 +4,8 @@ $(document).ready(function() {
 		fullTextSearch: true
 	})
 
-	$('.ui.accordion').accordion({
+	$('.ui.accordion').accordion();
 
-	});
+	$('.activating.element').popup();
 
 })
