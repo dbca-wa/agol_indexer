@@ -71,7 +71,15 @@ def viewer_layer_source(request):
 	layer_source = None
 	search_field = ''
 
-	if 'name' in request.GET:
+	if 'id' in request.GET:
+		i = request.GET['id']
+		if not i:
+			layer_source = layer_source_all
+		else:
+			layer_source = Layer_Source.objects.filter(id__icontains=i)
+			search_field = id
+
+	elif 'name' in request.GET:
 		name = request.GET['name']
 		if not name:
 			layer_source = layer_source_all
@@ -83,7 +91,7 @@ def viewer_layer_source(request):
 	
 	location.append(layer_source.count)
 	search_data = Layer_Source.objects.all().values_list('name', flat=True).distinct()
-	print 'search_data %s' % search_data
+
 	return render(request, 'viewer_list.html',
 	{
 		'location': location,
