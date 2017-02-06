@@ -18,3 +18,22 @@
 ### Front End Libraries (in repo)
 - semantic-ui (css & js) - 2.2.7
 - jquery - 3.1.1
+
+
+## Installation
+
+Create a new virtualenv and install required libraries using `pip`:
+
+    pip install -r requirements.txt
+
+## Environment variables
+
+This project uses **django-confy** to set environment variables (in a `.env` file).
+The following variables are required for the project to run:
+
+    DATABASE_URL="postgis://USER:PASSWORD@HOST:5432/DATABASE_NAME"
+
+Variables below may also need to be defined (context-dependent):
+
+    SECRET_KEY="ThisIsASecretKey"
+    DEBUG=True
