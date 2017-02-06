@@ -3,19 +3,19 @@
 		<div class="header">{{ w.name }}</div>
 		<div class="description">
 			<p>
-				<b><span>Purpose: </span></b>
+				<span>Purpose: </span>
 				{{ w.purpose }}
 			</p>
 			<p>
-				<b><span>Url: </span></b>
-				{{ w.url }}
+				<span>Url: </span>
+				<a href="{{w.url}}">{{ w.url }}</a>
 			</p>
 			<p>
-				<b><span>Contact: </span></b>
+				<span>Contact: </span>
 				{{ w.contact }}
 			</p>
 			<p>
-				<b><span>Webmap: </span></b>
+				<span>Webmap: </span>
 				{{ w.webmap }}
 			</p>
 		</div>

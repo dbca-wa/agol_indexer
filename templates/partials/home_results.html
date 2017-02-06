@@ -1,31 +1,113 @@
-{% for a in agols %}
-	{% include "partials/card_agol.html" with a=a %}
-{% endfor %}
+<div class="ui accordion">
+{% if agols %}
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<span class="ui header">{{agols.count}}  ArcGIS Online Items</span>
+	</div>
+	<div class="content">
+		<p class="transition hidden">
+			{% for a in agols %}
+				{% include "partials/card_agol.html" with a=a %}
+			{% endfor %}
+		</p>
+	</div>
+{% endif %}
 
-{% for g in groups %}
-	{% include "partials/card_groups.html" with g=g %}
-{% endfor %}
+{% if groups %}
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<span class="ui header">{{groups.count}}  Groups</span>
+	</div>
+	<div class="content">
+		<p class="transition hidden">
+			{% for g in groups %}
+				{% include "partials/card_groups.html" with g=g %}
+			{% endfor %}
+		</p>
+	</div>
+{% endif %}
 
-{% for ls in layer_sources %}
-	{% include "partials/card_layer-source.html" with ls=ls %}
-{% endfor %}
+{% if layer_sources %}
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<span class="ui header">{{layer_sources.count}}  Layer Sources</span>
+	</div>
+	<div class="content">
+		<p class="transition hidden">
+			{% for ls in layer_sources %}
+				{% include "partials/card_layer-source.html" with ls=ls %}
+			{% endfor %}
+		</p>
+	</div>
+{% endif %}
 
-{% for m in mxds %}
-	{% include "partials/card_mxd.html" with m=m %}
-{% endfor %}
+{% if mxds %}
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<span class="ui header">{{mxds.count}}  MXDS</span>
+	</div>
+	<div class="content">
+		<p class="transition hidden">
+			{% for m in mxds %}
+				{% include "partials/card_mxd.html" with m=m %}
+			{% endfor %}
+		</p>
+	</div>
+{% endif %}
 
-{% for w in webmaps %}
-	{% include "partials/card_webmap.html" with w=w %}
-{% endfor %}
+{% if webmaps %}
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<span class="ui header">{{webmaps.count}}  Webmaps</span>
+	</div>
+	<div class="content">
+		<p class="transition hidden">
+			{% for w in webmaps %}
+				{% include "partials/card_webmap.html" with w=w %}
+			{% endfor %}
+		</p>
+	</div>
+{% endif %}
 
-{% for w in webmap_apps %}
-	{% include "partials/card_webmap-app.html" with w=w %}	
-{% endfor %}
+{% if webmap_apps %}
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<span class="ui header">{{webmap_apps.count}}  Webmap Apps</span>
+	</div>
+	<div class="content">
+		<p class="transition hidden">
+			{% for w in webmap_apps %}
+				{% include "partials/card_webmap-app.html" with w=w %}
+			{% endfor %}
+		</p>
+	</div>
+{% endif %}
 
-{% for w in web_adapters %}
-	{% include "partials/card_web-adapter.html" with w=w %}
-{% endfor %}
+{% if web_adapters %}
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<span class="ui header">{{web_adapters.count}}  Web Adapters</span>
+	</div>
+	<div class="content">
+		<p class="transition hidden">
+			{% for w in web_adapters %}
+				{% include "partials/card_web-adapter.html" with w=w %}
+			{% endfor %}
+		</p>
+	</div>
+{% endif %}
 
-{% for w in web_services  %}
-	{% include "partials/card_web-service.html" with w=w %}
-{% endfor %}
+{% if web_services %}
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<span class="ui header">{{web_services.count}}  Web Services</span>
+	</div>
+	<div class="content">
+		<p class="transition hidden">
+			{% for w in web_services %}
+				{% include "partials/card_web-service.html" with w=w %}
+			{% endfor %}
+		</p>
+	</div>
+{% endif %}
+</div>

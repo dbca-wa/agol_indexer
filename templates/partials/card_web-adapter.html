@@ -3,15 +3,15 @@
 		<div class="header">{{ w.machine_name }}</div>
 		<div class="description">
 			<p>
-				<b><span>Enviroment: </span></b>
+				<span>Enviroment: </span>
 				{{ w.enviroment }}
 			</p>
 			<p>
-				<b><span>Alias: </span></b>
-				{{ w.alias }}
+				<span>Alias: </span>
+				<a href="{{w.alias}}">{{ w.alias }}</a>
 			</p>
 			<p>
-				<b><span>Description: </span></b>
+				<span>Description: </span>
 				{{ w.description }}
 			</p>
 		</div>

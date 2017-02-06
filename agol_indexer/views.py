@@ -21,6 +21,7 @@ def index_home(request):
 	webmap = None
 	webmap_app = None
 	search_field = ''
+	result_amount = None
 
 	if 'search' in request.GET:
 		s = request.GET['search']

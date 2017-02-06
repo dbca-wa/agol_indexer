@@ -3,11 +3,11 @@
 		<div class="header">{{ g.name }}</div>
 		<div class="description">
 			<p>
-				<b><span>Description: </span></b>
+				<span>Description: </span>
 				{{ g.description }}
 			</p>
 			<p>
-				<b><span>Webmaps: </span></b>
+				<span>Webmaps: </span>
 				<ul>
 					{% for web in g.webmap.all  %}
 						<li>{{ web }}</li>
@@ -15,7 +15,7 @@
 				</ul>
 			</p>
 			<p>
-				<b><span>Webmap Apps: </span></b>
+				<span>Webmap Apps: </span>
 				<ul>
 					{% for wa in g.webmap_app.all  %}
 						<li>{{ wa }}</li>
@@ -23,7 +23,7 @@
 				</ul>
 			</p>
 			<p>
-				<b><span>ArcGIS Online Items: </span></b>
+				<span>ArcGIS Online Items: </span>
 				<ul>				
 					{% for ag in g.agol.all  %}
 						<li>{{ ag }}</li>
