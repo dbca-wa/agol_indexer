@@ -4,6 +4,17 @@
 .main-container {
   padding-top: 100px; }
 
+.home-container {
+  width: 85% !important;
+  padding-bottom: 50px; }
+
+.error-list {
+  color: #ff3232;
+  font-size: 1.1em; }
+
+.viewer-container {
+  width: 85% !important; }
+
 .viewer-search-bar {
   padding-top: 15px;
   padding-bottom: 20px; }

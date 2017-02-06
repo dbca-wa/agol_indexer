@@ -1,42 +1,24 @@
 {% extends "index.html" %}
 {% block content %}
 
-<div class="ui fluid container">
-	<h1>ArcGIS Online Indexer</h1>
+<div class="ui fluid container home-container">
+	<h1 class="ui header">ArcGIS Online Indexer</h1>
 
 	{% include "partials/home_search_bar.html" with search_field=search_field %}
 	
-	{% for a in agols %}
-		{% include "partials/card_agol.html" with a=a %}
-	{% endfor %}
-
-	{% for g in groups %}
-		{% include "partials/card_groups.html" with g=g %}
-	{% endfor %}
+	{% if errors %}
+		<ul class="error-list">
+		{% for err in errors %}
+			<li>{{err}}</li>
+		{% endfor %}
+		</ul>
 	
-	{% for ls in layer_sources %}
-		{% include "partials/card_layer-source.html" with ls=ls %}
-	{% endfor %}
+	{% else %}
+		<h3 class="ui header">{{ result_amount }} Results Found</h3>
 
-	{% for m in mxds %}
-		{% include "partials/card_mxd.html" with m=m %}
-	{% endfor %}
-
-	{% for w in webmaps %}
-		{% include "partials/card_webmap.html" with w=w %}
-	{% endfor %}
-
-	{% for w in webmap_apps %}
-		{% include "partials/card_webmap-app.html" with w=w %}	
-	{% endfor %}
-
-	{% for w in web_adapters %}
-		{% include "partials/card_web-adapter.html" with w=w %}
-	{% endfor %}
-
-	{% for w in web_services  %}
-		{% include "partials/card_web-service.html" with w=w %}
-	{% endfor %}	
+		{% include "partials/home_results.html" with agols=agols groups=groups layer_sources=layer_sources mxds=mxds webmaps=webmaps webmap_apps=webmap_apps web_adapters=web_adapters web_services=web_services %}	
+	{% endif %}
+	
 
 </div>
 {% endblock %}

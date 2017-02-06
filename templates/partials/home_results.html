@@ -1,0 +1,31 @@
+{% for a in agols %}
+	{% include "partials/card_agol.html" with a=a %}
+{% endfor %}
+
+{% for g in groups %}
+	{% include "partials/card_groups.html" with g=g %}
+{% endfor %}
+
+{% for ls in layer_sources %}
+	{% include "partials/card_layer-source.html" with ls=ls %}
+{% endfor %}
+
+{% for m in mxds %}
+	{% include "partials/card_mxd.html" with m=m %}
+{% endfor %}
+
+{% for w in webmaps %}
+	{% include "partials/card_webmap.html" with w=w %}
+{% endfor %}
+
+{% for w in webmap_apps %}
+	{% include "partials/card_webmap-app.html" with w=w %}	
+{% endfor %}
+
+{% for w in web_adapters %}
+	{% include "partials/card_web-adapter.html" with w=w %}
+{% endfor %}
+
+{% for w in web_services  %}
+	{% include "partials/card_web-service.html" with w=w %}
+{% endfor %}

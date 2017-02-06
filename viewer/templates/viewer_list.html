@@ -1,18 +1,18 @@
 {% extends "index.html" %}
 {% block content %}
 	
-	{# breadcrumbs #}
-	{% include "partials/viewer_breadcrumbs.html" with location=location  %}
-	
-	{# header #}
-	<h2>{{ items.count }} {{ location.0 }}{{ items.count|pluralize }}</h2>
+	<div class="ui container viewer-container">
+		{# breadcrumbs #}
+		{% include "partials/viewer_breadcrumbs.html" with location=location  %}
+		
+		{# header #}
+		<h2>{{ items.count }} {{ location.0 }}{{ items.count|pluralize }}</h2>
 
-	{# search #}
-	{% include "partials/viewer_search.html" with location=location search_field=search_field search_data=search_data  %}
+		{# search #}
+		{% include "partials/viewer_search.html" with location=location search_field=search_field search_data=search_data  %}
 
-	{# main content #}
-	{% include "partials/viewer_list-content.html" with items=items location=location %}
-
-	
+		{# main content #}
+		{% include "partials/viewer_list-content.html" with items=items location=location %}
+	</div>
 
 {% endblock %}
