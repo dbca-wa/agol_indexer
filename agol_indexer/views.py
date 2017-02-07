@@ -50,7 +50,6 @@ def index_home(request):
 
 	if 'search_history' in request.COOKIES:
 		search_history = getSearchHistory(request)
-	print search_history
 
 	response = render(request, 'home_search.html',
 	{
