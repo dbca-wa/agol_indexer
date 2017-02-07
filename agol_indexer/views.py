@@ -9,6 +9,7 @@ from users.models import User
 from web_adapter.models import Web_Adapter
 from web_service.models import Web_Service
 from webmap.models import Webmap, Webmap_App, Webmap_Item
+import datetime
 
 def index_home(request):
 	errors = []
@@ -66,7 +67,8 @@ def index_home(request):
 		'search_history': search_history,
 	})
 	if s:
-		response.set_cookie('search_history', setSearchHistory(request, s, search_history))
+		expireTime = datetime.datetime.now() + datetime.timedelta(days=30)
+		response.set_cookie('search_history', setSearchHistory(request, s, search_history), expires=expireTime)
 	return response
 
 def setSearchHistory(request, s, search_history_str):
