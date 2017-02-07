@@ -3,28 +3,28 @@
 		<div class="header">{{ w.name }}</div>
 		<div class="description">
 			<p>
-				<b><span>Location: </span></b>
+				<span>Location: </span>
 				{{ w.location }}
 			</p>
 			<p>
-				<b><span>Actual URL: </span></b>
-				{{ w.actual_url }}
+				<span>Actual URL: </span>
+				<a href="{{w.actual_url}}">{{ w.actual_url }}</a>
 			</p>
 			<p>
-				<b><span>Alias URL: </span></b>
-				{{ w.alias_url }}
+				<span>Alias URL: </span>
+				<a href="{{w.alias_url}}">{{ w.alias_url }}</a>
 			</p>
 			<p>
-				<b><span>Level: </span></b>
+				<span>Level: </span>
 				{{ w.level }}
 			</p>
 			<p>
-				<b><span>MXD: </span></b>
-				{{ w.mxd }}
+				<span>MXD: </span>
+				<a href="/viewer/mxd/?id={{w.mxd_id}}" data-tooltip="Link to MXD view" data-position="right center">{{ w.mxd }}</a>
 			</p>
 			<p>
-				<b><span>Web Adapter: </span></b>
-				{{ w.web_adapter }}
+				<span>Web Adapter: </span>
+				<a href="/viewer/webadapter/?id={{w.web_adapter_id}}" data-tooltip="Link to Web Adapter view" data-position="right center">{{ w.web_adapter }}</a>
 			</p>
 		</div>
 	</div>

@@ -4,6 +4,23 @@
 .main-container {
   padding-top: 100px; }
 
+.home-container {
+  width: 85% !important;
+  padding-bottom: 50px; }
+  .home-container .ui.section.divider {
+    margin-top: 1.35em !important;
+    margin-bottom: 1.35em !important; }
+
+.ui.card span {
+  font-weight: bold; }
+
+.error-list {
+  color: #ff3232;
+  font-size: 1.1em; }
+
+.viewer-container {
+  width: 85% !important; }
+
 .viewer-search-bar {
   padding-top: 15px;
   padding-bottom: 20px; }

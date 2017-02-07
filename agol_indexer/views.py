@@ -11,6 +11,7 @@ from web_service.models import Web_Service
 from webmap.models import Webmap, Webmap_App
 
 def index_home(request):
+	errors = []
 	agol = None
 	groups = None
 	layer_source = None
@@ -20,11 +21,12 @@ def index_home(request):
 	webmap = None
 	webmap_app = None
 	search_field = ''
+	result_amount = None
 
 	if 'search' in request.GET:
 		s = request.GET['search']
 		if not s:
-			errors = ('Enter a search term.')
+			errors.append('Please enter a search term.')
 		else:
 			agol = AGOL_Item.objects.filter(Q(name__icontains=s) | Q(url__name__icontains=s) | Q(external_layer_url__icontains=s) | Q(mxd__name__icontains=s) | Q(owner__name__icontains=s)).distinct()
 			groups = Group.objects.filter(Q(name__icontains=s) | Q(webmap__name__icontains=s) | Q(webmap_app__name__icontains=s)).distinct()
@@ -35,6 +37,7 @@ def index_home(request):
 			webmap = Webmap.objects.filter(Q(name__icontains=s) | Q(contact__contact_name__icontains=s)).distinct()
 			webmap_app = Webmap_App.objects.filter(Q(name__icontains=s) | Q(url__icontains=s) | Q(contact__contact_name__icontains=s) | Q(webmap__name__icontains=s)).distinct()
 
+			result_amount = len(agol) + len(groups) + len(layer_source) + len(mxd) + len(web_adapter) + len(web_service) + len(webmap) + len(webmap_app)
 			search_field = s
 
 	return render(request, 'home_search.html',
@@ -47,5 +50,7 @@ def index_home(request):
 		'web_services': web_service,
 		'webmaps': webmap,
 		'webmap_apps': webmap_app,
+		'errors': errors,
 		'search_field': search_field,
+		'result_amount': result_amount,
 	})

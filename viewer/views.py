@@ -19,7 +19,14 @@ def viewer_agol(request):
 	agol = None
 	search_field = ''
 
-	if 'name' in request.GET:
+	if 'id' in request.GET:
+		i = request.GET['id']
+		if not i:
+			agol = agol_all
+		else:
+			agol = AGOL_Item.objects.filter(id=i)
+
+	elif 'name' in request.GET:
 		name = request.GET['name']
 		if not name:
 			agol = agol_all
@@ -45,7 +52,14 @@ def viewer_groups(request):
 	groups = None
 	search_field = ''
 
-	if 'name' in request.GET:
+	if 'id' in request.GET:
+		i = request.GET['id']
+		if not i:
+			groups = groups_all
+		else:
+			groups = Group.objects.filter(id=i)
+
+	elif 'name' in request.GET:
 		name = request.GET['name']
 		if not name:
 			groups = groups_all
@@ -71,7 +85,14 @@ def viewer_layer_source(request):
 	layer_source = None
 	search_field = ''
 
-	if 'name' in request.GET:
+	if 'id' in request.GET:
+		i = request.GET['id']
+		if not i:
+			layer_source = layer_source_all
+		else:
+			layer_source = Layer_Source.objects.filter(id=i)
+
+	elif 'name' in request.GET:
 		name = request.GET['name']
 		if not name:
 			layer_source = layer_source_all
@@ -83,7 +104,7 @@ def viewer_layer_source(request):
 	
 	location.append(layer_source.count)
 	search_data = Layer_Source.objects.all().values_list('name', flat=True).distinct()
-	print 'search_data %s' % search_data
+
 	return render(request, 'viewer_list.html',
 	{
 		'location': location,
@@ -98,7 +119,14 @@ def viewer_mxd(request):
 	mxd = None
 	search_field = ''
 
-	if 'name' in request.GET:
+	if 'id' in request.GET:
+		i = request.GET['id']
+		if not i:
+			mxd = mxd_all
+		else:
+			mxd = MXD.objects.filter(id=i)
+
+	elif 'name' in request.GET:
 		name = request.GET['name']
 		if not name:
 			mxd = mxd_all
@@ -124,7 +152,14 @@ def viewer_web_adapter(request):
 	web_adapter = None
 	search_field = ''
 
-	if 'name' in request.GET:
+	if 'id' in request.GET:
+		i = request.GET['id']
+		if not i:
+			web_adapter = web_adapter_all
+		else:
+			web_adapter = Web_Adapter.objects.filter(id=i)
+
+	elif 'name' in request.GET:
 		name = request.GET['name']
 		if not name:
 			web_adapter = web_adapter_all
@@ -150,7 +185,14 @@ def viewer_web_service(request):
 	web_service = None
 	search_field = ''
 
-	if 'name' in request.GET:
+	if 'id' in request.GET:
+		i = request.GET['id']
+		if not i:
+			web_service = web_service_all
+		else:
+			web_service = Web_Service.objects.filter(id=i)
+
+	elif 'name' in request.GET:
 		name = request.GET['name']
 		if not name:
 			web_service = web_service_all
@@ -176,7 +218,14 @@ def viewer_webmap(request):
 	webmap = None
 	search_field = ''
 
-	if 'name' in request.GET:
+	if 'id' in request.GET:
+		i = request.GET['id']
+		if not i:
+			webmap = webmap_all
+		else:
+			webmap = Webmap.objects.filter(id=i)
+
+	elif 'name' in request.GET:
 		name = request.GET['name']
 		if not name:
 			webmap = webmap_all
@@ -202,7 +251,14 @@ def viewer_webmap_app(request):
 	webmap_app = None
 	search_field = ''
 
-	if 'name' in request.GET:
+	if 'id' in request.GET:
+		i = request.GET['id']
+		if not i:
+			webmap_app = webmap_app_all
+		else:
+			webmap_app = Webmap_App.objects.filter(id=i)
+
+	elif 'name' in request.GET:
 		name = request.GET['name']
 		if not name:
 			webmap = webmap_app_all

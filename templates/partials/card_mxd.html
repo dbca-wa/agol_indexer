@@ -3,28 +3,28 @@
 		<div class="header">{{ m.name }}</div>
 		<div class="description">
 			<p>
-				<b><span>Path: </span></b>
+				<span>Path: </span>
 				{{ m.path }}
 			</p>
 			<p>
-				<b><span>Description: </span></b>
+				<span>Description: </span>
 				{{ m.description }}
 			</p>
 			<p>
-				<b><span>Client: </span></b>
+				<span>Client: </span>
 				{{ m.client }}
 			</p>
 			<p>
-				<b><span>Created By: </span></b>
+				<span>Created By: </span>
 				{{ m.created_by }}
 			</p>
 			<p>
-				<b><span>Created On: </span></b>
+				<span>Created On: </span>
 				{{ m.created_on }}
 			</p>
 			<p>
-				<b><span>Layer Source: </span></b>
-				{{ m.layer_source }}
+				<span>Layer Source: </span>
+				<a href="/viewer/layersource/?id={{m.layer_source_id}}" data-tooltip="Link to Layer Source view" data-position="right center">{{ m.layer_source }}</a>
 			</p>
 		</div>
 	</div>

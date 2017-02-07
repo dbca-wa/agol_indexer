@@ -3,27 +3,27 @@
 		<div class="header">{{ a.name }}</div>
 		<div class="description">
 			<p>
-				<b><span>Type: </span></b>
+				<span>Type: </span>
 				{{ a.type }}
 			</p>
 			<p>
-				<b><span>URL: </span></b>
-				{{ a.url }}
+				<span>URL: </span>
+				<a href="{{a.url}}">{{ a.url }}</a>
 			</p>
 			<p>
-				<b><span>MXD: </span></b>
-				{{ a.mxd }}
+				<span>MXD: </span>
+				<a href="/viewer/mxd/?id={{a.mxd_id}}" data-tooltip="Link to MXD view" data-position="right center">{{ a.mxd }}</a>
 			</p>
 			<p>
-				<b><span>External Layer URL: </span></b>
-				{{ a.external_layer_url }}
+				<span>External Layer URL: </span>
+				<a href="{{a.external_layer_url}}">{{ a.external_layer_url }}</a>
 			</p>
 			<p>
-				<b><span>Owner: </span></b>
+				<span>Owner: </span>
 				{{ a.owner }}
 			</p>
 			<p>
-				<b><span>Comments: </span></b>
+				<span>Comments: </span>
 				{{ a.comments }}
 			</p>
 		</div>
