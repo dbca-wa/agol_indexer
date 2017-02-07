@@ -8,7 +8,7 @@ from mxd.models import MXD
 from users.models import User
 from web_adapter.models import Web_Adapter
 from web_service.models import Web_Service
-from webmap.models import Webmap, Webmap_App
+from webmap.models import Webmap, Webmap_App, Webmap_Item
 
 def viewer_home(request):
 	return render(request, 'viewer_index.html')
@@ -274,6 +274,39 @@ def viewer_webmap_app(request):
 	{
 		'location': location,
 		'items': webmap_app,
+		'search_data': search_data,
+		'search_field': search_field,
+	})
+
+def viewer_webmap_item(request):
+	location = ['Webmap Item']
+	webmap_item_all = Webmap_Item.objects.all()
+	webmap_item = None
+	search_field = ''
+
+	if 'id' in request.GET:
+		i = request.GET['id']
+		if not i:
+			webmap_item = webmap_app_all
+		else:
+			webmap_item = Webmap_Item.objects.filter(id=i)
+
+	elif 'name' in request.GET:
+		name = request.GET['name']
+		if not name:
+			webmap_item = webmap_app_all
+		else:
+			webmap_item = Webmap_Item.objects.filter(name__icontains=name)
+			search_field = name
+	else:
+		webmap_item = webmap_item_all
+
+	location.append(webmap_item.count)
+	search_data = Webmap_Item.objects.all().values_list('name', flat=True).distinct()
+	return render(request, 'viewer_list.html',
+	{
+		'location': location,
+		'items': webmap_item,
 		'search_data': search_data,
 		'search_field': search_field,
 	})
