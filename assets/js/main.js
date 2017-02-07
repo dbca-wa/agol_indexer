@@ -7,5 +7,4 @@ $(document).ready(function() {
 	$('.ui.accordion').accordion();
 
 	$('.activating.element').popup();
-
 })

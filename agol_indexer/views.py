@@ -65,7 +65,7 @@ def index_home(request):
 		'result_amount': result_amount,
 		'search_history': search_history,
 	})
-	if s != None:
+	if s:
 		response.set_cookie('search_history', setSearchHistory(request, s, search_history))
 	return response
 
@@ -80,7 +80,8 @@ def setSearchHistory(request, s, search_history_str):
 		else:
 			search_history_arr.append(search_history_str)
 		
-		search_history_arr.append(s)
+		if s.lower() not in search_history_arr:
+			search_history_arr.append(s.lower())
 
 		if len(search_history_arr) > 5:
 			search_history_arr.pop(0)
