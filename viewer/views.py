@@ -17,6 +17,7 @@ def viewer_agol(request):
 	location = ['ArcGIS Online Item']
 	agol_all = AGOL_Item.objects.all()
 	agol = None
+	showing_all = True
 	search_field = ''
 
 	if 'id' in request.GET:
@@ -25,6 +26,7 @@ def viewer_agol(request):
 			agol = agol_all
 		else:
 			agol = AGOL_Item.objects.filter(id=i)
+			showing_all = False
 
 	elif 'name' in request.GET:
 		name = request.GET['name']
@@ -32,6 +34,7 @@ def viewer_agol(request):
 			agol = agol_all
 		else:
 			agol = AGOL_Item.objects.filter(name__icontains=name)
+			showing_all = False
 			search_field = name
 	else:
 		agol = agol_all
@@ -44,12 +47,14 @@ def viewer_agol(request):
 		'items': agol,
 		'search_data': search_data,
 		'search_field': search_field,
+		'showing_all': showing_all,
 	})
 
 def viewer_groups(request):
-	location = ['Groups']
+	location = ['Group']
 	groups_all = Group.objects.all()
 	groups = None
+	showing_all = True
 	search_field = ''
 
 	if 'id' in request.GET:
@@ -58,6 +63,7 @@ def viewer_groups(request):
 			groups = groups_all
 		else:
 			groups = Group.objects.filter(id=i)
+			showing_all = False
 
 	elif 'name' in request.GET:
 		name = request.GET['name']
@@ -66,6 +72,7 @@ def viewer_groups(request):
 		else:
 			groups = Group.objects.filter(name__icontains=name)
 			search_field = name
+			showing_all = False
 	else:
 		groups = groups_all
 	
@@ -77,12 +84,14 @@ def viewer_groups(request):
 		'items': groups,
 		'search_data': search_data,
 		'search_field': search_field,
+		'showing_all': showing_all,
 	})
 
 def viewer_layer_source(request):
 	location = ['Layer Source']
 	layer_source_all = Layer_Source.objects.all()
 	layer_source = None
+	showing_all = True
 	search_field = ''
 
 	if 'id' in request.GET:
@@ -91,6 +100,7 @@ def viewer_layer_source(request):
 			layer_source = layer_source_all
 		else:
 			layer_source = Layer_Source.objects.filter(id=i)
+			showing_all = False
 
 	elif 'name' in request.GET:
 		name = request.GET['name']
@@ -99,6 +109,7 @@ def viewer_layer_source(request):
 		else:
 			layer_source = Layer_Source.objects.filter(name__icontains=name)
 			search_field = name
+			showing_all = False
 	else:
 		layer_source = layer_source_all
 	
@@ -111,12 +122,14 @@ def viewer_layer_source(request):
 		'items': layer_source,
 		'search_data': search_data,
 		'search_field': search_field,
+		'showing_all': showing_all,
 	})
 
 def viewer_mxd(request):
 	location = ['MXD']
 	mxd_all = MXD.objects.all()
 	mxd = None
+	showing_all = True
 	search_field = ''
 
 	if 'id' in request.GET:
@@ -125,6 +138,7 @@ def viewer_mxd(request):
 			mxd = mxd_all
 		else:
 			mxd = MXD.objects.filter(id=i)
+			showing_all = False
 
 	elif 'name' in request.GET:
 		name = request.GET['name']
@@ -133,6 +147,7 @@ def viewer_mxd(request):
 		else:
 			mxd = MXD.objects.filter(name__icontains=name)
 			search_field = name
+			showing_all = False
 	else:
 		mxd = mxd_all
 
@@ -144,12 +159,14 @@ def viewer_mxd(request):
 		'items': mxd,
 		'search_data': search_data,
 		'search_field': search_field,
+		'showing_all': showing_all,
 	})
 
 def viewer_web_adapter(request):
 	location = ['Web Adapter']
 	web_adapter_all = Web_Adapter.objects.all()
 	web_adapter = None
+	showing_all = True
 	search_field = ''
 
 	if 'id' in request.GET:
@@ -158,6 +175,7 @@ def viewer_web_adapter(request):
 			web_adapter = web_adapter_all
 		else:
 			web_adapter = Web_Adapter.objects.filter(id=i)
+			showing_all = False
 
 	elif 'name' in request.GET:
 		name = request.GET['name']
@@ -166,6 +184,7 @@ def viewer_web_adapter(request):
 		else:
 			web_adapter = Web_Adapter.objects.filter(machine_name__icontains=name)
 			search_field = name
+			showing_all = False
 	else:
 		web_adapter = web_adapter_all
 
@@ -177,12 +196,14 @@ def viewer_web_adapter(request):
 		'items': web_adapter,
 		'search_data': search_data,
 		'search_field': search_field,
+		'showing_all': showing_all,
 	})
 
 def viewer_web_service(request):
 	location = ['Web Service']
 	web_service_all = Web_Service.objects.all()
 	web_service = None
+	showing_all = True
 	search_field = ''
 
 	if 'id' in request.GET:
@@ -191,6 +212,7 @@ def viewer_web_service(request):
 			web_service = web_service_all
 		else:
 			web_service = Web_Service.objects.filter(id=i)
+			showing_all = False
 
 	elif 'name' in request.GET:
 		name = request.GET['name']
@@ -199,6 +221,7 @@ def viewer_web_service(request):
 		else:
 			web_service = Web_Service.objects.filter(name__icontains=name)
 			search_field = name
+			showing_all = False
 	else:
 		web_service = web_service_all
 
@@ -210,12 +233,14 @@ def viewer_web_service(request):
 		'items': web_service,
 		'search_data': search_data,
 		'search_field': search_field,
+		'showing_all': showing_all,
 	})
 
 def viewer_webmap(request):
 	location = ['Webmap']
 	webmap_all = Webmap.objects.all()
 	webmap = None
+	showing_all = True
 	search_field = ''
 
 	if 'id' in request.GET:
@@ -224,6 +249,7 @@ def viewer_webmap(request):
 			webmap = webmap_all
 		else:
 			webmap = Webmap.objects.filter(id=i)
+			showing_all = False
 
 	elif 'name' in request.GET:
 		name = request.GET['name']
@@ -232,6 +258,7 @@ def viewer_webmap(request):
 		else:
 			webmap = Webmap.objects.filter(name__icontains=name)
 			search_field = name
+			showing_all = False
 	else:
 		webmap = webmap_all
 
@@ -243,12 +270,14 @@ def viewer_webmap(request):
 		'items': webmap,
 		'search_data': search_data,
 		'search_field': search_field,
+		'showing_all': showing_all,
 	})
 
 def viewer_webmap_app(request):
 	location = ['Webmap App']
 	webmap_app_all = Webmap_App.objects.all()
 	webmap_app = None
+	showing_all = True
 	search_field = ''
 
 	if 'id' in request.GET:
@@ -257,6 +286,7 @@ def viewer_webmap_app(request):
 			webmap_app = webmap_app_all
 		else:
 			webmap_app = Webmap_App.objects.filter(id=i)
+			showing_all = False
 
 	elif 'name' in request.GET:
 		name = request.GET['name']
@@ -265,6 +295,7 @@ def viewer_webmap_app(request):
 		else:
 			webmap_app = Webmap_App.objects.filter(name__icontains=name)
 			search_field = name
+			showing_all = False
 	else:
 		webmap_app = webmap_app_all
 
@@ -276,12 +307,14 @@ def viewer_webmap_app(request):
 		'items': webmap_app,
 		'search_data': search_data,
 		'search_field': search_field,
+		'showing_all': showing_all,
 	})
 
 def viewer_webmap_item(request):
 	location = ['Webmap Item']
 	webmap_item_all = Webmap_Item.objects.all()
 	webmap_item = None
+	showing_all = True
 	search_field = ''
 
 	if 'id' in request.GET:
@@ -290,6 +323,7 @@ def viewer_webmap_item(request):
 			webmap_item = webmap_app_all
 		else:
 			webmap_item = Webmap_Item.objects.filter(id=i)
+			showing_all = False
 
 	elif 'name' in request.GET:
 		name = request.GET['name']
@@ -298,6 +332,7 @@ def viewer_webmap_item(request):
 		else:
 			webmap_item = Webmap_Item.objects.filter(name__icontains=name)
 			search_field = name
+			showing_all = False
 	else:
 		webmap_item = webmap_item_all
 
@@ -309,4 +344,5 @@ def viewer_webmap_item(request):
 		'items': webmap_item,
 		'search_data': search_data,
 		'search_field': search_field,
+		'showing_all': showing_all,
 	})
