@@ -91,8 +91,13 @@ WSGI_APPLICATION = 'agol_indexer.wsgi.application'
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
 DATABASES = {
+
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'agolIndexer2.sqlite3'),
+    }
     # Defined in the DATABASE_URL env variable.
-    'default': database.config(default=os.path.join(BASE_DIR, 'agolIndexer.sqlite3'))
+    #'default': database.config(default=os.path.join(BASE_DIR, 'agolIndexer2.sqlite3'))
 }
 
 
