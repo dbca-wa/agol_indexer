@@ -3,7 +3,7 @@
 	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui blue header">{{agols.count}}  ArcGIS Online Items</span>
+		<span class="ui blue header">{{agols.count}}  ArcGIS Online Item{{agols.count|pluralize}}</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -18,7 +18,7 @@
 	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui blue header">{{groups.count}}  Groups</span>
+		<span class="ui blue header">{{groups.count}}  Group{{groups.count|pluralize}}</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -33,7 +33,7 @@
 	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui blue header">{{layer_sources.count}}  Layer Sources</span>
+		<span class="ui blue header">{{layer_sources.count}}  Layer Source{{layer_sources.count|pluralize}}</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -48,7 +48,7 @@
 	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui blue header">{{mxds.count}}  MXDS</span>
+		<span class="ui blue header">{{mxds.count}}  MXD{{mxds.count|pluralize}}</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -63,7 +63,7 @@
 	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui blue header">{{webmaps.count}}  Webmaps</span>
+		<span class="ui blue header">{{webmaps.count}}  Webmap{{webmaps.count|pluralize}}</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -78,7 +78,7 @@
 	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui blue header">{{webmap_apps.count}}  Webmap Apps</span>
+		<span class="ui blue header">{{webmap_apps.count}}  Webmap App{{webmap_apps.count|pluralize}}</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -89,11 +89,26 @@
 	</div>
 {% endif %}
 
+{% if webmap_items %}
+	<div class="ui section divider"></div>
+	<div class="title">
+		<i class="dropdown icon"></i>
+		<span class="ui blue header">{{webmap_items.count}}  Webmap Item{{webmap_items.count|pluralize}}</span>
+	</div>
+	<div class="content">
+		<p class="transition hidden">
+			{% for w in webmap_items %}
+				{% include "partials/card_webmap-item.html" with w=w %}
+			{% endfor %}
+		</p>
+	</div>
+{% endif %}
+
 {% if web_adapters %}
 	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui blue header">{{web_adapters.count}}  Web Adapters</span>
+		<span class="ui blue header">{{web_adapters.count}}  Web Adapter{{web_adapters.count|pluralize}}</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -108,7 +123,7 @@
 	<div class="ui section divider"></div>
 	<div class="title">
 		<i class="dropdown icon"></i>
-		<span class="ui blue header">{{web_services.count}}  Web Services</span>
+		<span class="ui blue header">{{web_services.count}}  Web Service{{web_services.count|pluralize}}</span>
 	</div>
 	<div class="content">
 		<p class="transition hidden">
@@ -118,5 +133,6 @@
 		</p>
 	</div>
 {% endif %}
+
 <div class="ui section divider"></div>
 </div>

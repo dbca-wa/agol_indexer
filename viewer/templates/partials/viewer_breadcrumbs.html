@@ -18,10 +18,12 @@
 			<a href="{% url 'viewer_web_service' %}" class="section">{{ loc }}</a>
 		{% elif loc == 'Webmap' %}
 			<a href="{% url 'viewer_webmap' %}" class="section">{{ loc }}</a>
-		{% elif loc == 'Webmap App' %}
+		{% elif loc == 'Webmap Item' %}
+			<a href="{% url 'viewer_webmap_item' %}" class="section">{{ loc }}</a>
+		{% elif loc == 'Webmap Item' %}
 			<a href="{% url 'viewer_webmap_app' %}" class="section">{{ loc }}</a>
 		{% else %}
-			<div class="active section">{{ loc }} {{ location.0 }} Result(s)</div>
+			<div class="active section">{{ loc }} {{ location.0 }} Result{{plural}}</div>
 		{% endif %}
 	{% endfor %}
 </div>

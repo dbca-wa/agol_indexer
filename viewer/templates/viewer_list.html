@@ -3,7 +3,7 @@
 	
 	<div class="ui container viewer-container">
 		{# breadcrumbs #}
-		{% include "partials/viewer_breadcrumbs.html" with location=location  %}
+		{% include "partials/viewer_breadcrumbs.html" with location=location plural=items.count|pluralize  %}
 		
 		{# header #}
 		<h2>{{ items.count }} {{ location.0 }}{{ items.count|pluralize }}</h2>

@@ -12,6 +12,8 @@
 		{% include "partials/card_webmap.html" with w=item %}
 	{% elif location.0 == "Webmap App" %}
 		{% include "partials/card_webmap-app.html" with w=item %}
+	{% elif location.0 == "Webmap Item" %}
+		{% include "partials/card_webmap-item.html" with w=item %}
 	{% elif location.0 == "Web Adapter" %}
 		{% include "partials/card_web-adapter.html" with w=item %}
 	{% elif location.0 == "Web Service" %}
