@@ -5,25 +5,35 @@
 		<i class="right chevron icon divider"></i>
 
 		{% if loc == 'ArcGIS Online Item'  %}
-			<a href="{% url 'viewer_agol' %}" class="section">{{ loc }}</a>
-		{% elif loc == 'Groups' %}
-			<a href="{% url 'viewer_group' %}" class="section">{{ loc }}</a>
+			<a href="{% url 'viewer_agol' %}" class="section">{{ loc }}s</a>
+		{% elif loc == 'Group' %}
+			<a href="{% url 'viewer_group' %}" class="section">{{ loc }}s</a>
 		{% elif loc == 'Layer Source' %}
-			<a href="{% url 'viewer_layer_source' %}" class="section">{{ loc }}</a>
+			<a href="{% url 'viewer_layer_source' %}" class="section">{{ loc }}s</a>
 		{% elif loc == 'MXD' %}
-			<a href="{% url 'viewer_mxd' %}" class="section">{{ loc }}</a>
+			<a href="{% url 'viewer_mxd' %}" class="section">{{ loc }}s</a>
 		{% elif loc == 'Web Adapter' %}
-			<a href="{% url 'viewer_web_adapter' %}" class="section">{{ loc }}</a>
+			<a href="{% url 'viewer_web_adapter' %}" class="section">{{ loc }}s</a>
 		{% elif loc == 'Web Service' %}
-			<a href="{% url 'viewer_web_service' %}" class="section">{{ loc }}</a>
+			<a href="{% url 'viewer_web_service' %}" class="section">{{ loc }}s</a>
 		{% elif loc == 'Webmap' %}
-			<a href="{% url 'viewer_webmap' %}" class="section">{{ loc }}</a>
+			<a href="{% url 'viewer_webmap' %}" class="section">{{ loc }}s</a>
 		{% elif loc == 'Webmap Item' %}
-			<a href="{% url 'viewer_webmap_item' %}" class="section">{{ loc }}</a>
+			<a href="{% url 'viewer_webmap_item' %}" class="section">{{ loc }}s</a>
 		{% elif loc == 'Webmap Item' %}
-			<a href="{% url 'viewer_webmap_app' %}" class="section">{{ loc }}</a>
+			<a href="{% url 'viewer_webmap_app' %}" class="section">{{ loc }}s</a>
 		{% else %}
-			<div class="active section">{{ loc }} {{ location.0 }} Result{{plural}}</div>
+			{% if showing_all %}
+			<div class="active section">All {{ location.0 }}{{plural}}</div>
+			{% else %}
+				{% if loc == 1 %}
+				<div class="active section">{{ location.0 }}{{plural}}</div>
+				{% else %}
+				<div class="active section">{{loc}} {{ location.0 }} Result{{plural}}</div>
+				{% endif %}
+			{% endif %}
+
+			
 		{% endif %}
 	{% endfor %}
 </div>

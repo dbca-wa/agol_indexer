@@ -2,7 +2,7 @@
 {% for item in items  %}
 	{% if location.0 == "ArcGIS Online Item" %}
 		{% include "partials/card_agol.html" with a=item %}
-	{% elif location.0 == "Groups" %}
+	{% elif location.0 == "Group" %}
 		{% include "partials/card_groups.html" with g=item %}	
 	{% elif location.0 == "Layer Source" %}
 		{% include "partials/card_layer-source.html" with ls=item %}
