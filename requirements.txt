@@ -1,0 +1,4 @@
+Django==1.10.5
+django-extensions==1.7.6
+django-gulp==2.5.0
+django-confy==1.0.4
