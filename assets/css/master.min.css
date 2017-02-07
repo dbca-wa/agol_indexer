@@ -24,7 +24,8 @@
 .search-button {
   border-top-right-radius: .4rem !important;
   border-bottom-right-radius: .4rem !important;
-  padding-left: 37px !important; }
+  padding-left: 37px !important;
+  width: 130px; }
 
 .history-results {
   margin-top: .1em !important;
@@ -43,5 +44,5 @@
   padding-top: 15px;
   padding-bottom: 20px; }
 
-.search-button {
+.viewer-button {
   width: 130px; }

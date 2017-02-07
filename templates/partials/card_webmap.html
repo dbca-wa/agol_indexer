@@ -1,6 +1,6 @@
 <div class="ui fluid card">
 	<div class="content">
-		<div class="header">{{ w.name }}</div>
+		<div class="header"><a href="{% url 'viewer_webmap' %}?id={{w.id}}">{{ w.name }}</a></div>
 		<div class="description">
 			<p>
 				<span>Purpose: </span>

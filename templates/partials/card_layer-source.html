@@ -1,6 +1,6 @@
 <div class="ui fluid card">
 	<div class="content">
-		<div class="header">{{ ls.name }}</div>
+		<div class="header"><a href="{% url 'viewer_layer_source' %}?id={{ls.id}}">{{ ls.name }}</a></div>
 		<div class="description">
 			<p>
 				<span>Location/Database: </span>

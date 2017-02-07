@@ -1,6 +1,6 @@
 <div class="ui fluid card">
 	<div class="content">
-		<div class="header">{{ a.name }}</div>
+		<div class="header"><a href="/viewer/agol/?id={{a.id}}">{{ a.name }}</a></div>
 		<div class="description">
 			<p>
 				<span>Type: </span>
@@ -12,7 +12,7 @@
 			</p>
 			<p>
 				<span>MXD: </span>
-				<a href="/viewer/mxd/?id={{a.mxd_id}}" data-tooltip="Link to MXD view" data-position="right center">{{ a.mxd }}</a>
+				<a href="{% url 'viewer_mxd' %}?id={{a.mxd_id}}" data-tooltip="Link to MXD view" data-position="right center">{{ a.mxd }}</a>
 			</p>
 			<p>
 				<span>External Layer URL: </span>

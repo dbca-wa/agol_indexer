@@ -1,6 +1,6 @@
 <div class="ui fluid card">
 	<div class="content">
-		<div class="header">{{ m.name }}</div>
+		<div class="header"><a href="{% url 'viewer_mxd' %}?id={{m.id}}">{{ m.name }}</a></div>
 		<div class="description">
 			<p>
 				<span>Path: </span>
@@ -24,7 +24,7 @@
 			</p>
 			<p>
 				<span>Layer Source: </span>
-				<a href="/viewer/layersource/?id={{m.layer_source_id}}" data-tooltip="Link to Layer Source view" data-position="right center">{{ m.layer_source }}</a>
+				<a href="{% url 'viewer_layer_source' %}?id={{m.layer_source_id}}" data-tooltip="Link to Layer Source view" data-position="right center">{{ m.layer_source }}</a>
 			</p>
 		</div>
 	</div>
