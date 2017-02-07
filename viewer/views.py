@@ -114,12 +114,14 @@ def viewer_layer_source(request):
 		layer_source = layer_source_all
 	
 	location.append(layer_source.count)
+	mxd_links = MXD.objects.all()
 	search_data = Layer_Source.objects.all().values_list('name', flat=True).distinct()
 
 	return render(request, 'viewer_list.html',
 	{
 		'location': location,
 		'items': layer_source,
+		'mxd_links': mxd_links,
 		'search_data': search_data,
 		'search_field': search_field,
 		'showing_all': showing_all,

@@ -26,6 +26,7 @@ def index_home(request):
 	webmap_item = None
 	search_field = ''
 	result_amount = None
+	mxd_links = None
 
 	if 'search' in request.GET:
 		s = request.GET['search']
@@ -43,6 +44,7 @@ def index_home(request):
 			webmap_app = Webmap_App.objects.filter(Q(name__icontains=s) | Q(url__icontains=s) | Q(contact__contact_name__icontains=s) | Q(webmap__name__icontains=s)).distinct()
 			webmap_item = Webmap_Item.objects.filter(Q(name__icontains=s) | Q(agol_item__name__icontains=s) | Q(webmap__name__icontains=s)).distinct()
 
+			mxd_links = MXD.objects.all()
 			result_amount = len(agol) + len(groups) + len(layer_source) + len(mxd) + len(web_adapter) + len(web_service) + len(webmap) + len(webmap_app) + len(webmap_item)
 			search_field = s
 
@@ -65,6 +67,7 @@ def index_home(request):
 		'search_field': search_field,
 		'result_amount': result_amount,
 		'search_history': search_history,
+		'mxd_links': mxd_links,
 	})
 	if s:
 		expireTime = datetime.datetime.now() + datetime.timedelta(days=30)
@@ -83,6 +86,9 @@ def setSearchHistory(request, s, search_history_str):
 			search_history_arr.append(search_history_str)
 		
 		if s.lower() not in search_history_arr:
+			search_history_arr.append(s.lower())
+		else:
+			search_history_arr.remove(s.lower())
 			search_history_arr.append(s.lower())
 
 		if len(search_history_arr) > 5:

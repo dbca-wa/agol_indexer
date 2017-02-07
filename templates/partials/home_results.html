@@ -38,7 +38,7 @@
 	<div class="content">
 		<p class="transition hidden">
 			{% for ls in layer_sources %}
-				{% include "partials/card_layer-source.html" with ls=ls %}
+				{% include "partials/card_layer-source.html" with ls=ls mxd_links=mxd_links %}
 			{% endfor %}
 		</p>
 	</div>
