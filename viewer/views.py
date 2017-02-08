@@ -348,3 +348,40 @@ def viewer_webmap_item(request):
 		'search_field': search_field,
 		'showing_all': showing_all,
 	})
+
+def viewer_user(request):
+	location = ['User']
+	user_all = User.objects.all()
+	user = None
+	showing_all = True
+	search_field = ''
+
+	if 'id' in request.GET:
+		i = request.GET['id']
+		if not i:
+			user = user_all
+		else:
+			user = User.objects.filter(id=i)
+			showing_all = False
+
+	elif 'name' in request.GET:
+		name = request.GET['name']
+		if not name:
+			user = user_all
+		else:
+			user = User.objects.filter(name__icontains=name)
+			search_field = name
+			showing_all = False
+	else:
+		user = user_all
+
+	location.append(user.count)
+	search_data = User.objects.all().values_list('name', flat=True).distinct()
+	return render(request, 'viewer_list.html',
+	{
+		'location': location,
+		'items': user,
+		'search_data': search_data,
+		'search_field': search_field,
+		'showing_all': showing_all,
+	})

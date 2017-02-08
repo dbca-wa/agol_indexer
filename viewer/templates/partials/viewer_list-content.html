@@ -18,5 +18,7 @@
 		{% include "partials/card_web-adapter.html" with w=item %}
 	{% elif location.0 == "Web Service" %}
 		{% include "partials/card_web-service.html" with w=item %}
+	{% elif location.0 == "User" %}
+		{% include "partials/card_user.html" with u=item %}
 	{% endif %}
 {% endfor %}

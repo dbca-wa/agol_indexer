@@ -20,7 +20,7 @@
 			</p>
 			<p>
 				<span>Owner: </span>
-				{{ a.owner }}
+				<a href="{% url 'viewer_user' %}?id={{a.owner_id}}" data-tooltip="Link to User view" data-position="right center">{{ a.owner }}</a>
 			</p>
 			<p>
 				<span>Comments: </span>
