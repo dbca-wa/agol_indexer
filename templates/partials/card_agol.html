@@ -26,6 +26,34 @@
 				<span>Comments: </span>
 				{{ a.comments }}
 			</p>
+			<p>
+				<span>Group Links:</span>
+				<ul>
+					{% for group in group_links.all %}
+					{% for g in group.agol.all %}
+					{% if g == a  %}
+					<li>
+						<a href="{% url 'viewer_group' %}?id={{group.id}}" data-tooltip="Link to Group view" data-position="right center">{{ group.name }}</a>
+					</li>
+					{% endif %}
+					{% endfor %}
+					{% endfor %}
+				</ul>
+			</p>
+			<p>
+				<span>Webmap Item Links:</span>
+				<ul>
+					{% for webmap_item in webmap_item_links.all %}
+					{% for wi in webmap_item.agol_item.all %}
+					{% if wi == a  %}
+					<li>
+						<a href="{% url 'viewer_webmap_item' %}?id={{webmap_item.id}}" data-tooltip="Link to Webmap App view" data-position="right center">{{ webmap_item.name }}</a>
+					</li>
+					{% endif %}
+					{% endfor %}
+					{% endfor %}
+				</ul>
+			</p>
 		</div>
 	</div>
 	<div class="extra content">

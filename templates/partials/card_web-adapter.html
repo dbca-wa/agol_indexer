@@ -14,6 +14,18 @@
 				<span>Description: </span>
 				{{ w.description }}
 			</p>
+			<p>
+				<span>Web Service Links:</span>
+				<ul>
+					{% for web_service in web_service_links.all %}
+					{% if web_service.web_adapter == w  %}
+					<li>
+						<a href="{% url 'viewer_web_service' %}?id={{web_service.id}}" data-tooltip="Link to Web Service view" data-position="right center">{{ web_service.name }}</a>
+					</li>
+					{% endif %}
+					{% endfor %}
+				</ul>
+			</p>
 		</div>
 	</div>
 	<div class="extra content">
