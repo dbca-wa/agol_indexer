@@ -377,10 +377,12 @@ def viewer_user(request):
 
 	location.append(user.count)
 	search_data = User.objects.all().values_list('name', flat=True).distinct()
+	agol_links = AGOL_Item.objects.all()
 	return render(request, 'viewer_list.html',
 	{
 		'location': location,
 		'items': user,
+		'agol_links': agol_links,
 		'search_data': search_data,
 		'search_field': search_field,
 		'showing_all': showing_all,

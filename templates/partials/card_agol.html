@@ -7,8 +7,8 @@
 				{{ a.type }}
 			</p>
 			<p>
-				<span>URL: </span>
-				<a href="{{a.url}}" target="_blank" data-tooltip="External link" data-position="right center">{{ a.url }}</a>
+				<span>Web Service URL: </span>
+				<a href="{% url 'viewer_web_service' %}?id={{a.url_id}}" data-tooltip="Link to Web Service view" data-position="right center">{{ a.url }}</a>
 			</p>
 			<p>
 				<span>MXD: </span>
