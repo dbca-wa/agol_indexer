@@ -13,7 +13,7 @@
 			<p>
 				<span>ArcGIS Online Links:</span>
 				<ul>
-					{% for agol in agol_links.all %}
+					{% for agol in agol_links %}
 					{% if agol.owner == u  %}
 					<li>
 						<a href="{% url 'viewer_agol' %}?id={{agol.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol.name }}</a>
