@@ -186,21 +186,21 @@ def viewer_web_adapter(request):
 	if 'id' in request.GET:
 		i = request.GET['id']
 		if not i:
-			web_adapter = Web_Adapter.objects.all().order_by('name')
+			web_adapter = Web_Adapter.objects.all().order_by('machine_name')
 		else:
-			web_adapter = Web_Adapter.objects.filter(id=i).order_by('name')
+			web_adapter = Web_Adapter.objects.filter(id=i).order_by('machine_name')
 			showing_all = False
 
 	elif 'name' in request.GET:
 		name = request.GET['name']
 		if not name:
-			web_adapter = Web_Adapter.objects.all().order_by('name')
+			web_adapter = Web_Adapter.objects.all().order_by('machine_name')
 		else:
-			web_adapter = Web_Adapter.objects.filter(machine_name__icontains=name).order_by('name')
+			web_adapter = Web_Adapter.objects.filter(machine_name__icontains=name).order_by('machine_name')
 			search_field = name
 			showing_all = False
 	else:
-		web_adapter = Web_Adapter.objects.all().order_by('name')
+		web_adapter = Web_Adapter.objects.all().order_by('machine_name')
 
 	web_adapter = paginator(request, web_adapter)
 
@@ -423,7 +423,10 @@ def viewer_user(request):
 #pagination
 def paginator(request, items):
 	#14 results per page
-	paginator = Paginator(items, 14)
+	result_amount = request.GET.get('showing')
+	if result_amount == None:
+		result_amount = 14
+	paginator = Paginator(items, result_amount)
 	page = request.GET.get('page')
 	try:
 		items = paginator.page(page)
