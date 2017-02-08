@@ -18,6 +18,25 @@
   color: #ff3232;
   font-size: 1.1em; }
 
+.search-input {
+  border-radius: .3rem !important; }
+
+.search-button {
+  border-top-right-radius: .4rem !important;
+  border-bottom-right-radius: .4rem !important;
+  padding-left: 37px !important;
+  width: 130px; }
+
+.history-results {
+  margin-top: .1em !important;
+  border: none !important; }
+  .history-results .result {
+    padding: .5em !important;
+    font-size: 1em !important;
+    line-height: none !important; }
+    .history-results .result .title {
+      font-weight: 100 !important; }
+
 .viewer-container {
   width: 85% !important; }
 
@@ -25,5 +44,5 @@
   padding-top: 15px;
   padding-bottom: 20px; }
 
-.search-button {
+.viewer-button {
   width: 130px; }

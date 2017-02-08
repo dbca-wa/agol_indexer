@@ -1,6 +1,6 @@
 <div class="ui fluid card">
 	<div class="content">
-		<div class="header">{{ w.machine_name }}</div>
+		<div class="header"><a href="{% url 'viewer_web_adapter' %}?id={{w.id}}">{{ w.machine_name }}</a></div>
 		<div class="description">
 			<p>
 				<span>Enviroment: </span>
@@ -8,11 +8,23 @@
 			</p>
 			<p>
 				<span>Alias: </span>
-				<a href="{{w.alias}}">{{ w.alias }}</a>
+				<a href="{{w.alias}}" target="_blank" data-tooltip="External link" data-position="right center">{{ w.alias }}</a>
 			</p>
 			<p>
 				<span>Description: </span>
 				{{ w.description }}
+			</p>
+			<p>
+				<span>Web Service Links:</span>
+				<ul>
+					{% for web_service in web_service_links.all %}
+					{% if web_service.web_adapter == w  %}
+					<li>
+						<a href="{% url 'viewer_web_service' %}?id={{web_service.id}}" data-tooltip="Link to Web Service view" data-position="right center">{{ web_service.name }}</a>
+					</li>
+					{% endif %}
+					{% endfor %}
+				</ul>
 			</p>
 		</div>
 	</div>

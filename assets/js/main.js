@@ -1,11 +1,15 @@
 $(document).ready(function() {
 	
 	$('.ui.dropdown').dropdown({
-		fullTextSearch: true
+		fullTextSearch: true,
+		allowAdditions: true,
+		hideAdditions: false,
+		message: {
+			addResult: 'Search <b>{term}</b>'
+		}
 	})
 
 	$('.ui.accordion').accordion();
 
 	$('.activating.element').popup();
-
 })

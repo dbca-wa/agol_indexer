@@ -3,7 +3,7 @@
 	
 	<div class="ui container viewer-container">
 		{# breadcrumbs #}
-		{% include "partials/viewer_breadcrumbs.html" with location=location  %}
+		{% include "partials/viewer_breadcrumbs.html" with location=location plural=items.count|pluralize showing_all=showing_all  %}
 		
 		{# header #}
 		<h2>{{ items.count }} {{ location.0 }}{{ items.count|pluralize }}</h2>
@@ -11,8 +11,29 @@
 		{# search #}
 		{% include "partials/viewer_search.html" with location=location search_field=search_field search_data=search_data  %}
 
-		{# main content #}
-		{% include "partials/viewer_list-content.html" with items=items location=location %}
+		{% for item in items  %}
+		{% if location.0 == "ArcGIS Online Item" %}
+			{% include "partials/card_agol.html" with a=item webmap_item_links=webmap_item_links group_links=group_links %}
+		{% elif location.0 == "Group" %}
+			{% include "partials/card_groups.html" with g=item %}
+		{% elif location.0 == "Layer Source" %}
+			{% include "partials/card_layer-source.html" with ls=item mxd_links=mxd_links %}
+		{% elif location.0 == "MXD" %}
+			{% include "partials/card_mxd.html" with m=item web_service_links=web_service_links agol_links=agol_links %}
+		{% elif location.0 == "Webmap" %}
+			{% include "partials/card_webmap.html" with w=item webmap_app_links=webmap_app_links webmap_item_links=webmap_item_links group_links=group_links %}
+		{% elif location.0 == "Webmap App" %}
+			{% include "partials/card_webmap-app.html" with w=item group_links=group_links %}
+		{% elif location.0 == "Webmap Item" %}
+			{% include "partials/card_webmap-item.html" with w=item %}
+		{% elif location.0 == "Web Adapter" %}
+			{% include "partials/card_web-adapter.html" with w=item web_service_links=web_service_links %}
+		{% elif location.0 == "Web Service" %}
+			{% include "partials/card_web-service.html" with w=item agol_links=agol_links %}
+		{% elif location.0 == "User" %}
+			{% include "partials/card_user.html" with u=item agol_links=agol_links %}
+		{% endif %}
+	{% endfor %}
 	</div>
 
 {% endblock %}
