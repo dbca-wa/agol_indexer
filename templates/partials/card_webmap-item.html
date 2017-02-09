@@ -16,16 +16,14 @@
 					{% endfor %}
 				</ul>
 			</p>
-			<p>
+			<ul class="link-list">
 				<span>Webmaps: </span>
-				<ul>				
-					{% for web in w.webmap.all  %}
-						<li>
-							<a href="{% url 'viewer_webmap' %}?id={{web.id}}" data-tooltip="Link to Webmap view" data-position="right center">{{ web }}</a>
-						</li>
-					{% endfor %}
-				</ul>
-			</p>
+				{% for web in w.webmap.all  %}
+					<li>
+						<a href="{% url 'viewer_webmap' %}?id={{web.id}}" data-tooltip="Link to Webmap view" data-position="right center">{{ web }}</a>
+					</li>
+				{% endfor %}
+			</ul>
 		</div>
 	</div>
 	<div class="extra content">

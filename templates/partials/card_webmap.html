@@ -31,33 +31,29 @@
 					{% endfor %}
 					{% endfor %}
 				</ul>
-			</p>
-			<p>
+			</p>				
+			<ul class="link-list">
 				<span>Webmap App Links:</span>
-				<ul>
-					{% for webmap_app in webmap_app_links.all %}
-					{% if webmap_app.webmap == w  %}
-					<li>
-						<a href="{% url 'viewer_webmap_app' %}?id={{webmap_app.id}}" data-tooltip="Link to Webmap App view" data-position="right center">{{ webmap_app.name }}</a>
-					</li>
-					{% endif %}
-					{% endfor %}
-				</ul>
-			</p>
-			<p>
+				{% for webmap_app in webmap_app_links.all %}
+				{% if webmap_app.webmap == w  %}
+				<li>
+					<a href="{% url 'viewer_webmap_app' %}?id={{webmap_app.id}}" data-tooltip="Link to Webmap App view" data-position="right center">{{ webmap_app.name }}</a>
+				</li>
+				{% endif %}
+				{% endfor %}
+			</ul>
+			<ul class="link-list">
 				<span>Webmap Item Links:</span>
-				<ul>
-					{% for webmap_item in webmap_item_links.all %}
-					{% for wi in webmap_item.webmap.all %}
-					{% if wi == w  %}
-					<li>
-						<a href="{% url 'viewer_webmap_item' %}?id={{webmap_item.id}}" data-tooltip="Link to Webmap App view" data-position="right center">{{ webmap_item.name }}</a>
-					</li>
-					{% endif %}
-					{% endfor %}
-					{% endfor %}
-				</ul>
-			</p>
+				{% for webmap_item in webmap_item_links.all %}
+				{% for wi in webmap_item.webmap.all %}
+				{% if wi == w  %}
+				<li>
+					<a href="{% url 'viewer_webmap_item' %}?id={{webmap_item.id}}" data-tooltip="Link to Webmap App view" data-position="right center">{{ webmap_item.name }}</a>
+				</li>
+				{% endif %}
+				{% endfor %}
+				{% endfor %}
+			</ul>
 		</div>
 	</div>
 	<div class="extra content">

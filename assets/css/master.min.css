@@ -54,3 +54,9 @@
   margin-top: 25px !important;
   padding-bottom: 25px !important;
   color: #7e7e7e !important; }
+
+.link-list span {
+  margin-left: -39px; }
+
+.link-list li:first-of-type {
+  padding-top: 6px; }

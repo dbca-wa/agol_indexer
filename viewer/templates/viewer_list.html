@@ -38,4 +38,12 @@
 	<div class="ui one column centered grid showing-num">
 		<span>Showing {{location.0}}s {{ items.start_index }} - {{ items.end_index }}</span>
 	</div>
+
+	<script>
+		$('.link-list').each(function(i, val) {
+			if($(this).find('li').length == 0) {
+				$(this).remove()
+			}
+		})
+	</script>
 {% endblock %}
