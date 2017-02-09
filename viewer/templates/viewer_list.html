@@ -3,10 +3,10 @@
 	
 	<div class="ui container viewer-container">
 		{# breadcrumbs #}
-		{% include "partials/viewer_breadcrumbs.html" with location=location plural=items.count|pluralize showing_all=showing_all  %}
+		{% include "partials/viewer_breadcrumbs.html" with location=location showing_all=showing_all  %}
 		
 		{# header #}
-		<h2>{{ items.count }} {{ location.0 }}{{ items.count|pluralize }}</h2>
+		<h2>{{ items.end_index }} {{ location.0 }}{{ items.end_index|pluralize }}</h2>
 
 		{# search #}
 		{% include "partials/viewer_search.html" with location=location search_field=search_field search_data=search_data  %}
@@ -38,12 +38,4 @@
 	<div class="ui one column centered grid showing-num">
 		<span>Showing {{location.0}}s {{ items.start_index }} - {{ items.end_index }}</span>
 	</div>
-
-	<script>
-		$('.link-list').each(function(i, val) {
-			if($(this).find('li').length == 0) {
-				$(this).remove()
-			}
-		})
-	</script>
 {% endblock %}

@@ -26,13 +26,9 @@
 			<a href="{% url 'viewer_user' %}" class="section">{{ loc }}s</a>
 		{% else %}
 			{% if showing_all %}
-			<div class="active section">All {{ location.0 }}{{plural}}</div>
+			<div class="active section">All {{ location.0 }}s</div>
 			{% else %}
-				{% if loc == 1 %}
-				<div class="active section">{{ location.0 }}{{plural}}</div>
-				{% else %}
-				<div class="active section">{{loc}} {{ location.0 }} Result{{plural}}</div>
-				{% endif %}
+			<div class="active section">{{loc}} {{ location.0 }} Results</div>
 			{% endif %}
 		{% endif %}
 	{% endfor %}
