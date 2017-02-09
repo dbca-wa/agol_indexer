@@ -10,7 +10,7 @@ class Webmap_App_Admin(admin.ModelAdmin):
 	search_fields = ('name',)
 
 class Webmap_Item_Admin(admin.ModelAdmin):
-	list_display = ('name', 'map_description')
+	list_display = ('name', 'description')
 	search_fields = ('name',)
 
 admin.site.register(Webmap, Webmap_Admin)

@@ -4,12 +4,12 @@
 		<div class="description">
 			<p>
 				<span>Description: </span>
-				{{ w.map_description }}
+				{{ w.description }}
 			</p>
 			<p>
 				<span>ArcGIS Online Items: </span>
 				<ul>
-					{% for ag in w.agol_item.all  %}
+					{% for ag in w.agol.all  %}
 						<li>
 							<a href="{% url 'viewer_agol' %}?id={{ag.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ ag }}</a>
 						</li>
