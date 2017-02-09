@@ -61,7 +61,7 @@ def group_agol_delete(request, id_a, id_b):
 
 	group.agol.remove(agol)
 
-	return HttpResponseRedirect(reverse('joins_groups'))
+	return HttpResponseRedirect(reverse('joins_groups', group_id=id_a))
 
 def group_webmap_delete(request, id_a, id_b):
 	group = get_object_or_404(Group, id=id_a)
@@ -69,7 +69,7 @@ def group_webmap_delete(request, id_a, id_b):
 
 	group.webmap.remove(webmap)
 
-	return HttpResponseRedirect(reverse('joins_groups'))
+	return HttpResponseRedirect(reverse('joins_groups', group_id=id_a))
 
 def group_webmap_app_delete(request, id_a, id_b):
 	group = get_object_or_404(Group, id=id_a)
@@ -77,20 +77,20 @@ def group_webmap_app_delete(request, id_a, id_b):
 
 	group.webmap_app.remove(webmap_app)
 
-	return HttpResponseRedirect(reverse('joins_groups'))
+	return HttpResponseRedirect(reverse('joins_groups', group_id=id_a))
 
 def webmapitem_agol_delete(request, id_a, id_b):
-	webmap_item = get_object_or_404(Group, id=id_a)
+	webmap_item = get_object_or_404(Webmap_Item, id=id_a)
 	agol = get_object_or_404(AGOL_Item, id=id_b)
 
 	webmap_item.agol.remove(agol)
 
-	return HttpResponseRedirect(reverse('joins_groups'))
+	return HttpResponseRedirect(reverse('joins_webmapitems', wmi_id=id_a))
 
 def webmapitem_webmap_delete(request, id_a, id_b):
-	webmap_item = get_object_or_404(Group, id=id_a)
+	webmap_item = get_object_or_404(Webmap_Item, id=id_a)
 	webmap = get_object_or_404(Webmap, id=id_b)
 
 	webmap_item.webmap.remove(webmap)
 
-	return HttpResponseRedirect(reverse('joins_groups'))
+	return HttpResponseRedirect(reverse('joins_webmapitems', wmi_id=id_a))

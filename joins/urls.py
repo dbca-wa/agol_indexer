@@ -20,4 +20,11 @@ urlpatterns = [
 	url(r'^$', views.joins_group, name="joins"),
 	url(r'^groups/$', views.joins_group, name="joins_groups"),
 	url(r'^webmapitems/$', views.joins_webmapitems, name="joins_webmapitems"),
+
+	url(r'^groups/(?P<id_a>(\d+))/agol/(?P<id_b>(\d+))/delete$', views.group_agol_delete, name="joins_groups_agol_delete"),
+	url(r'^groups/(?P<id_a>(\d+))/webmap/(?P<id_b>(\d+))/delete$', views.group_webmap_delete, name="joins_groups_webmap_delete"),
+	url(r'^groups/(?P<id_a>(\d+))/webmapapp/(?P<id_b>(\d+))/delete$', views.group_webmap_app_delete, name="joins_groups_webmapapp_delete"),
+
+	url(r'^webmapitems/(?P<id_a>(\d+))/agol/(?P<id_b>(\d+))/delete$', views.webmapitem_agol_delete, name="joins_webmapitems_agol_delete"),
+	url(r'^webmapitems/(?P<id_a>(\d+))/webmap/(?P<id_b>(\d+))/delete$', views.webmapitem_webmap_delete, name="joins_webmapitems_webmap_delete"),
 ]
