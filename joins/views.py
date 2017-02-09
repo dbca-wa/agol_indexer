@@ -1,7 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
+from django.core.urlresolvers import reverse
 from webmap.models import Webmap_Item, Webmap, Webmap_App
 from groups.models import Group
 from agol.models import AGOL_Item
+
 
 # Create your views here.
 def joins_group(request):
@@ -52,3 +54,43 @@ def joins_webmapitems(request):
 		'agol_list': agol_list,
 		'webmap_list': webmap_list,
 	})
+
+def group_agol_delete(request, id_a, id_b):
+	group = get_object_or_404(Group, id=id_a)
+	agol = get_object_or_404(AGOL_Item, id=id_b)
+
+	group.agol.remove(agol)
+
+	return HttpResponseRedirect(reverse('joins_groups'))
+
+def group_webmap_delete(request, id_a, id_b):
+	group = get_object_or_404(Group, id=id_a)
+	webmap = get_object_or_404(Webmap, id=id_b)
+
+	group.webmap.remove(webmap)
+
+	return HttpResponseRedirect(reverse('joins_groups'))
+
+def group_webmap_app_delete(request, id_a, id_b):
+	group = get_object_or_404(Group, id=id_a)
+	webmap_app = get_object_or_404(Webmap_App, id=id_b)
+
+	group.webmap_app.remove(webmap_app)
+
+	return HttpResponseRedirect(reverse('joins_groups'))
+
+def webmapitem_agol_delete(request, id_a, id_b):
+	webmap_item = get_object_or_404(Group, id=id_a)
+	agol = get_object_or_404(AGOL_Item, id=id_b)
+
+	webmap_item.agol.remove(agol)
+
+	return HttpResponseRedirect(reverse('joins_groups'))
+
+def webmapitem_webmap_delete(request, id_a, id_b):
+	webmap_item = get_object_or_404(Group, id=id_a)
+	webmap = get_object_or_404(Webmap, id=id_b)
+
+	webmap_item.webmap.remove(webmap)
+
+	return HttpResponseRedirect(reverse('joins_groups'))
