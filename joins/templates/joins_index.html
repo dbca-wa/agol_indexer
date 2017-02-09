@@ -2,7 +2,26 @@
 {% block content %}
 
 <div class="ui container joins-container">
-	<h2 class="ui header">Joins</h2>
+	
+	<h2 class="ui header">{{ type }} Joins</h2>
+
+	{# include "partials/joins-submenu.html" #}
+
+	{% include "partials/joins-searchbar.html" %}
+
+	<h3 class="ui header">
+		<a href="{% url 'viewer_group' %}?id={{selected_item.id}}" data-tooltip="Link to {{type}} view" data-position="right center" class="header">{{ selected_item.name }}</a>
+		{% if type == "Group" %}
+		<div class="sub header">{{ selected_item.description }}</div>
+		{% else %}
+		<div class="sub header">{{ selected_item.map_description }}</div>
+		{% endif %}
+		
+	</h3>
+
+	{% if selected_item %}
+	{% include "partials/joins-group-cards.html" %}
+	{% endif %}
 </div>
 
 {% endblock %}

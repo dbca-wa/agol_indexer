@@ -17,5 +17,7 @@ from django.conf.urls import url
 from . import views
 
 urlpatterns = [
-	url(r'^$', views.joins_home, name="joins"),
+	url(r'^$', views.joins_group, name="joins"),
+	url(r'^groups/$', views.joins_group, name="joins_groups"),
+	url(r'^webmapitems/$', views.joins_webmapitems, name="joins_webmapitems"),
 ]

@@ -1,0 +1,15 @@
+<h3>Webmap Apps</h3>
+
+<div class="ui cards">
+	{% for item in group.webmap_app.all %}
+	<div class="card">
+		<div class="content">
+			<a href="{% url 'viewer_webmap_app' %}?id={{item.id}}" data-tooltip="Link to Webmap App view" data-position="right center" class="header">{{ item.name }}</a>
+			<a href="">
+				<i class="icon remove"></i>
+				<span>remove</span>
+			</a>
+		</div>
+	</div>
+	{% endfor %}
+</div>

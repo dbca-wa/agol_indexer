@@ -1,0 +1,27 @@
+<form action="" method="GET" class="join-get-bar">
+	<div class="ui grid">
+		<div class="twelve wide column">
+			<div class="ui fluid search selection dropdown join-item-dropdown">
+				{% if type == "Group" %}
+				<input type="hidden" name="group_id">
+				{% else %}
+				<input type="hidden" name="wmi_id">
+				{% endif %}
+				<i class="dropdown icon"></i>
+				{% if item_selected %}
+				<div class="default text" data-value="{{item.id}}">{{ item.name }}</div>
+				{% else %}
+				<div class="default text">Select {{ type }}</div>
+				{% endif %}
+				<div class="menu">
+					{% for item in item_list  %}
+					<div class="item" data-value="{{item.id}}">{{ item.name }}</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div class="four wide column">
+			<button class="large ui primary button join-select-button" type="submit">Get {{ type }}</button>
+		</div>
+	</div>
+</form>
