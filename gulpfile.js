@@ -27,6 +27,7 @@ gulp.task('watch', ['browserSync', 'build'], function() {
 	gulp.watch('./assets/js/*.js', ['js']);
 	gulp.watch('./templates/**/*.html', ['html']);
 	gulp.watch('./viewer/templates/**/*.html', ['html']);
+	gulp.watch('./joins/templates/**/*.html', ['html']);
 });
 
 //browser sync
