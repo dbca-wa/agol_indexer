@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     'web_adapter',
     'web_service',
     'webmap',
-    'viewer'
+    'viewer',
+    'joins'
 ]
 
 MIDDLEWARE = [

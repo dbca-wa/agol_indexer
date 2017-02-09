@@ -37,6 +37,9 @@
     .history-results .result .title {
       font-weight: 100 !important; }
 
+.joins-container {
+  width: 85% !important; }
+
 .viewer-container {
   width: 85% !important; }
 
