@@ -38,7 +38,24 @@
       font-weight: 100 !important; }
 
 .joins-container {
-  width: 90% !important; }
+  width: 100% !important; }
+
+.join-remove {
+  color: #ff3232;
+  font-weight: bolder; }
+
+.join-remove:hover {
+  color: #e50000; }
+
+.add-list {
+  width: 98% !important; }
+
+.join-divider {
+  margin-top: 22px !important;
+  padding-bottom: 10px !important; }
+
+.join-add-button {
+  margin-left: -28px !important; }
 
 .viewer-container {
   width: 90% !important; }
