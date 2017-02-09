@@ -1,7 +1,7 @@
 <h3>ArcGIS Online Items</h3>
 
 <div class="ui cards">
-	{% for item in group.agol.all %}
+	{% for item in selected_item.agol.all %}
 	<div class="card">
 		<div class="content">
 			<a href="{% url 'viewer_agol' %}?id={{item.id}}" data-tooltip="Link to AGOL view" data-position="right center" class="header">{{ item.name }}</a>

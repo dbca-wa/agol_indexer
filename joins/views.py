@@ -11,7 +11,7 @@ def joins_group(request):
 		if group_id:
 			group = Group.objects.get(id=group_id)
 		
-	groups_list = Group.objects.values('id', 'name')
+	groups_list = Group.objects.values('id', 'name').order_by('name')
 
 	return render(request, 'joins_index.html', {
 		'type': 'Group',
@@ -27,7 +27,7 @@ def joins_webmapitems(request):
 		if wmi_id:
 			wmi = Webmap_Item.objects.get(id=wmi_id)
 		
-	wmi_list = Webmap_Item.objects.values('id', 'name')
+	wmi_list = Webmap_Item.objects.values('id', 'name').order_by('name')
 
 	return render(request, 'joins_index.html', {
 		'type': 'Webmap Item',

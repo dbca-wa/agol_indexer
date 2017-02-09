@@ -5,22 +5,24 @@
 	
 	<h2 class="ui header">{{ type }} Joins</h2>
 
-	{# include "partials/joins-submenu.html" #}
-
-	{% include "partials/joins-searchbar.html" %}
+	{% include "partials/joins-searchbar.html" with si=selected_item %}
 
 	<h3 class="ui header">
-		<a href="{% url 'viewer_group' %}?id={{selected_item.id}}" data-tooltip="Link to {{type}} view" data-position="right center" class="header">{{ selected_item.name }}</a>
 		{% if type == "Group" %}
-		<div class="sub header">{{ selected_item.description }}</div>
+		<a href="{% url 'viewer_group' %}?id={{selected_item.id}}" data-tooltip="Link to {{type}} view" data-position="right center" class="header">{{ selected_item.name }}</a>
 		{% else %}
-		<div class="sub header">{{ selected_item.map_description }}</div>
+		<a href="{% url 'viewer_webmap_item' %}?id={{selected_item.id}}" data-tooltip="Link to {{type}} view" data-position="right center" class="header">{{ selected_item.name }}</a>
 		{% endif %}
+		<div class="sub header">{{ selected_item.description }}</div>
 		
 	</h3>
 
 	{% if selected_item %}
-	{% include "partials/joins-group-cards.html" %}
+	{% if type == "Group" %}
+	{% include "partials/joins-cards-group.html" %}
+	{% else %}
+	{% include "partials/joins-cards-webmapitem.html" %}
+	{% endif %}
 	{% endif %}
 </div>
 
