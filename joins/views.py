@@ -7,16 +7,21 @@ from agol.models import AGOL_Item
 
 # Create your views here.
 def joins_group(request):
-	groups_list = Group.objects.values('id', 'name').order_by('name')
+	if 'group_id' in request.GET:
+		group_id = request.GET['group_id']
+		if group_id:
+			return HttpResponseRedirect(reverse_lazy('joins_groups', args=(group_id)))
+	else:
+		groups_list = Group.objects.values('id', 'name').order_by('name')
 
-	return render(request, 'joins_index.html', {
-		'type': 'Group',
-		'selected_item': None,
-		'item_list': groups_list,
-	})
+		return render(request, 'joins_index.html', {
+			'type': 'Group',
+			'selected_item': None,
+			'item_list': groups_list,
+		})
 
-def joins_getGroup(request, id_a):
-	group = get_object_or_404(Group, id=id_a)
+def joins_getGroup(request, group_id):
+	group = get_object_or_404(Group, id=group_id)
 
 	agol_list = AGOL_Item.objects.all().exclude(id__in=group.agol.all())
 	webmap_list = Webmap.objects.all().exclude(id__in=group.webmap.all())
@@ -33,17 +38,22 @@ def joins_getGroup(request, id_a):
 		'webmap_app_list': webmap_app_list,
 	})
 
-def joins_webmapitems(request):		
-	wmi_list = Webmap_Item.objects.values('id', 'name').order_by('name')
+def joins_webmapitems(request):
+	if 'wmi_id' in request.GET:
+		wmi_id = request.GET['wmi_id']
+		if wmi_id:	
+			return HttpResponseRedirect(reverse_lazy('joins_webmapitems', args=(wmi_id)))
+	else:
+		wmi_list = Webmap_Item.objects.values('id', 'name').order_by('name')
 
-	return render(request, 'joins_index.html', {
-		'type': 'Webmap Item',
-		'selected_item': None,
-		'item_list': wmi_list,
-	})
+		return render(request, 'joins_index.html', {
+			'type': 'Webmap Item',
+			'selected_item': None,
+			'item_list': wmi_list,
+		})
 
-def joins_getWebmapitems(request, id_a):
-	wmi = get_object_or_404(Webmap_Item, id=id_a)
+def joins_getWebmapitems(request, wmi_id):
+	wmi = get_object_or_404(Webmap_Item, id=wmi_id)
 
 	agol_list = AGOL_Item.objects.all().exclude(id__in=wmi.agol.all())
 	webmap_list = Webmap.objects.all().exclude(id__in=wmi.webmap.all())

@@ -20,8 +20,8 @@ urlpatterns = [
 	url(r'^$', views.joins_group, name="joins"),
 	url(r'^groups/$', views.joins_group, name="joins_groups"),
 	url(r'^webmapitems/$', views.joins_webmapitems, name="joins_webmapitems"),
-	url(r'^groups/(?P<id_a>(\d+))$', views.joins_getGroup, name="joins_groups"),
-	url(r'^webmapitems/(?P<id_a>(\d+))$', views.joins_getWebmapitems, name="joins_webmapitems"),
+	url(r'^groups/(?P<group_id>(\d+))$', views.joins_getGroup, name="joins_groups"),
+	url(r'^webmapitems/(?P<wmi_id>(\d+))$', views.joins_getWebmapitems, name="joins_webmapitems"),
 
 	url(r'^groups/(?P<id_a>(\d+))/agol/(?P<id_b>(\d+))/delete$', views.group_agol_delete, name="joins_groups_agol_delete"),
 	url(r'^groups/(?P<id_a>(\d+))/webmap/(?P<id_b>(\d+))/delete$', views.group_webmap_delete, name="joins_groups_webmap_delete"),
