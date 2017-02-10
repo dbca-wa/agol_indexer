@@ -47,7 +47,7 @@ def index_home(request):
 			web_service = Web_Service.objects.filter(Q(name__icontains=s)| Q(actual_url__icontains=s) | Q(alias_url__icontains=s) | Q(mxd__name__icontains=s) | Q(web_adapter__machine_name__icontains=s)).distinct()
 			webmap = Webmap.objects.filter(Q(name__icontains=s) | Q(contact__contact_name__icontains=s)).distinct()
 			webmap_app = Webmap_App.objects.filter(Q(name__icontains=s) | Q(url__icontains=s) | Q(contact__contact_name__icontains=s) | Q(webmap__name__icontains=s)).distinct()
-			webmap_item = Webmap_Item.objects.filter(Q(name__icontains=s) | Q(agol_item__name__icontains=s) | Q(webmap__name__icontains=s)).distinct()
+			webmap_item = Webmap_Item.objects.filter(Q(name__icontains=s) | Q(agol__name__icontains=s) | Q(webmap__name__icontains=s)).distinct()
 
 			#MXD links
 			if layer_source:
