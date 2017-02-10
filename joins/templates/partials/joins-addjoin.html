@@ -1,0 +1,21 @@
+<div class="ui add-item-join">
+	<div class="div ui divider"></div>
+	<h3>Add {{type}}</h3>
+
+	<form action="{% url 'joins_groups_create' %}" method="POST" name="form">{% csrf_token %}
+		<div class="ui form">
+			<div class="field">
+				<label>{{type}} Name</label>
+				<div class="ui input field">
+					<input type="text" name="name" placeholder="{{type}} name...">
+					<textarea type="text" rows="2" name="description"></textarea>
+				</div>
+			</div>
+			<div class="field">
+				<label>Description</label>
+				<textarea type="text" rows="2" name="description"></textarea>
+			</div>
+		</div>
+		<button class="ui primary button add-join-button" type="submit">Add {{type}}</button>
+	</form>
+</div>

@@ -3,6 +3,7 @@ from django.core.urlresolvers import reverse_lazy
 from webmap.models import Webmap_Item, Webmap, Webmap_App
 from groups.models import Group
 from agol.models import AGOL_Item
+from joins.forms import CreateGroupForm, CreateWebmapItemsForm
 
 
 # Create your views here.
@@ -179,3 +180,30 @@ def webmapitem_webmap_delete(request, id_a, id_b):
 	webmap_item.webmap.remove(webmap)
 
 	return HttpResponseRedirect(reverse_lazy('joins_webmapitems', args=(id_a)))
+
+#######
+#JOINS#
+#######
+
+def group_create(request):
+	if request.method == "POST":
+		groupForm = CreateGroupForm(request.POST)
+
+		if groupForm.is_valid():
+			print groupForm
+
+			data = groupForm.cleaned_data
+			name = data['name']
+			description = data['description']
+
+			group = Group.objects.create_group(name, description)
+
+			return HttpResponseRedirect(reverse_lazy('joins_webmapitems', args=(group.id)))
+
+def webmapitems_create(request):
+	if request.method == "POST":
+		webmapItemForm = CreateWebmapItemsForm(request.POST)
+
+		if webmapItemForm.is_valid():
+			name = CreateWebmapItemsForm.cleaned_data['name']
+			description = CreateWebmapItemsForm.cleaned_data['description']

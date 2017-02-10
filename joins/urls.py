@@ -23,6 +23,11 @@ urlpatterns = [
 	url(r'^groups/(?P<group_id>(\d+))$', views.joins_getGroup, name="joins_groups"),
 	url(r'^webmapitems/(?P<wmi_id>(\d+))$', views.joins_getWebmapitems, name="joins_webmapitems"),
 
+	#CREATE
+	url(r'^groups/create$', views.group_create, name="joins_groups_create"),
+	url(r'^webmapitems/create$', views.webmapitems_create, name="joins_webmapitems_create"),
+
+	#REMOVE
 	url(r'^groups/(?P<id_a>(\d+))/agol/(?P<id_b>(\d+))/delete$', views.group_agol_delete, name="joins_groups_agol_delete"),
 	url(r'^groups/(?P<id_a>(\d+))/webmap/(?P<id_b>(\d+))/delete$', views.group_webmap_delete, name="joins_groups_webmap_delete"),
 	url(r'^groups/(?P<id_a>(\d+))/webmapapp/(?P<id_b>(\d+))/delete$', views.group_webmap_app_delete, name="joins_groups_webmapapp_delete"),
@@ -30,6 +35,7 @@ urlpatterns = [
 	url(r'^webmapitems/(?P<id_a>(\d+))/agol/(?P<id_b>(\d+))/delete$', views.webmapitem_agol_delete, name="joins_webmapitems_agol_delete"),
 	url(r'^webmapitems/(?P<id_a>(\d+))/webmap/(?P<id_b>(\d+))/delete$', views.webmapitem_webmap_delete, name="joins_webmapitems_webmap_delete"),
 
+	#ADD
 	url(r'^groups/(?P<id_a>(\d+))/agol/(?P<id_b>(\d+))/add$', views.group_agol_add, name="joins_groups_agol_add"),
 	url(r'^groups/(?P<id_a>(\d+))/webmap/(?P<id_b>(\d+))/add$', views.group_webmap_add, name="joins_groups_webmap_add"),
 	url(r'^groups/(?P<id_a>(\d+))/webmapapp/(?P<id_b>(\d+))/add$', views.group_webmap_app_add, name="joins_groups_webmapapp_add"),

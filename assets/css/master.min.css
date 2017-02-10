@@ -86,3 +86,9 @@
 
 .link-list li:first-of-type {
   padding-top: 6px; }
+
+.add-item-join {
+  width: 50%; }
+  .add-item-join .add-join-button {
+    margin-top: 10px;
+    float: right; }

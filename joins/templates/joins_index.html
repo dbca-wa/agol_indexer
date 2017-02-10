@@ -14,7 +14,6 @@
 		<a href="{% url 'viewer_webmap_item' %}?id={{selected_item.id}}" data-tooltip="Link to {{type}} view" data-position="right center" class="header">{{ selected_item.name }}</a>
 		{% endif %}
 		<div class="sub header">{{ selected_item.description }}</div>
-		
 	</h3>
 
 	{% if selected_item %}
@@ -23,6 +22,8 @@
 	{% else %}
 	{% include "partials/joins-cards-webmapitem.html" %}
 	{% endif %}
+	{% else %}
+	{% include "partials/joins-addjoin.html" %}
 	{% endif %}
 </div>
 
