@@ -15,6 +15,7 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+PROJECT_DIR = os.path.dirname(__file__)
 
 
 # Quick-start development settings - unsuitable for production
@@ -27,7 +28,7 @@ SECRET_KEY = env('SECRET_KEY', 'OurSecretKey')
 DEBUG = env('DEBUG', False)
 
 if not DEBUG:
-    ALLOWED_HOSTS = []
+    ALLOWED_HOSTS = [env('ALLOWED_DOMAIN'), ]
 else:
     ALLOWED_HOSTS = ['*']
 
@@ -62,6 +63,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'dpaw_utils.middleware.SSOLoginMiddleware',
 ]
 
 ROOT_URLCONF = 'agol_indexer.urls'
@@ -117,29 +119,20 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
-
-LANGUAGE_CODE = 'en-us'
-
-TIME_ZONE = 'UTC'
-
+LANGUAGE_CODE = 'en-AU'
+TIME_ZONE = 'Australia/Perth'
 USE_I18N = True
-
 USE_L10N = True
-
 USE_TZ = True
 
-PROJECT_DIR = os.path.dirname(__file__)
 
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/1.10/howto/static-files/
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
-    os.path.join(PROJECT_DIR, 'assets'),
     os.path.join(BASE_DIR, 'assets'),
-    '/home/assets/',
-    '/var/www/assets/',
 )
-
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/1.10/howto/static-files/
-STATIC_URL = '/assets/'
