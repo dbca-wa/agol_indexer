@@ -29,4 +29,11 @@ urlpatterns = [
 
 	url(r'^webmapitems/(?P<id_a>(\d+))/agol/(?P<id_b>(\d+))/delete$', views.webmapitem_agol_delete, name="joins_webmapitems_agol_delete"),
 	url(r'^webmapitems/(?P<id_a>(\d+))/webmap/(?P<id_b>(\d+))/delete$', views.webmapitem_webmap_delete, name="joins_webmapitems_webmap_delete"),
+
+	url(r'^groups/(?P<id_a>(\d+))/agol/(?P<id_b>(\d+))/add$', views.group_agol_add, name="joins_groups_agol_add"),
+	url(r'^groups/(?P<id_a>(\d+))/webmap/(?P<id_b>(\d+))/add$', views.group_webmap_add, name="joins_groups_webmap_add"),
+	url(r'^groups/(?P<id_a>(\d+))/webmapapp/(?P<id_b>(\d+))/add$', views.group_webmap_app_add, name="joins_groups_webmapapp_add"),
+
+	url(r'^webmapitems/(?P<id_a>(\d+))/agol/(?P<id_b>(\d+))/add$', views.webmapitem_agol_add, name="joins_webmapitems_agol_add"),
+	url(r'^webmapitems/(?P<id_a>(\d+))/webmap/(?P<id_b>(\d+))/add$', views.webmapitem_webmap_add, name="joins_webmapitems_webmap_add"),
 ]

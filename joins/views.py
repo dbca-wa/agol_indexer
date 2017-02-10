@@ -68,6 +68,52 @@ def joins_getWebmapitems(request, wmi_id):
 		'webmap_list': webmap_list,
 	})
 
+########
+#ADD#
+########
+def group_agol_add(request, id_a, id_b):
+	group = get_object_or_404(Group, id=id_a)
+	agol = get_object_or_404(AGOL_Item, id=id_b)
+
+	group.agol.add(agol)
+
+	return HttpResponseRedirect(reverse_lazy('joins_groups', args=(id_a)))
+
+def group_webmap_add(request, id_a, id_b):
+	group = get_object_or_404(Group, id=id_a)
+	webmap = get_object_or_404(Webmap, id=id_b)
+
+	group.webmap.add(webmap)
+
+	return HttpResponseRedirect(reverse_lazy('joins_groups', args=(id_a)))
+
+def group_webmap_app_add(request, id_a, id_b):
+	group = get_object_or_404(Group, id=id_a)
+	webmap_app = get_object_or_404(Webmap_App, id=id_b)
+
+	group.webmap_app.add(webmap_app)
+
+	return HttpResponseRedirect(reverse_lazy('joins_webmapitems', args=(id_a)))
+
+def webmapitem_agol_add(request, id_a, id_b):
+	webmap_item = get_object_or_404(Webmap_Item, id=id_a)
+	agol = get_object_or_404(AGOL_Item, id=id_b)
+
+	webmap_item.agol.add(agol)
+
+	return HttpResponseRedirect(reverse_lazy('joins_webmapitems', args=(id_a)))
+
+def webmapitem_webmap_add(request, id_a, id_b):
+	webmap_item = get_object_or_404(Webmap_Item, id=id_a)
+	webmap = get_object_or_404(Webmap, id=id_b)
+
+	webmap_item.webmap.add(webmap)
+
+	return HttpResponseRedirect(reverse_lazy('joins_webmapitems', args=(id_a)))
+
+########
+#REMOVE#
+########
 def group_agol_delete(request, id_a, id_b):
 	group = get_object_or_404(Group, id=id_a)
 	agol = get_object_or_404(AGOL_Item, id=id_b)
