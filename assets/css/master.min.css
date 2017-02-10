@@ -5,7 +5,7 @@
   padding-top: 100px; }
 
 .home-container {
-  width: 85% !important;
+  width: 90% !important;
   padding-bottom: 50px; }
   .home-container .ui.section.divider {
     margin-top: 1.35em !important;
@@ -37,8 +37,34 @@
     .history-results .result .title {
       font-weight: 100 !important; }
 
+.joins-container {
+  width: 100% !important; }
+
+.join-remove {
+  color: #ff3232;
+  font-weight: bolder; }
+
+.join-remove:hover {
+  color: #e50000; }
+
+.add-list {
+  width: 98% !important; }
+
+.join-group-list .card {
+  width: 100% !important; }
+
+.join-webmap-list .card {
+  width: 100% !important; }
+
+.join-divider {
+  margin-top: 22px !important;
+  padding-bottom: 10px !important; }
+
+.join-add-button {
+  margin-left: -28px !important; }
+
 .viewer-container {
-  width: 85% !important; }
+  width: 90% !important; }
 
 .viewer-search-bar {
   padding-top: 15px;
@@ -46,3 +72,17 @@
 
 .viewer-button {
   width: 130px; }
+
+.ui.pagination {
+  float: right; }
+
+.showing-num {
+  margin-top: 25px !important;
+  padding-bottom: 25px !important;
+  color: #7e7e7e !important; }
+
+.link-list span {
+  margin-left: -39px; }
+
+.link-list li:first-of-type {
+  padding-top: 6px; }

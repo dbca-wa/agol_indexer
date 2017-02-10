@@ -10,18 +10,16 @@
 				<span>Comments: </span>
 				{{ u.comments }}
 			</p>
-			<p>
+			<ul class="link-list">
 				<span>ArcGIS Online Links:</span>
-				<ul>
-					{% for agol in agol_links.all %}
-					{% if agol.owner == u  %}
-					<li>
-						<a href="{% url 'viewer_agol' %}?id={{agol.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol.name }}</a>
-					</li>
-					{% endif %}
-					{% endfor %}
-				</ul>
-			</p>
+				{% for agol in agol_links %}
+				{% if agol.owner == u  %}
+				<li>
+					<a href="{% url 'viewer_agol' %}?id={{agol.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol.name }}</a>
+				</li>
+				{% endif %}
+				{% endfor %}
+			</ul>
 		</div>
 	</div>
 	<div class="extra content">

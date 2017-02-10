@@ -22,7 +22,15 @@
 					<a href="{% url 'viewer_web_service' %}" class="item">Web Services</a>
 				</div>
 			</div>
-			<a href="{% url 'index' %}" class="item">Joins</a>
+
+			<div class="ui dropdown item">
+				Joins <i class="dropdown icon"></i>
+				<div class="menu">
+					<a href="{% url 'joins_groups' %}" class="item">Groups</a>
+					<a href="{% url 'joins_webmapitems' %}" class="item">Webmap Items</a>
+				</div>
+			</div>
+
 			<a href="{% url 'admin:index' %}" class="item">Admin</a>
 		</div>
 	</div>

@@ -26,16 +26,28 @@
 			<a href="{% url 'viewer_user' %}" class="section">{{ loc }}s</a>
 		{% else %}
 			{% if showing_all %}
-			<div class="active section">All {{ location.0 }}{{plural}}</div>
+			<div class="active section">All {{ location.0 }}s</div>
 			{% else %}
-				{% if loc == 1 %}
-				<div class="active section">{{ location.0 }}{{plural}}</div>
-				{% else %}
-				<div class="active section">{{loc}} {{ location.0 }} Result{{plural}}</div>
-				{% endif %}
+			<div class="active section">{{loc}} {{ location.0 }} Results</div>
 			{% endif %}
-
-			
 		{% endif %}
 	{% endfor %}
+</div>
+
+<div class="ui pagination menu center aligned">
+		{% if items.has_previous %}
+		<a class="item" href="?page={{ items.previous_page_number }}">
+			<i class="icon chevron left"></i>
+		</a>
+		{% endif %}
+			
+		<div class="item">
+			Page {{ items.number }} of {{ items.paginator.num_pages }}
+		</div>
+
+		{% if items.has_next %}
+		<a class="item" href="?page={{ items.next_page_number }}">
+			<i class="icon chevron right"></i>
+		</a>
+		{% endif %}
 </div>

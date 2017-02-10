@@ -1,0 +1,19 @@
+<h3>Webmaps</h3>
+
+<div class="ui cards">
+	{% for item in selected_item.webmap.all %}
+	<div class="card">
+		<div class="content">
+			<a href="{% url 'viewer_webmap' %}?id={{item.id}}" data-tooltip="Link to Webmap view" data-position="right center" class="header">{{ item.name }}</a>
+			{% if type == "Group" %}
+			<a href="{% url 'joins_groups_webmap_delete' selected_item.id item.id %}" class="join-remove">
+			{% else %}
+			<a href="{% url 'joins_webmapitems_webmap_delete' selected_item.id item.id %}" class="join-remove">
+			{% endif %}
+				<i class="icon remove"></i>
+				<span>remove</span>
+			</a>
+		</div>
+	</div>
+	{% endfor %}
+</div>

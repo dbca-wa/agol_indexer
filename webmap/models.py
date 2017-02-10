@@ -46,8 +46,8 @@ class Webmap_App(models.Model):
 class Webmap_Item(models.Model):
 	name = models.CharField(max_length=120, blank=True)
 	webmap = models.ManyToManyField(Webmap)
-	agol_item = models.ManyToManyField(AGOL_Item)
-	map_description = models.TextField(blank=True)
+	agol = models.ManyToManyField(AGOL_Item)
+	description = models.TextField(blank=True, verbose_name='Map description')
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)
 

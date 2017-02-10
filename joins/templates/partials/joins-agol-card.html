@@ -1,0 +1,19 @@
+<h3>ArcGIS Online Items</h3>
+
+<div class="ui cards">
+	{% for item in selected_item.agol.all %}
+	<div class="card">
+		<div class="content">
+			<a href="{% url 'viewer_agol' %}?id={{item.id}}" data-tooltip="Link to AGOL view" data-position="right center" class="header">{{ item.name }}</a>
+			{% if type == "Group" %}
+			<a href="{% url 'joins_groups_agol_delete' selected_item.id item.id %}" class="join-remove">
+			{% else %}
+			<a href="{% url 'joins_webmapitems_agol_delete' selected_item.id item.id %}" class="join-remove">
+			{% endif %}
+				<i class="icon remove"></i>
+				<span>remove</span>
+			</a>
+		</div>
+	</div>
+	{% endfor %}
+</div>

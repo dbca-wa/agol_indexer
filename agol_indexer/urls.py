@@ -21,4 +21,5 @@ urlpatterns = [
 	url(r'^admin/', admin.site.urls, name='admin'),
 	url(r'^$', views.index_home, name='index'),
 	url(r'^viewer/', include('viewer.urls'), name='viewer'),
+	url(r'^join/', include('joins.urls'), name='joins'),
 ]

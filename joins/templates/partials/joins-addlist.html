@@ -1,0 +1,22 @@
+<div class="ui divider join-divider"></div>
+
+<form class="ui grid">
+	<div class="thirteen wide column">
+		<div class="ui fluid search selection dropdown add-list">
+			<input type="hidden" name="{{list_type_id}}">
+			<i class="dropdown icon"></i>
+			
+			{% if si == None %}
+			<div class="default text">Select {{ list_type }}</div>
+			{% endif %}
+			<div class="menu">
+				{% for item in add_list  %}
+				<div class="item" data-value="{{item.id}}">{{ item.name }}</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+	<div class="one wide column">
+		<button class="ui blue disabled button join-add-button">Add</button>
+	</div>
+</form>
