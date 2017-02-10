@@ -2,17 +2,20 @@
 	<div class="div ui divider"></div>
 	<h3>Add {{type}}</h3>
 
+	{% if type == 'Group' %}
 	<form action="{% url 'joins_groups_create' %}" method="POST" name="form">{% csrf_token %}
+	{% else %}
+	<form action="{% url 'joins_webmapitems_create' %}" method="POST" name="form">{% csrf_token %}
+	{% endif %}
 		<div class="ui form">
 			<div class="field">
-				<label>{{type}} Name</label>
+				<label for="name">{{type}} Name</label>
 				<div class="ui input field">
 					<input type="text" name="name" placeholder="{{type}} name...">
-					<textarea type="text" rows="2" name="description"></textarea>
 				</div>
 			</div>
 			<div class="field">
-				<label>Description</label>
+				<label for="description">Description</label>
 				<textarea type="text" rows="2" name="description"></textarea>
 			</div>
 		</div>

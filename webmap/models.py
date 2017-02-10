@@ -42,6 +42,12 @@ class Webmap_App(models.Model):
 	def __str__(self):
 		return self.name
 
+#Manager
+class Webmap_Item_Manager(models.Manager):
+	def create_webmap_item(self, name, description):
+		webmap_item = self.create(name=name, description=description)
+		return webmap_item
+
 #--AGO_WEBMAP Many2Many
 class Webmap_Item(models.Model):
 	name = models.CharField(max_length=120, blank=True)
@@ -50,6 +56,8 @@ class Webmap_Item(models.Model):
 	description = models.TextField(blank=True, verbose_name='Map description')
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)
+
+	objects = Webmap_Item_Manager()
 
 	class Meta:
 		verbose_name = 'Webmap Item'

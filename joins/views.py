@@ -194,16 +194,23 @@ def group_create(request):
 
 			data = groupForm.cleaned_data
 			name = data['name']
-			description = data['description']
+			#description = data['description']
 
-			group = Group.objects.create_group(name, description)
+			group = Group.objects.create_group(name, 'test description')
 
-			return HttpResponseRedirect(reverse_lazy('joins_webmapitems', args=(group.id)))
+			return HttpResponseRedirect(reverse_lazy('joins_groups', args=(group.id,)))
 
 def webmapitems_create(request):
 	if request.method == "POST":
+		print request.
 		webmapItemForm = CreateWebmapItemsForm(request.POST)
 
 		if webmapItemForm.is_valid():
-			name = CreateWebmapItemsForm.cleaned_data['name']
-			description = CreateWebmapItemsForm.cleaned_data['description']
+			print webmapItemForm
+			data = webmapItemForm.cleaned_data
+			name = data['name']
+			#description = data['description']
+
+			webmap_item = Webmap_Item.objects.create_webmap_item(name, 'test description')
+
+			return HttpResponseRedirect(reverse_lazy('joins_webmapitems', args=(webmap_item.id,)))
