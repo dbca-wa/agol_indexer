@@ -10,6 +10,11 @@ $(document).ready(function() {
 		hideAdditions: false,
 		message: {
 			addResult: 'Search <b>{term}</b>'
+		},
+		onChange: function(value, text, $selectedItem) {
+			if (value) {
+				$('.viewer-button').removeClass('disabled')
+			}
 		}
 	})
 
