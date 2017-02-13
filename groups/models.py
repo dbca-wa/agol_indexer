@@ -22,7 +22,7 @@ class Group(models.Model):
 	objects = GroupManager()
 
 	class Meta:
-		verbose_name = 'Group'
+		verbose_name = 'AGOL Group'
 
 	def __str__(self):
 		return self.name
