@@ -136,3 +136,41 @@ STATICFILES_DIRS = (
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(BASE_DIR, 'assets'),
 )
+
+
+# Logging settings
+# Ensure that the logs directory exists:
+if not os.path.exists(os.path.join(BASE_DIR, 'logs')):
+    os.mkdir(os.path.join(BASE_DIR, 'logs'))
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'simple': {
+            'format': '%(levelname)s %(asctime)s %(message)s'
+        }
+    },
+    'handlers': {
+        'agol_log': {
+            'class': 'logging.handlers.RotatingFileHandler',
+            'filename': os.path.join(BASE_DIR, 'logs', 'agol.log'),
+            'formatter': 'simple',
+            'maxBytes': 1024 * 1024 * 5,
+            'backupCount': 5
+        }
+    },
+    'loggers': {
+        'django.request': {
+            'handlers': ['agol_log'],
+            'level': 'INFO'
+        },
+        'agol': {
+            'handlers': ['agol_log'],
+            'level': 'INFO'
+        }
+    }
+}
+# Supplement some settings when DEBUG is True.
+if DEBUG:
+    LOGGING['loggers']['django.request']['level'] = 'DEBUG'
+    LOGGING['loggers']['agol']['level'] = 'DEBUG'
