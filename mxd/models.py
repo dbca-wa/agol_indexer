@@ -26,7 +26,7 @@ class MXD_Creator(models.Model):
 
 class MXD(models.Model):
 	name = models.CharField(max_length=60)
-	path = models.CharField(max_length=255)
+	path = models.CharField(max_length=500)
 	description = models.TextField(max_length=255, blank=True)
 	client = models.ForeignKey(MXD_Client)
 	created_by = models.ForeignKey(MXD_Creator)
