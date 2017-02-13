@@ -18,7 +18,7 @@ class Layer_Source_Format_Type(models.Model):
 	updated_date = models.DateTimeField(auto_now=True)
 
 	class Meta:
-		verbose_name = 'Layer Source Format Type'
+		verbose_name = 'Layer Source Feature Type'
 
 	def __str__(self):
 		return self.format_type
