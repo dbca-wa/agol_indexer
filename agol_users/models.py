@@ -12,12 +12,15 @@ class Role(models.Model):
 		return self.level
 
 #--Users - Main
-class User(models.Model):
+class AGOL_User(models.Model):
 	name = models.CharField(max_length=60)
 	comments = models.TextField(max_length=255, blank=True)
 	role = models.ForeignKey(Role)
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)
+
+	class Meta:
+		verbose_name = 'AGOL User'
 
 	def __str__(self):
 		return self.name

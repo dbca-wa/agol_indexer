@@ -47,7 +47,7 @@ INSTALLED_APPS = [
     'groups',
     'layer_source',
     'mxd',
-    'users',
+    'agol_users',
     'web_adapter',
     'web_service',
     'webmap',

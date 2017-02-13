@@ -1,6 +1,6 @@
 from __future__ import unicode_literals
 from django.db import models
-from users.models import User
+from agol_users.models import AGOL_User
 from web_service.models import Web_Service
 from mxd.models import MXD
 
@@ -23,7 +23,7 @@ class AGOL_Item(models.Model):
     url = models.ForeignKey(Web_Service)
     mxd = models.ForeignKey(MXD, verbose_name='MXD')
     external_layer_url = models.URLField()
-    owner = models.ForeignKey(User)
+    owner = models.ForeignKey(AGOL_User)
     comments = models.CharField(max_length=255, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)

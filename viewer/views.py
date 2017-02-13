@@ -6,7 +6,7 @@ from agol.models import AGOL_Item
 from groups.models import Group
 from layer_source.models import Layer_Source
 from mxd.models import MXD
-from users.models import User
+from agol_users.models import AGOL_User
 from web_adapter.models import Web_Adapter
 from web_service.models import Web_Service
 from webmap.models import Webmap, Webmap_App, Webmap_Item
@@ -388,26 +388,26 @@ def viewer_user(request):
 	if 'id' in request.GET:
 		i = request.GET['id']
 		if not i:
-			user = User.objects.all().order_by('name')
+			user = AGOL_User.objects.all().order_by('name')
 		else:
-			user = User.objects.filter(id=i).order_by('name')
+			user = AGOL_User.objects.filter(id=i).order_by('name')
 			showing_all = False
 
 	elif 'name' in request.GET:
 		name = request.GET['name']
 		if not name:
-			user = User.objects.all().order_by('name')
+			user = AGOL_User.objects.all().order_by('name')
 		else:
-			user = User.objects.filter(name__icontains=name).order_by('name')
+			user = AGOL_User.objects.filter(name__icontains=name).order_by('name')
 			search_field = name
 			showing_all = False
 	else:
-		user = User.objects.all().order_by('name')
+		user = AGOL_User.objects.all().order_by('name')
 	
 	user = paginator(request, user)
 
 	location.append(user.count)
-	search_data = User.objects.all().values_list('name', flat=True).distinct()
+	search_data = AGOL_User.objects.all().values_list('name', flat=True).distinct()
 	agol_links = AGOL_Item.objects.all()
 	
 	return render(request, 'viewer_list.html',

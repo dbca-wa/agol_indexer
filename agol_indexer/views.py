@@ -5,7 +5,7 @@ from agol.models import AGOL_Item
 from groups.models import Group
 from layer_source.models import Layer_Source
 from mxd.models import MXD
-from users.models import User
+from agol_users.models import AGOL_User
 from web_adapter.models import Web_Adapter
 from web_service.models import Web_Service
 from webmap.models import Webmap, Webmap_App, Webmap_Item
