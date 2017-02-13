@@ -1,9 +1,12 @@
-<div class="viewer-list ui relaxed divided list">
+<div class="viewer-list ui relaxed divided list viewer-item-description">
 	<div class="item">
 		<i class="large angle right right middle aligned icon"></i>
 		<div class="content">
-			<a href="{% url 'viewer_agol' %}" class="header">ArcGIS Items</a>
-			<div class="description">description</div>
+			<a href="{% url 'viewer_agol' %}" class="header">ArcGIS Online Items</a>
+			<div class="description">
+				Any item in AGOL that could be thought of as a spatial layer/table/image.
+				Ie. everything <b>OTHER</b> than a Webmap or Webmapping.
+			</div>
 		</div>
 	</div>
 
@@ -11,7 +14,9 @@
 		<i class="large angle right middle aligned icon"></i>
 		<div class="content">
 			<a href="{% url 'viewer_group' %}" class="header">Groups</a>
-			<div class="description">description</div>
+			<div class="description">
+				A group is created with specific permissions to allow members of the group to access only the tools and data relating to their work and therefore not be able to touch anyone elses.
+			</div>
 		</div>
 	</div>
 
@@ -19,7 +24,9 @@
 		<i class="large angle right middle aligned icon"></i>
 		<div class="content">
 			<a href="{% url 'viewer_layer_source' %}" class="header">Layer Sources</a>
-			<div class="description">description</div>
+			<div class="description">
+				The source layers that are rendered in an MXD in ArcMap. One per mxd only.
+			</div>
 		</div>
 	</div>
 
@@ -27,7 +34,9 @@
 		<i class="large angle right middle aligned icon"></i>
 		<div class="content">
 			<a href="{% url 'viewer_mxd' %}" class="header">MXDs</a>
-			<div class="description">description</div>
+			<div class="description">
+				An ArcMap session file. It is where the authoring of the web service happens.
+			</div>
 		</div>
 	</div>
 
@@ -35,7 +44,9 @@
 		<i class="large angle right middle aligned icon"></i>
 		<div class="content">
 			<a href="{% url 'viewer_webmap' %}" class="header">Webmaps</a>
-			<div class="description">description</div>
+			<div class="description">
+				A map built in AGOL that contains one or many layers (ArcGIS Items).
+			</div>
 		</div>
 	</div>
 
@@ -43,7 +54,9 @@
 		<i class="large angle right middle aligned icon"></i>
 		<div class="content">
 			<a href="{% url 'viewer_webmap_app' %}" class="header">Webmap Apps</a>
-			<div class="description">description</div>
+			<div class="description">
+				A prettier fancy pants app that sources a Webmap and adds additional functionality like printing and heaps of other cool stuff.
+			</div>
 		</div>
 	</div>
 
@@ -51,7 +64,9 @@
 		<i class="large angle right middle aligned icon"></i>
 		<div class="content">
 			<a href="{% url 'viewer_webmap_item' %}" class="header">Webmap Items</a>
-			<div class="description">description</div>
+			<div class="description">
+				A link that associates Webmaps and AGOL items (layers) since this is a many to many relationship.
+			</div>
 		</div>
 	</div>
 
@@ -59,7 +74,9 @@
 		<i class="large angle right middle aligned icon"></i>
 		<div class="content">
 			<a href="{% url 'viewer_web_adapter' %}" class="header">Web Adapters</a>
-			<div class="description">description</div>
+			<div class="description">
+				Allows the creation of a web alias that points to the correct server (which may change over time, so by using a web alias the connections to layers can be permanent).
+			</div>
 		</div>
 	</div>
 
@@ -67,7 +84,9 @@
 		<i class="large angle right middle aligned icon"></i>
 		<div class="content">
 			<a href="{% url 'viewer_web_service' %}" class="header">Web Services</a>
-			<div class="description">description 1</div>
+			<div class="description">
+				Created in ArcGIS Server (within DPaW) these web services are consumed in AGOL and become “layers” or “AGOL Items”.
+			</div>
 		</div>
 	</div>
 
@@ -75,7 +94,9 @@
 		<i class="large angle right middle aligned icon"></i>
 		<div class="content">
 			<a href="{% url 'viewer_user' %}" class="header">Users</a>
-			<div class="description">description 1</div>
+			<div class="description">
+				No one likes a loser mate be we love users!  These are AGOL “named users”.  DPaW has a limit of 154.  Don’t hand them out willy nilly.
+			</div>
 		</div>
 	</div>
 </div>
