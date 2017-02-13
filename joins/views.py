@@ -202,7 +202,7 @@ def group_create(request):
 
 def webmapitems_create(request):
 	if request.method == "POST":
-		print request.
+		print request
 		webmapItemForm = CreateWebmapItemsForm(request.POST)
 
 		if webmapItemForm.is_valid():
