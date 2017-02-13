@@ -11,14 +11,14 @@
 			<div class="field">
 				<label for="name">{{type}} Name</label>
 				<div class="ui input field">
-					<input type="text" name="name" placeholder="{{type}} name...">
+					<input type="text" name="name" placeholder="{{type}} name..." class="create-name">
 				</div>
 			</div>
 			<div class="field">
 				<label for="description">Description</label>
-				<textarea type="text" rows="2" name="description"></textarea>
+				<textarea type="text" rows="2" name="description" class="create-description"></textarea>
 			</div>
 		</div>
-		<button class="ui primary button add-join-button" type="submit">Add {{type}}</button>
+		<button class="ui primary disabled button add-join-button" type="submit">Add {{type}}</button>
 	</form>
 </div>
