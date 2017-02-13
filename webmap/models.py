@@ -15,8 +15,8 @@ class Webmap_Contact(models.Model):
 
 #--WEBMAP TABLE
 class Webmap(models.Model):
-	name = models.CharField(max_length=20)
-	purpose = models.CharField(max_length=120)
+	name = models.CharField(max_length=60)
+	purpose = models.CharField(max_length=255)
 	contact = models.ForeignKey(Webmap_Contact)
 	collector = models.BooleanField()
 	collector_offline = models.BooleanField()
@@ -28,8 +28,8 @@ class Webmap(models.Model):
 
 #--WEBMAP APP TABLE
 class Webmap_App(models.Model):
-	name = models.CharField(max_length=20)
-	purpose = models.CharField(max_length=50)
+	name = models.CharField(max_length=60)
+	purpose = models.CharField(max_length=255)
 	url = models.URLField()
 	contact = models.ForeignKey(Webmap_Contact)
 	webmap = models.ForeignKey(Webmap)
