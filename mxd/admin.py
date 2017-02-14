@@ -2,7 +2,7 @@ from django.contrib import admin
 from mxd.models import MXD, MXD_Client, MXD_Creator
 
 class MXD_Admin(admin.ModelAdmin):
-	list_display = ('name', 'path', 'client', 'created_by', 'created_on', 'layer_source')
+	list_display = ('name', 'path', 'client', 'created_by', 'created_on')
 	search_fields = ('name',)
 
 admin.site.register(MXD, MXD_Admin)

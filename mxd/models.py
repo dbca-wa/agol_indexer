@@ -31,7 +31,7 @@ class MXD(models.Model):
 	client = models.ForeignKey(MXD_Client)
 	created_by = models.ForeignKey(MXD_Creator)
 	created_on = models.DateTimeField()
-	layer_source = models.ForeignKey(Layer_Source)
+	layer_source = models.ManyToManyField(Layer_Source)
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)
 

@@ -23,9 +23,14 @@
 				{{ m.created_on }}
 			</p>
 			<p>
-				<span>Layer Source: </span>
-				<a href="{% url 'viewer_layer_source' %}?id={{m.layer_source_id}}" data-tooltip="Link to Layer Source view" data-position="right center">{{ m.layer_source }}</a>
+				<span>Layer Sources: </span>
+				
 			</p>
+			<ul>
+				{% for ls in m.layer_source.all  %}
+					<li><a href="{% url 'viewer_layer_source' %}?id={{ls.id}}" data-tooltip="Link to Layer Source view" data-position="right center">{{ ls.name }}</a></li>
+				{% endfor %}
+			</ul>
 			<ul class="link-list">
 				<span>AGOL Links:</span>
 				{% for agol in agol_links.all %}
