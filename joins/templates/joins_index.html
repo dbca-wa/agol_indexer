@@ -10,6 +10,9 @@
 	<h3 class="ui header">
 		{% if type == "Group" %}
 		<a href="{% url 'viewer_group' %}?id={{selected_item.id}}" data-tooltip="Link to {{type}} view" data-position="right center" class="header">{{ selected_item.name }}</a>
+		{% elif type == "MXD" %}
+		<a href="{% url 'viewer_mxd' %}?id={{selected_item.id}}" data-tooltip="Link to {{type}} view" data-position="right center" class="header">{{ selected_item.name }}</a>
+		<div class="sub header">{{ selected_item.path }}</div>
 		{% else %}
 		<a href="{% url 'viewer_webmap_item' %}?id={{selected_item.id}}" data-tooltip="Link to {{type}} view" data-position="right center" class="header">{{ selected_item.name }}</a>
 		{% endif %}
@@ -19,6 +22,8 @@
 	{% if selected_item %}
 	{% if type == "Group" %}
 	{% include "partials/joins-cards-group.html" %}
+	{% elif type == "MXD" %}
+	{% include "partials/joins-cards-mxd.html" %}
 	{% else %}
 	{% include "partials/joins-cards-webmapitem.html" %}
 	{% endif %}

@@ -4,6 +4,8 @@
 			<div class="ui fluid search selection dropdown join-item-dropdown">
 				{% if type == "Group" %}
 				<input type="hidden" name="group_id">
+				{% elif type == "MXD" %}
+				<input type="hidden" name="mxd_id">
 				{% else %}
 				<input type="hidden" name="wmi_id">
 				{% endif %}

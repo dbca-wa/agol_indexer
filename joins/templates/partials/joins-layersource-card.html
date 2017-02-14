@@ -1,0 +1,15 @@
+<h3>Layer Sources</h3>
+
+<div class="ui cards">
+	{% for item in selected_item.layer_source.all %}
+	<div class="card">
+		<div class="content">
+			<a href="{% url 'viewer_layer_source' %}?id={{item.id}}" data-tooltip="Link to Layer Source view" data-position="right center" class="header">{{ item.name }}</a>
+			<a href="{% url 'joins_mxds_layersource_delete' selected_item.id item.id %}" class="join-remove">
+				<i class="icon remove"></i>
+				<span>remove</span>
+			</a>
+		</div>
+	</div>
+	{% endfor %}
+</div>

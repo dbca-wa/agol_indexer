@@ -13,6 +13,12 @@
 				<div class="ui input field">
 					<input type="text" name="name" placeholder="{{type}} name..." class="create-name">
 				</div>
+				{% if type == "MXD" %}
+				<label for="path">Path</label>
+				<div class="ui input field">
+					<input type="text" name="path" placeholder="{{type}} path..." class="create-path">
+				</div>
+				{% endif %}
 			</div>
 			<div class="field">
 				<label for="description">Description</label>

@@ -22,7 +22,7 @@ urlpatterns = [
 	url(r'^mxds/$', views.joins_MXD, name="joins_mxds"),
 	url(r'^webmapitems/$', views.joins_webmapitems, name="joins_webmapitems"),
 	url(r'^groups/(?P<group_id>(\d+))$', views.joins_getGroup, name="joins_groups"),
-	url(r'^mxd/(?P<mxd_id>(\d+))$', views.joins_getMXD, name="joins_mxds"),
+	url(r'^mxds/(?P<mxd_id>(\d+))$', views.joins_getMXD, name="joins_mxds"),
 	url(r'^webmapitems/(?P<wmi_id>(\d+))$', views.joins_getWebmapitems, name="joins_webmapitems"),
 
 	#CREATE
