@@ -34,3 +34,16 @@
 		font-size: 1.1em !important
 		width: 100% !important
 		padding: 7px
+
+.card
+	.edit-card
+		float: right
+		opacity: 0
+		transition: opacity .25s ease-in-out !important
+		-moz-transition: opacity .25s ease-in-out !important
+		-webkit-transition: opacity .25s ease-in-out !important
+.card:hover
+	.edit-card
+		opacity: 1
+	.edit-card:hover
+		color: $color-red !important
