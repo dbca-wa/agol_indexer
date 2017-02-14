@@ -1,12 +1,12 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.core.urlresolvers import reverse_lazy
 from webmap.models import Webmap_Item, Webmap, Webmap_App
+from mxd.models import MXD
+from layer_source.models import Layer_Source
 from groups.models import Group
 from agol.models import AGOL_Item
-from joins.forms import CreateGroupForm, CreateWebmapItemsForm
+from joins.forms import CreateGroupForm, CreateWebmapItemsForm, CreateMxdForm
 
-
-# Create your views here.
 def joins_group(request):
 	if 'group_id' in request.GET:
 		group_id = request.GET['group_id']
@@ -53,6 +53,40 @@ def joins_getGroup(request, group_id):
 			'agol_list': agol_list,
 			'webmap_list': webmap_list,
 			'webmap_app_list': webmap_app_list,
+		})
+
+def joins_MXD(request):
+	if 'mxd_id' in request.GET:
+		mxd_id = request.GET['mxd_id']
+		if mxd_id:
+			return HttpResponseRedirect(reverse_lazy('joins_mxds', args=(mxd_id)))
+	else:
+		mxd_list = MXD.objects.values('id', 'name').order_by('name')
+
+		return render(request, 'joins_index.html', {
+			'type': 'MXD',
+			'selected_item': None,
+			'item_list': mxd_list,
+		})
+
+def joins_getMXD(request, mxd_id):
+	if 'layersource_add_id' in request.GET:
+		layersource_id = request.GET['layersource_add_id']
+		if layersource_id:
+			return mxd_layersource_add(request, mxd_id, layersource_id)
+
+	else:
+		mxd = get_object_or_404(MXD, id=mxd_id)
+
+		layersource_list = Layer_Source.objects.all().exclude(id__in=mxd.layer_source.all())
+
+		mxd_list = MXD.objects.values('id', 'name').order_by('name')
+
+		return render(request, 'joins_index.html', {
+			'type': 'MXD',
+			'selected_item': mxd,
+			'item_list': mxd_list,
+			'layersource_list': layersource_list,
 		})
 
 def joins_webmapitems(request):
@@ -122,6 +156,14 @@ def group_webmap_app_add(request, id_a, id_b):
 
 	return HttpResponseRedirect(reverse_lazy('joins_groups', args=(id_a)))
 
+def mxd_layersource_add(request, id_a, id_b):
+	mxd = get_object_or_404(MXD, id=id_a)
+	layer_source = get_object_or_404(Layer_Source, id=id_b)
+
+	mxd.layer_source.add(layer_source)
+
+	return HttpResponseRedirect(reverse_lazy('joins_mxds', args=(id_a)))
+
 def webmapitem_agol_add(request, id_a, id_b):
 	webmap_item = get_object_or_404(Webmap_Item, id=id_a)
 	agol = get_object_or_404(AGOL_Item, id=id_b)
@@ -165,6 +207,14 @@ def group_webmap_app_delete(request, id_a, id_b):
 
 	return HttpResponseRedirect(reverse_lazy('joins_groups', args=(id_a)))
 
+def mxd_layersource_delete(request, id_a, id_b):
+	mxd = get_object_or_404(MXD, id=id_a)
+	layer_source = get_object_or_404(Layer_Source, id=id_b)
+
+	mxd.layer_source.remove(layer_source)
+
+	return HttpResponseRedirect(reverse_lazy('joins_mxds', args=(id_a)))
+
 def webmapitem_agol_delete(request, id_a, id_b):
 	webmap_item = get_object_or_404(Webmap_Item, id=id_a)
 	agol = get_object_or_404(AGOL_Item, id=id_b)
@@ -197,6 +247,20 @@ def group_create(request):
 			group = Group.objects.create_group(name, description)
 
 			return HttpResponseRedirect(reverse_lazy('joins_groups', args=(group.id,)))
+
+def mxd_create(request):
+	if request.method == "POST":
+		mxdForm = CreateMxdForm(request.POST)
+
+		if mxdForm.is_valid():
+			data = mxdForm.cleaned_data
+			name = data['name']
+			path = data['path']
+			description = data['description']
+
+			mxd = MXD.objects.create_mxd(name, path, description)
+
+			return HttpResponseRedirect(reverse_lazy('joins_mxds', args=(mxd.id,)))
 
 def webmapitems_create(request):
 	if request.method == "POST":

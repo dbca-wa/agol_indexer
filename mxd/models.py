@@ -2,6 +2,11 @@ from __future__ import unicode_literals
 from django.db import models
 from layer_source.models import Layer_Source
 
+class MxdManager(models.Manager):
+	def create_mxd(self, name, path, description):
+		mxd = self.create(name=name, path=path, description=description)
+		return mxd
+
 class MXD_Client(models.Model):
 	client = models.CharField(max_length=120)
 	created_date = models.DateTimeField(auto_now_add=True)
@@ -34,6 +39,8 @@ class MXD(models.Model):
 	layer_source = models.ManyToManyField(Layer_Source)
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)
+
+	objects = MxdManager()
 
 	class Meta:
 		verbose_name = 'MXD'
