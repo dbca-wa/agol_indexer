@@ -1,5 +1,21 @@
 $(document).ready(function() {
 	
+	$('#cal').calendar({
+		today: true,
+		initialDate: null,
+		monthFirst: false,
+		 ampm: false,
+		formatter: {
+			date: function (date, settings) {
+				if (!date) return '';
+				var day = date.getDate();
+				var month = date.getMonth() + 1;
+				var year = date.getFullYear();
+				return day + '/' + month + '/' + year;
+			}
+		}
+	});
+
 	$('.ui.dropdown').dropdown({
 		fullTextSearch: true
 	})
@@ -46,20 +62,20 @@ $(document).ready(function() {
 		}
 	})
 
-	$('.create-name').keyup(function() {
-		if ($(this).val() == "" || $('.create-description').val() == "" ) {
-			$('.add-join-button').addClass('disabled')
-		} else {
-			$('.add-join-button').removeClass('disabled')
-		}
-	})
+	// $('.create-name').keyup(function() {
+	// 	if ($(this).val() == "" || $('.create-description').val() == "" ) {
+	// 		$('.add-join-button').addClass('disabled')
+	// 	} else {
+	// 		$('.add-join-button').removeClass('disabled')
+	// 	}
+	// })
 
-	$('.create-description').keyup(function() {
-		if ($(this).val() == "" || $('.create-name').val() == "" ) {
-			$('.add-join-button').addClass('disabled')
-		} else {
-			$('.add-join-button').removeClass('disabled')
-		}
-	})
+	// $('.create-description').keyup(function() {
+	// 	if ($(this).val() == "" || $('.create-name').val() == "" ) {
+	// 		$('.add-join-button').addClass('disabled')
+	// 	} else {
+	// 		$('.add-join-button').removeClass('disabled')
+	// 	}
+	// })
 	
 })

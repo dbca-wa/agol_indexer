@@ -1,11 +1,12 @@
 from django.shortcuts import render, get_object_or_404, HttpResponseRedirect
 from django.core.urlresolvers import reverse_lazy
 from webmap.models import Webmap_Item, Webmap, Webmap_App
-from mxd.models import MXD
+from mxd.models import MXD, MXD_Client, MXD_Creator
 from layer_source.models import Layer_Source
 from groups.models import Group
 from agol.models import AGOL_Item
 from joins.forms import CreateGroupForm, CreateWebmapItemsForm, CreateMxdForm
+from datetime import datetime
 
 def joins_group(request):
 	if 'group_id' in request.GET:
@@ -62,11 +63,15 @@ def joins_MXD(request):
 			return HttpResponseRedirect(reverse_lazy('joins_mxds', args=(mxd_id)))
 	else:
 		mxd_list = MXD.objects.values('id', 'name').order_by('name')
+		client_list = MXD_Client.objects.values('id', 'client').order_by('client')
+		creator_list = MXD_Creator.objects.values('id', 'creator').order_by('creator')
 
 		return render(request, 'joins_index.html', {
 			'type': 'MXD',
 			'selected_item': None,
 			'item_list': mxd_list,
+			'client_list': client_list,
+			'creator_list': creator_list,
 		})
 
 def joins_getMXD(request, mxd_id):
@@ -257,8 +262,12 @@ def mxd_create(request):
 			name = data['name']
 			path = data['path']
 			description = data['description']
+			created_on = data['created_on']
+			created_by_id = data['created_by']
+			client_id = data['client']
+			created_on_formatted = datetime.strptime(created_on, '%d/%m/%Y %H:%M')
 
-			mxd = MXD.objects.create_mxd(name, path, description)
+			mxd = MXD.objects.create_mxd(name, created_on_formatted, client_id, created_by_id, path, description)
 
 			return HttpResponseRedirect(reverse_lazy('joins_mxds', args=(mxd.id,)))
 

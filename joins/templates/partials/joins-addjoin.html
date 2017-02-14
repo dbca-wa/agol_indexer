@@ -4,6 +4,8 @@
 
 	{% if type == 'Group' %}
 	<form action="{% url 'joins_groups_create' %}" method="POST" name="form">{% csrf_token %}
+	{% elif type == 'MXD' %}
+	<form action="{% url 'joins_mxds_create' %}" method="POST" name="form">{% csrf_token %}
 	{% else %}
 	<form action="{% url 'joins_webmapitems_create' %}" method="POST" name="form">{% csrf_token %}
 	{% endif %}
@@ -11,20 +13,42 @@
 			<div class="field">
 				<label for="name">{{type}} Name</label>
 				<div class="ui input field">
-					<input type="text" name="name" placeholder="{{type}} name..." class="create-name">
+					<input type="text" name="name" placeholder="{{type}} name..." class="create-name" required>
 				</div>
 				{% if type == "MXD" %}
 				<label for="path">Path</label>
 				<div class="ui input field">
-					<input type="text" name="path" placeholder="{{type}} path..." class="create-path">
+					<input type="text" name="path" placeholder="{{type}} path..." class="create-path" required>
 				</div>
+				<label for="created_on">Created On:</label>
+				<div class="ui calendar" id="cal">
+					<div class="ui input left icon">
+						<i class="calendar icon"></i>
+						<input type="text" placeholder="Date/Time" name="created_on" required>
+					</div>
+				</div>
+				<label for="created_on" class="dropdown-join-create">Client:</label>
+				<select class="ui dropdown" name="client" required>
+					<option value="">Client</option>
+					{% for c in client_list  %}
+						<option value="{{ c.id }}">{{ c.client }}</option>
+					{% endfor %}
+				</select>
+
+				<label for="created_on" class="dropdown-join-create">Creator:</label>
+				<select class="ui dropdown" name="created_by" required>
+					<option value="">Creator</option>
+					{% for c in creator_list  %}
+						<option value="{{ c.id }}">{{ c.creator}}</option>
+					{% endfor %}
+				</select>
 				{% endif %}
 			</div>
 			<div class="field">
 				<label for="description">Description</label>
-				<textarea type="text" rows="2" name="description" class="create-description"></textarea>
+				<textarea type="text" rows="2" name="description" class="create-description" required></textarea>
 			</div>
 		</div>
-		<button class="ui primary disabled button add-join-button" type="submit">Add {{type}}</button>
+		<button class="ui primary button add-join-button" type="submit">Add {{type}}</button>
 	</form>
 </div>

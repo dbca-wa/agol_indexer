@@ -3,8 +3,8 @@ from django.db import models
 from layer_source.models import Layer_Source
 
 class MxdManager(models.Manager):
-	def create_mxd(self, name, path, description):
-		mxd = self.create(name=name, path=path, description=description)
+	def create_mxd(self, name, created_on, client_id, created_by_id, path, description):
+		mxd = self.create(name=name, created_on=created_on, client_id=client_id, created_by_id=created_by_id, path=path, description=description)
 		return mxd
 
 class MXD_Client(models.Model):
