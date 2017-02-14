@@ -1,6 +1,11 @@
 <div class="ui fluid card">
 	<div class="content">
-		<div class="header"><a href="/viewer/user/?id={{u.id}}">{{ u.name }}</a></div>
+		<div class="header">
+			<a href="/viewer/user/?id={{u.id}}">{{ u.name }}</a>
+			<a href="{% url 'admin:agol_users_agol_user_change' u.id  %}" data-tooltip="Edit AGOL User" data-position="bottom center" class="edit-card" target="_blank">
+				<i class="write icon"></i>
+			</a>
+		</div>
 		<div class="description">
 			<p>
 				<span>Role: </span>
