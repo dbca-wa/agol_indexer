@@ -61,4 +61,14 @@ $(document).ready(function() {
 			$(this).remove()
 		}
 	})
+
+	$('.card-accordion').click(function() {
+		if ($(this).find('i').hasClass('plus')) {
+			$(this).find('i').addClass('minus')
+			$(this).find('i').removeClass('plus')
+		} else {
+			$(this).find('i').addClass('plus')
+			$(this).find('i').removeClass('minus')
+		}
+	})
 })
