@@ -1,6 +1,6 @@
 <div class="ui fluid card">
 	<div class="content">
-		<div class="header"><a href="/viewer/agol/?id={{a.id}}">{{ a.name }}</a>
+		<div class="header"><a href="/viewer/agols/?id={{a.id}}">{{ a.name }}</a>
 		<a href="{% url 'admin:agol_agol_item_change' a.id  %}" data-tooltip="Edit AGOL Item" data-position="bottom center" class="edit-card" target="_blank">
 			<i class="write icon"></i>
 		</a>
@@ -29,7 +29,7 @@
 			<p>
 				<span>Comments: </span>
 				{{ a.comments }}
-			</p>				
+			</p>
 			<ul class="link-list">
 				<span>Group Links:</span>
 				{% for group in group_links.all %}
