@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	
+
 	$('#cal').calendar({
 		today: true,
 		initialDate: null,
@@ -61,21 +61,4 @@ $(document).ready(function() {
 			$(this).remove()
 		}
 	})
-
-	// $('.create-name').keyup(function() {
-	// 	if ($(this).val() == "" || $('.create-description').val() == "" ) {
-	// 		$('.add-join-button').addClass('disabled')
-	// 	} else {
-	// 		$('.add-join-button').removeClass('disabled')
-	// 	}
-	// })
-
-	// $('.create-description').keyup(function() {
-	// 	if ($(this).val() == "" || $('.create-name').val() == "" ) {
-	// 		$('.add-join-button').addClass('disabled')
-	// 	} else {
-	// 		$('.add-join-button').removeClass('disabled')
-	// 	}
-	// })
-	
 })
