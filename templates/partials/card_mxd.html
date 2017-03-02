@@ -6,56 +6,61 @@
 				<i class="write icon"></i>
 			</a>
 		</div>
-		<div class="description">
-			<p>
-				<span>Path: </span>
-				{{ m.path }}
-			</p>
-			<p>
-				<span>Description: </span>
-				{{ m.description }}
-			</p>
-			<p>
-				<span>Client: </span>
-				{{ m.client }}
-			</p>
-			<p>
-				<span>Created By: </span>
-				{{ m.created_by }}
-			</p>
-			<p>
-				<span>Created On: </span>
-				{{ m.created_on }}
-			</p>
-			<p>
-				<span>Layer Sources: </span>
-				
-			</p>
-			<ul>
-				{% for ls in m.layer_source.all  %}
-					<li><a href="{% url 'viewer_layer_source' %}?id={{ls.id}}" data-tooltip="Link to Layer Source view" data-position="right center">{{ ls.name }}</a></li>
-				{% endfor %}
-			</ul>
-			<ul class="link-list">
-				<span>AGOL Links:</span>
-				{% for agol in agol_links.all %}
-				{% if agol.mxd == m  %}
-				<li>
-					<a href="{% url 'viewer_agol' %}?id={{agol.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol.name }}</a>
-				</li>
-				{% endif %}
-				{% endfor %}
-			</ul>
-			<ul class="link-list">
-				<span>Web Service Links:</span>
-				{% for web_service in web_service_links.all %}
-				{% if web_service.mxd == m  %}
-				<li>
-					<a href="{% url 'viewer_web_service' %}?id={{web_service.id}}" data-tooltip="Link to Web Service view" data-position="right center">{{ web_service.name }}</a>
-				</li>
-				{% endif %}
-				{% endfor %}
-			</ul>
+		<div class="ui fluid accordion card-accordion">
+			<div class="title expand-min-item">
+				<span class="accord-exp-min">expand</span>
+				<i class="icon caret up"></i>
+			</div>
+			<div class="description content">
+				<p>
+					<span>Path: </span>
+					{{ m.path }}
+				</p>
+				<p>
+					<span>Description: </span>
+					{{ m.description }}
+				</p>
+				<p>
+					<span>Client: </span>
+					{{ m.client }}
+				</p>
+				<p>
+					<span>Created By: </span>
+					{{ m.created_by }}
+				</p>
+				<p>
+					<span>Created On: </span>
+					{{ m.created_on }}
+				</p>
+				<p>
+					<span>Layer Sources: </span>
+				</p>
+				<ul>
+					{% for ls in m.layer_source.all  %}
+						<li><a href="{% url 'viewer_layer_source' %}?id={{ls.id}}" data-tooltip="Link to Layer Source view" data-position="right center">{{ ls.name }}</a></li>
+					{% endfor %}
+				</ul>
+				<ul class="link-list">
+					<span>AGOL Links:</span>
+					{% for agol in agol_links.all %}
+					{% if agol.mxd == m  %}
+					<li>
+						<a href="{% url 'viewer_agol' %}?id={{agol.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol.name }}</a>
+					</li>
+					{% endif %}
+					{% endfor %}
+				</ul>
+				<ul class="link-list">
+					<span>Web Service Links:</span>
+					{% for web_service in web_service_links.all %}
+					{% if web_service.mxd == m  %}
+					<li>
+						<a href="{% url 'viewer_web_service' %}?id={{web_service.id}}" data-tooltip="Link to Web Service view" data-position="right center">{{ web_service.name }}</a>
+					</li>
+					{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
 		</div>
 	</div>
 	<div class="extra content">

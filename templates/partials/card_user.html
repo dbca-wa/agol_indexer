@@ -6,25 +6,31 @@
 				<i class="write icon"></i>
 			</a>
 		</div>
-		<div class="description">
-			<p>
-				<span>Role: </span>
-				{{ u.role }}
-			</p>
-			<p>
-				<span>Comments: </span>
-				{{ u.comments }}
-			</p>
-			<ul class="link-list">
-				<span>ArcGIS Online Links:</span>
-				{% for agol in agol_links %}
-				{% if agol.owner == u  %}
-				<li>
-					<a href="{% url 'viewer_agol' %}?id={{agol.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol.name }}</a>
-				</li>
-				{% endif %}
-				{% endfor %}
-			</ul>
+		<div class="ui fluid accordion card-accordion">
+			<div class="title expand-min-item">
+				<span class="accord-exp-min">expand</span>
+				<i class="icon caret up"></i>
+			</div>
+			<div class="description content">
+				<p>
+					<span>Role: </span>
+					{{ u.role }}
+				</p>
+				<p>
+					<span>Comments: </span>
+					{{ u.comments }}
+				</p>
+				<ul class="link-list">
+					<span>ArcGIS Online Links:</span>
+					{% for agol in agol_links %}
+					{% if agol.owner == u  %}
+					<li>
+						<a href="{% url 'viewer_agol' %}?id={{agol.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol.name }}</a>
+					</li>
+					{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
 		</div>
 	</div>
 	<div class="extra content">

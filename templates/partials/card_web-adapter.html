@@ -6,29 +6,35 @@
 				<i class="write icon"></i>
 			</a>
 		</div>
-		<div class="description">
-			<p>
-				<span>Enviroment: </span>
-				{{ w.enviroment }}
-			</p>
-			<p>
-				<span>Alias: </span>
-				<a href="{{w.alias}}" target="_blank" data-tooltip="External link" data-position="right center">{{ w.alias }}</a>
-			</p>
-			<p>
-				<span>Description: </span>
-				{{ w.description }}
-			</p>
-			<ul class="link-list">
-				<span>Web Service Links:</span>
-				{% for web_service in web_service_links.all %}
-				{% if web_service.web_adapter == w  %}
-				<li>
-					<a href="{% url 'viewer_web_service' %}?id={{web_service.id}}" data-tooltip="Link to Web Service view" data-position="right center">{{ web_service.name }}</a>
-				</li>
-				{% endif %}
-				{% endfor %}
-			</ul>
+		<div class="ui fluid accordion card-accordion">
+			<div class="title expand-min-item">
+				<span class="accord-exp-min">expand</span>
+				<i class="icon caret up"></i>
+			</div>
+			<div class="description content">
+				<p>
+					<span>Enviroment: </span>
+					{{ w.enviroment }}
+				</p>
+				<p>
+					<span>Alias: </span>
+					<a href="{{w.alias}}" target="_blank" data-tooltip="External link" data-position="right center">{{ w.alias }}</a>
+				</p>
+				<p>
+					<span>Description: </span>
+					{{ w.description }}
+				</p>
+				<ul class="link-list">
+					<span>Web Service Links:</span>
+					{% for web_service in web_service_links.all %}
+					{% if web_service.web_adapter == w  %}
+					<li>
+						<a href="{% url 'viewer_web_service' %}?id={{web_service.id}}" data-tooltip="Link to Web Service view" data-position="right center">{{ web_service.name }}</a>
+					</li>
+					{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
 		</div>
 	</div>
 	<div class="extra content">

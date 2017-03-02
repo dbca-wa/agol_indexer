@@ -6,41 +6,47 @@
 				<i class="write icon"></i>
 			</a>
 		</div>
-		<div class="description">
-			<p>
-				<span>Location: </span>
-				{{ w.location }}
-			</p>
-			<p>
-				<span>Actual URL: </span>
-				<a href="{{w.actual_url}}" target="_blank" data-tooltip="External link" data-position="right center">{{ w.actual_url }}</a>
-			</p>
-			<p>
-				<span>Alias URL: </span>
-				<a href="{{w.alias_url}}" target="_blank" data-tooltip="External link" data-position="right center">{{ w.alias_url }}</a>
-			</p>
-			<p>
-				<span>Level: </span>
-				{{ w.level }}
-			</p>
-			<p>
-				<span>MXD: </span>
-				<a href="{% url 'viewer_mxd' %}?id={{w.mxd_id}}" data-tooltip="Link to MXD view" data-position="right center">{{ w.mxd }}</a>
-			</p>
-			<p>
-				<span>Web Adapter: </span>
-				<a href="{% url 'viewer_web_adapter' %}?id={{w.web_adapter_id}}" data-tooltip="Link to Web Adapter view" data-position="right center">{{ w.web_adapter }}</a>
-			</p>
-			<ul class="link-list">
-				<span>AGOL Links:</span>
-				{% for agol in agol_links.all %}
-				{% if agol.url == w  %}
-				<li>
-					<a href="{% url 'viewer_agol' %}?id={{agol.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol.name }}</a>
-				</li>
-				{% endif %}
-				{% endfor %}
-			</ul>
+		<div class="ui fluid accordion card-accordion">
+			<div class="title expand-min-item">
+				<span class="accord-exp-min">expand</span>
+				<i class="icon caret up"></i>
+			</div>
+			<div class="description content">
+				<p>
+					<span>Location: </span>
+					{{ w.location }}
+				</p>
+				<p>
+					<span>Actual URL: </span>
+					<a href="{{w.actual_url}}" target="_blank" data-tooltip="External link" data-position="right center">{{ w.actual_url }}</a>
+				</p>
+				<p>
+					<span>Alias URL: </span>
+					<a href="{{w.alias_url}}" target="_blank" data-tooltip="External link" data-position="right center">{{ w.alias_url }}</a>
+				</p>
+				<p>
+					<span>Level: </span>
+					{{ w.level }}
+				</p>
+				<p>
+					<span>MXD: </span>
+					<a href="{% url 'viewer_mxd' %}?id={{w.mxd_id}}" data-tooltip="Link to MXD view" data-position="right center">{{ w.mxd }}</a>
+				</p>
+				<p>
+					<span>Web Adapter: </span>
+					<a href="{% url 'viewer_web_adapter' %}?id={{w.web_adapter_id}}" data-tooltip="Link to Web Adapter view" data-position="right center">{{ w.web_adapter }}</a>
+				</p>
+				<ul class="link-list">
+					<span>AGOL Links:</span>
+					{% for agol in agol_links.all %}
+					{% if agol.url == w  %}
+					<li>
+						<a href="{% url 'viewer_agol' %}?id={{agol.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol.name }}</a>
+					</li>
+					{% endif %}
+					{% endfor %}
+				</ul>
+			</div>
 		</div>
 	</div>
 	<div class="extra content">

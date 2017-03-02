@@ -52,6 +52,14 @@ $(document).ready(function() {
 		}
 	})
 
+	if (window.location.href.includes('search')) {
+		console.log('find')
+		$('.ui.card').each(function(index) {
+			console.log(index)
+			$(this).find('.card-accordion').removeClass('accordion')
+		})
+	}
+
 	$('.ui.accordion').accordion();
 
 	$('.activating.element').popup();
