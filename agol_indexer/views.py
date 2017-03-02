@@ -35,7 +35,7 @@ def index_home(request):
 
 	if 'search' in request.GET:
 		s = request.GET['search']
-		
+
 		if not s:
 			errors.append('Please enter a search term.')
 		else:
@@ -111,7 +111,7 @@ def setSearchHistory(request, s, search_history_str):
 			search_history_arr = search_history_str.split(',')
 		else:
 			search_history_arr.append(search_history_str)
-		
+
 		if s.lower() not in search_history_arr:
 			search_history_arr.append(s.lower())
 		else:

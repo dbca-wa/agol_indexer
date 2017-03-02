@@ -63,12 +63,14 @@ $(document).ready(function() {
 	})
 
 	$('.card-accordion').click(function() {
-		if ($(this).find('i').hasClass('plus')) {
-			$(this).find('i').addClass('minus')
-			$(this).find('i').removeClass('plus')
+		if ($(this).find('i').hasClass('down')) {
+			$(this).find('i').addClass('up')
+			$(this).find('i').removeClass('down')
+			$(this).find('.accord-exp-min').text('expand')
 		} else {
-			$(this).find('i').addClass('plus')
-			$(this).find('i').removeClass('minus')
+			$(this).find('i').addClass('down')
+			$(this).find('i').removeClass('up')
+			$(this).find('.accord-exp-min').text('minimise')
 		}
 	})
 })
