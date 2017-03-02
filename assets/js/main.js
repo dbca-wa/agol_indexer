@@ -74,11 +74,11 @@ $(document).ready(function() {
 		if ($(this).find('i').hasClass('down')) {
 			$(this).find('i').addClass('up')
 			$(this).find('i').removeClass('down')
-			$(this).find('.accord-exp-min').text('expand')
+			$(this).find('.accord-exp-min').text('minimise')
 		} else {
 			$(this).find('i').addClass('down')
 			$(this).find('i').removeClass('up')
-			$(this).find('.accord-exp-min').text('minimise')
+			$(this).find('.accord-exp-min').text('expand')
 		}
 	})
 })

@@ -1,14 +1,23 @@
 <div class="ui fluid card">
 	<div class="content">
-		<div class="header"><a href="/viewer/agols/?id={{a.id}}">{{ a.name }}</a>
-		<a href="{% url 'admin:agol_agol_item_change' a.id  %}" data-tooltip="Edit AGOL Item" data-position="bottom center" class="edit-card" target="_blank">
-			<i class="write icon"></i>
-		</a>
+		<div class="header">
+			<a href="/viewer/agols/?id={{a.id}}">{{ a.name }}</a>
+			<a href="{% url 'admin:agol_agol_item_change' a.id  %}" data-tooltip="Edit AGOL Item" data-position="bottom center" class="edit-card" target="_blank">
+				<i class="write icon"></i>
+			</a>
+		</div>
+		<div class="meta">
+			<span>Created on: </span>
+			{{ a.created_date }}
+		</div>
+		<div class="meta">
+			<span> | Updated on: </span>
+			{{ a.updated_date }}
 		</div>
 		<div class="card-accordion ui fluid accordion">
 			<div class="title expand-min-item">
 				<span class="accord-exp-min">expand</span>
-				<i class="icon caret up"></i>
+				<i class="icon caret down"></i>
 			</div>
 			<div class="description content">
 				<p>
@@ -60,16 +69,6 @@
 					{% endfor %}
 				</ul>
 			</div>
-		</div>
-	</div>
-	<div class="extra content">
-		<div class="meta">
-			<span>Created on: </span>
-			{{ a.created_date }}
-		</div>
-		<div class="meta">
-			<span>Updated on: </span>
-			{{ a.updated_date }}
 		</div>
 	</div>
 </div>

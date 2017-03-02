@@ -6,10 +6,18 @@
 				<i class="write icon"></i>
 			</a>
 		</div>
+		<div class="meta">
+			<span>Created on: </span>
+			{{ g.created_date }}
+		</div>
+		<div class="meta">
+			<span> | Updated on: </span>
+			{{ g.updated_date }}
+		</div>
 		<div class="ui fluid accordion card-accordion">
 			<div class="title expand-min-item">
 				<span class="accord-exp-min">expand</span>
-				<i class="icon caret up"></i>
+				<i class="icon caret down"></i>
 			</div>
 			<div class="description content">
 				<p>
@@ -43,16 +51,6 @@
 					{% endfor %}
 				</ul>
 			</div>
-		</div>
-	</div>
-	<div class="extra content">
-		<div class="meta">
-			<span>Created on: </span>
-			{{ g.created_date }}
-		</div>
-		<div class="meta">
-			<span>Updated on: </span>
-			{{ g.updated_date }}
 		</div>
 	</div>
 </div>
