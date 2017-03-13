@@ -18,7 +18,7 @@ class Web_Service_Level(models.Model):
 #--WEB SERVICE TABLE
 class Web_Service(models.Model):
 	name = models.CharField(max_length=50)
-	location = models.CharField(max_length=50)
+	location = models.CharField(max_length=50, help_text="Some help text")
 	actual_url = models.CharField(max_length=150)
 	alias_url = models.URLField()
 	level = models.ForeignKey(Web_Service_Level)
