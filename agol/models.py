@@ -21,8 +21,8 @@ class AGOL_Item_Type(models.Model):
 class AGOL_Item(models.Model):
     name = models.CharField(max_length=50)
     type = models.ForeignKey(AGOL_Item_Type)
-    url = models.ForeignKey(Web_Service, verbose_name='External url')
-    mxd = models.ForeignKey(MXD, verbose_name='External MXD')
+    url = models.ForeignKey(Web_Service, verbose_name="Web Service URL", help_text="Select  the layers web service aliased URL from the list")
+    mxd = models.ForeignKey(MXD, verbose_name='MXD')
     external_layer_url = models.URLField(blank=True, null=True)
     owner = models.ForeignKey(AGOL_User)
     comments = models.CharField(max_length=255, blank=True)

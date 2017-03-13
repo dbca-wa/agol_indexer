@@ -34,7 +34,7 @@ class Webmap(models.Model):
 class Webmap_App(models.Model):
 	name = models.CharField(max_length=60)
 	purpose = models.CharField(max_length=255)
-	url = models.URLField()
+	url = models.URLField(help_text="URL of the web mapping application")
 	contact = models.ForeignKey(Webmap_Contact)
 	webmap = models.ForeignKey(Webmap)
 	created_date = models.DateTimeField(auto_now_add=True)
