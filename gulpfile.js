@@ -7,7 +7,7 @@ var browserSync = require('browser-sync').create();
 
 gulp.task('sass', function() {
 	return gulp.src('./assets/css/master.sass')
-		.pipe(sass({outputStyle: 'complressed'}).on('error', sass.logError))
+		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 		.pipe(concat('master.min.css'))
 		.pipe(gulp.dest('./assets/css/'))
 		.pipe(browserSync.stream());
