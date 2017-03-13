@@ -9,6 +9,7 @@ class Webmap_Contact(models.Model):
 
 	class Meta:
 		verbose_name = 'Webmap Contact'
+		ordering = ['contact_name']
 
 	def __str__(self):
 		return self.contact_name
@@ -22,6 +23,9 @@ class Webmap(models.Model):
 	collector_offline = models.BooleanField()
 	created_date = models.DateTimeField(auto_now_add=True)
 	updated_date = models.DateTimeField(auto_now=True)
+
+	class Meta:
+		ordering = ['name']
 
 	def __str__(self):
 		return self.name
@@ -38,6 +42,7 @@ class Webmap_App(models.Model):
 
 	class Meta:
 		verbose_name = 'Webmap App'
+		ordering = ['name']
 
 	def __str__(self):
 		return self.name
@@ -61,6 +66,7 @@ class Webmap_Item(models.Model):
 
 	class Meta:
 		verbose_name = 'Webmap Item'
+		ordering = ['name']
 
 	def __str__(self):
 		return self.name

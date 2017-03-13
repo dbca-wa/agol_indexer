@@ -12,6 +12,7 @@ class Web_Adapter(models.Model):
 
 	class Meta:
 		verbose_name = 'Web Adapter'
+		ordering = ['machine_name']
 
 	def __str__(self):
 		return self.machine_name

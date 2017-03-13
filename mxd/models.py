@@ -14,6 +14,7 @@ class MXD_Client(models.Model):
 
 	class Meta:
 		verbose_name = 'MXD Client'
+		ordering = ['client']
 
 	def __str__(self):
 		return self.client
@@ -25,6 +26,7 @@ class MXD_Creator(models.Model):
 
 	class Meta:
 		verbose_name = 'MXD Creator'
+		ordering = ['creator']
 
 	def __str__(self):
 		return self.creator
@@ -44,6 +46,7 @@ class MXD(models.Model):
 
 	class Meta:
 		verbose_name = 'MXD'
+		ordering = ['name']
 
 	def __str__(self):
 		return "%s - %s" % (self.name, self.created_by)

@@ -12,6 +12,7 @@ class AGOL_Item_Type(models.Model):
 
     class Meta:
         verbose_name = 'ArcGIS Online Item Type'
+        ordering = ['type']
 
     def __str__(self):
         return self.type
@@ -30,6 +31,7 @@ class AGOL_Item(models.Model):
 
     class Meta:
         verbose_name = 'ArcGIS Online Item'
+        ordering = ['name']
 
     def __str__(self):
         return self.name

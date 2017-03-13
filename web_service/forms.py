@@ -1,6 +1,6 @@
 from django import forms
 
-class WebSerrviceAdminForm(forms.ModelForm):
+class WebServiceAdminForm(forms.ModelForm):
 	class Meta:
 		widgets = {
 			'actual_url': forms.TextInput(attrs={'size': 80}),

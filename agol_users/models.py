@@ -21,6 +21,7 @@ class AGOL_User(models.Model):
 
 	class Meta:
 		verbose_name = 'AGOL User'
+		ordering = ['name']
 
 	def __str__(self):
 		return self.name

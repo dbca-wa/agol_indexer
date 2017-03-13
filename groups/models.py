@@ -23,6 +23,7 @@ class Group(models.Model):
 
 	class Meta:
 		verbose_name = 'AGOL Group'
+		ordering = ['name']
 
 	def __str__(self):
 		return self.name

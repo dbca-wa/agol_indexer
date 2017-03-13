@@ -10,6 +10,7 @@ class Web_Service_Level(models.Model):
 
 	class Meta:
 		verbose_name = 'Web Service Level'
+		ordering = ['level']
 
 	def __str__(self):
 		return self.level
@@ -28,6 +29,7 @@ class Web_Service(models.Model):
 
 	class Meta:
 		verbose_name = 'Web Service'
+		ordering = ['name']
 
 	def __str__(self):
 		return self.alias_url

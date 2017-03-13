@@ -8,6 +8,7 @@ class Layer_Source_Format(models.Model):
 
 	class Meta:
 		verbose_name = 'Layer Source Format'
+		ordering = ['formats']
 
 	def __str__(self):
 		return self.formats
@@ -19,6 +20,7 @@ class Layer_Source_Format_Type(models.Model):
 
 	class Meta:
 		verbose_name = 'Layer Source Feature Type'
+		ordering = ['format_type']
 
 	def __str__(self):
 		return self.format_type
@@ -34,6 +36,7 @@ class Layer_Source(models.Model):
 
 	class Meta:
 		verbose_name = 'Layer Source'
+		ordering = ['name']
 
 	def __str__(self):
 		return self.name
