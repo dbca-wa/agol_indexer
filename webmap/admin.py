@@ -3,7 +3,7 @@ from webmap.forms import Webmap_AdminForm, Webmap_Item_AdminForm, Webmap_App_Adm
 from webmap.models import Webmap, Webmap_App, Webmap_Item, Webmap_Contact
 
 class Webmap_Admin(admin.ModelAdmin):
-	list_display = ('name', 'purpose', 'contact', 'collector', 'collector_offline')
+	list_display = ('name', 'purpose', 'url', 'contact', 'collector', 'collector_offline')
 	search_fields = ('name',)
 	form = Webmap_AdminForm
 
