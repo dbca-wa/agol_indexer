@@ -18,6 +18,7 @@ class Webmap_Contact(models.Model):
 class Webmap(models.Model):
 	name = models.CharField(max_length=60)
 	purpose = models.CharField(max_length=255)
+	url = models.URLField(help_text="URL of the web map")
 	contact = models.ForeignKey(Webmap_Contact)
 	collector = models.BooleanField()
 	collector_offline = models.BooleanField()
