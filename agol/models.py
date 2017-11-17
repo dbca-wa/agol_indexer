@@ -4,7 +4,7 @@ from agol_users.models import AGOL_User
 from web_service.models import Web_Service
 from mxd.models import MXD
 
-#--ARCGIS ONLINE Item - Type
+
 class AGOL_Item_Type(models.Model):
     type = models.CharField(max_length=255)
     created_date = models.DateTimeField(auto_now_add=True)
@@ -17,7 +17,7 @@ class AGOL_Item_Type(models.Model):
     def __str__(self):
         return self.type
 
-#--ARCGIS ONLINE TABLE - Main
+
 class AGOL_Item(models.Model):
     name = models.CharField(max_length=50)
     type = models.ForeignKey(AGOL_Item_Type)
@@ -28,6 +28,17 @@ class AGOL_Item(models.Model):
     comments = models.CharField(max_length=255, blank=True)
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
+
+    dependencies = ['mxd', 'url']
+    reverse_dependencies = ['group_set', 'webmap_list']
+    
+    @property
+    def webmap_list(self):
+        results = []
+        for webmap_item in self.webmap_item_set.all():
+            for webmap in webmap_item.webmap.all():
+                results.append(webmap)
+        return results
 
     class Meta:
         verbose_name = 'ArcGIS Online Item'
