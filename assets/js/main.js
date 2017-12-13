@@ -52,7 +52,7 @@ $(document).ready(function() {
 		}
 	})
 
-	if (window.location.href.includes('search')) {
+	if (window.location.href.includes('search') || window.location.href.includes('dependencies')) {
 		console.log('find')
 		$('.ui.card').each(function(index) {
 			console.log(index)
