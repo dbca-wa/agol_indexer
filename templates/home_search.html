@@ -2,9 +2,11 @@
 {% block content %}
 
 <div class="ui fluid container home-container">
-	<h1 class="ui header">ArcGIS Online Indexer</h1>
+	<h1 class="ui header">{{title|default:"ArcGIS Online Indexer"}}</h1>
 
-	{% include "partials/home_search_bar.html" with search_field=search_field search_history=search_history %}
+	{% if not hide_search %}
+		{% include "partials/home_search_bar.html" with search_field=search_field search_history=search_history search_url=search_url%}
+	{% endif %}
 	
 	{% if errors %}
 		<ul class="error-list">

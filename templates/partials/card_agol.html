@@ -5,6 +5,9 @@
 			<a href="{% url 'admin:agol_agol_item_change' a.id  %}" data-tooltip="Edit AGOL Item" data-position="bottom center" class="edit-card" target="_blank">
 				<i class="write icon"></i>
 			</a>
+			<a href="{% url 'dependencies_agol' %}?id={{a.id}}" data-tooltip="View Dependency Report" data-position="bottom center" class="edit-card">
+				<i class="browser icon"></i>
+			</a>
 		</div>
 		<div class="meta">
 			<span>Created on: </span>
