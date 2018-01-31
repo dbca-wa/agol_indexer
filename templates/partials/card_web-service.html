@@ -1,63 +1,61 @@
 <div class="ui fluid card">
-	<div class="content">
-		<div class="header">
-			<a href="{% url 'viewer_web_service' %}?id={{w.id}}">{{ w.name }}</a>
-			<a href="{% url 'admin:web_service_web_service_change' w.id  %}" data-tooltip="Edit Web Service" data-position="bottom center" class="edit-card" target="_blank">
-				<i class="write icon"></i>
-			</a>
-			<a href="{% url 'dependencies_web_service' %}?id={{w.id}}" data-tooltip="View Dependency Report" data-position="bottom center" class="edit-card">
-				<i class="browser icon"></i>
-			</a>
-		</div>
-		<div class="meta">
-			<span>Created on: </span>
-			{{ w.created_date }}
-		</div>
-		<div class="meta">
-			<span> | Updated on: </span>
-			{{ w.updated_date }}
-		</div>
-		<div class="ui fluid accordion card-accordion">
-			<div class="title expand-min-item">
-				<span class="accord-exp-min">expand</span>
-				<i class="icon caret down"></i>
-			</div>
-			<div class="description content">
-				<p>
-					<span>Location: </span>
-					{{ w.location }}
-				</p>
-				<p>
-					<span>Actual URL: </span>
-					<a href="{{w.actual_url}}" target="_blank" data-tooltip="External link" data-position="right center">{{ w.actual_url }}</a>
-				</p>
-				<p>
-					<span>Alias URL: </span>
-					<a href="{{w.alias_url}}" target="_blank" data-tooltip="External link" data-position="right center">{{ w.alias_url }}</a>
-				</p>
-				<p>
-					<span>Level: </span>
-					{{ w.level }}
-				</p>
-				<p>
-					<span>MXD: </span>
-					<a href="{% url 'viewer_mxd' %}?id={{w.mxd_id}}" data-tooltip="Link to MXD view" data-position="right center">{{ w.mxd }}</a>
-				</p>
-				<p>
-					<span>Web Adapter: </span>
-					<a href="{% url 'viewer_web_adapter' %}?id={{w.web_adapter_id}}" data-tooltip="Link to Web Adapter view" data-position="right center">{{ w.web_adapter }}</a>
-				</p>
-				<ul class="link-list">
-					<span>AGOL Links:</span>
-					{% for agol in agol_links.all %}
-					{% if agol.url == w  %}
-					<li>
-						<a href="{% url 'viewer_agol' %}?id={{agol.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol.name }}</a>
-					</li>
-					{% endif %}
-					{% endfor %}
-				</ul>
-			</div>
-		</div>
-	</div>
+    <div class="content">
+        <div class="header">
+            <a href="{% url 'viewer_web_service' %}?id={{w.id}}">{{ w.name }}</a>
+            <a href="{% url 'admin:web_service_web_service_change' w.id  %}" data-tooltip="Edit Web Service" data-position="bottom center" class="edit-card" target="_blank">
+                <i class="write icon"></i>
+            </a>
+            <a href="{% url 'dependencies_web_service' %}?id={{w.id}}" data-tooltip="View Dependency Report" data-position="bottom center" class="edit-card">
+                <i class="browser icon"></i>
+            </a>
+        </div>
+        <div class="meta">
+            <span>Created on: </span>
+            {{ w.created_date }}
+        </div>
+        <div class="meta">
+            <span> | Updated on: </span>
+            {{ w.updated_date }}
+        </div>
+        <div class="ui fluid accordion card-accordion">
+            <div class="title expand-min-item">
+                <span class="accord-exp-min">expand</span>
+                <i class="icon caret down"></i>
+            </div>
+            <div class="description content">
+                <p>
+                    <span>Location: </span>
+                    {{ w.location }}
+                </p>
+                <p>
+                    <span>Actual URL: </span>
+                    <a href="{{w.actual_url}}" target="_blank" data-tooltip="External link" data-position="right center">{{ w.actual_url }}</a>
+                </p>
+                <p>
+                    <span>Alias URL: </span>
+                    <a href="{{w.alias_url}}" target="_blank" data-tooltip="External link" data-position="right center">{{ w.alias_url }}</a>
+                </p>
+                <p>
+                    <span>Level: </span>
+                    {{ w.level }}
+                </p>
+                <p>
+                    <span>MXD: </span>
+                    <a href="{% url 'viewer_mxd' %}?id={{w.mxd_id}}" data-tooltip="Link to MXD view" data-position="right center">{{ w.mxd }}</a>
+                </p>
+                <p>
+                    <span>Web Adapter: </span>
+                    <a href="{% url 'viewer_web_adapter' %}?id={{w.web_adapter_id}}" data-tooltip="Link to Web Adapter view" data-position="right center">{{ w.web_adapter }}</a>
+                </p>
+                <ul class="link-list">
+                    <span>AGOL Links:</span>
+                    {% for agol in w.agol_item_set.all %}
+                        <li>
+                            <a href="{% url 'viewer_agol' %}?id={{agol.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>

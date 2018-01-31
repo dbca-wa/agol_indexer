@@ -45,18 +45,14 @@ def viewer_agol(request):
 
     location.append(agol.count)
     search_data = AGOL_Item.objects.all().values_list('name', flat=True).distinct()
-    group_links = Group.objects.all()
-    webmap_item_links = Webmap_Item.objects.all()
     return render(request, 'viewer_list.html',
-    {
-        'location': location,
-        'items': agol,
-        'group_links': group_links,
-        'webmap_item_links': webmap_item_links,
-        'search_data': search_data,
-        'search_field': search_field,
-        'showing_all': showing_all,
-    })
+        {
+            'location': location,
+            'items': agol,
+            'search_data': search_data,
+            'search_field': search_field,
+            'showing_all': showing_all,
+        })
 
 
 def viewer_groups(request):
@@ -89,13 +85,13 @@ def viewer_groups(request):
     location.append(groups.count)
     search_data = Group.objects.all().values_list('name', flat=True).distinct()
     return render(request, 'viewer_list.html',
-    {
-        'location': location,
-        'items': groups,
-        'search_data': search_data,
-        'search_field': search_field,
-        'showing_all': showing_all,
-    })
+        {
+            'location': location,
+            'items': groups,
+            'search_data': search_data,
+            'search_field': search_field,
+            'showing_all': showing_all,
+        })
 
 
 def viewer_layer_source(request):
@@ -126,18 +122,16 @@ def viewer_layer_source(request):
     layer_source = paginator(request, layer_source)
 
     location.append(layer_source.count)
-    mxd_links = MXD.objects.all()
     search_data = Layer_Source.objects.all().values_list('name', flat=True).distinct()
 
     return render(request, 'viewer_list.html',
-    {
-        'location': location,
-        'items': layer_source,
-        'mxd_links': mxd_links,
-        'search_data': search_data,
-        'search_field': search_field,
-        'showing_all': showing_all,
-    })
+        {
+            'location': location,
+            'items': layer_source,
+            'search_data': search_data,
+            'search_field': search_field,
+            'showing_all': showing_all,
+        })
 
 
 def viewer_mxd(request):
@@ -169,18 +163,14 @@ def viewer_mxd(request):
 
     location.append(mxd.count)
     search_data = MXD.objects.all().values_list('name', flat=True).distinct()
-    web_service_links = Web_Service.objects.all()
-    agol_links = AGOL_Item.objects.all()
     return render(request, 'viewer_list.html',
-    {
-        'location': location,
-        'items': mxd,
-        'web_service_links': web_service_links,
-        'agol_links': agol_links,
-        'search_data': search_data,
-        'search_field': search_field,
-        'showing_all': showing_all,
-    })
+        {
+            'location': location,
+            'items': mxd,
+            'search_data': search_data,
+            'search_field': search_field,
+            'showing_all': showing_all,
+        })
 
 
 def viewer_web_adapter(request):
@@ -212,16 +202,14 @@ def viewer_web_adapter(request):
 
     location.append(web_adapter.count)
     search_data = Web_Adapter.objects.all().values_list('machine_name', flat=True).distinct()
-    web_service_links = Web_Service.objects.all()
     return render(request, 'viewer_list.html',
-    {
-        'location': location,
-        'items': web_adapter,
-        'web_service_links': web_service_links,
-        'search_data': search_data,
-        'search_field': search_field,
-        'showing_all': showing_all,
-    })
+        {
+            'location': location,
+            'items': web_adapter,
+            'search_data': search_data,
+            'search_field': search_field,
+            'showing_all': showing_all,
+        })
 
 
 def viewer_web_service(request):
@@ -253,16 +241,14 @@ def viewer_web_service(request):
 
     location.append(web_service.count)
     search_data = Web_Service.objects.all().values_list('name', flat=True).distinct()
-    agol_links = AGOL_Item.objects.all()
     return render(request, 'viewer_list.html',
-    {
-        'location': location,
-        'items': web_service,
-        'agol_links': agol_links,
-        'search_data': search_data,
-        'search_field': search_field,
-        'showing_all': showing_all,
-    })
+        {
+            'location': location,
+            'items': web_service,
+            'search_data': search_data,
+            'search_field': search_field,
+            'showing_all': showing_all,
+        })
 
 
 def viewer_webmap(request):
@@ -294,20 +280,14 @@ def viewer_webmap(request):
 
     location.append(webmap.count)
     search_data = Webmap.objects.all().values_list('name', flat=True).distinct()
-    webmap_app_links = Webmap_App.objects.all()
-    webmap_item_links = Webmap_Item.objects.all()
-    group_links = Group.objects.all()
     return render(request, 'viewer_list.html',
-    {
-        'location': location,
-        'items': webmap,
-        'webmap_app_links': webmap_app_links,
-        'webmap_item_links': webmap_item_links,
-        'group_links': group_links,
-        'search_data': search_data,
-        'search_field': search_field,
-        'showing_all': showing_all,
-    })
+        {
+            'location': location,
+            'items': webmap,
+            'search_data': search_data,
+            'search_field': search_field,
+            'showing_all': showing_all,
+        })
 
 
 def viewer_webmap_app(request):
@@ -339,16 +319,14 @@ def viewer_webmap_app(request):
 
     location.append(webmap_app.count)
     search_data = Webmap_App.objects.all().values_list('name', flat=True).distinct()
-    group_links = Group.objects.all()
     return render(request, 'viewer_list.html',
-    {
-        'location': location,
-        'items': webmap_app,
-        'group_links': group_links,
-        'search_data': search_data,
-        'search_field': search_field,
-        'showing_all': showing_all,
-    })
+        {
+            'location': location,
+            'items': webmap_app,
+            'search_data': search_data,
+            'search_field': search_field,
+            'showing_all': showing_all,
+        })
 
 
 def viewer_webmap_item(request):
@@ -381,13 +359,13 @@ def viewer_webmap_item(request):
     location.append(webmap_item.count)
     search_data = Webmap_Item.objects.all().values_list('name', flat=True).distinct()
     return render(request, 'viewer_list.html',
-    {
-        'location': location,
-        'items': webmap_item,
-        'search_data': search_data,
-        'search_field': search_field,
-        'showing_all': showing_all,
-    })
+        {
+            'location': location,
+            'items': webmap_item,
+            'search_data': search_data,
+            'search_field': search_field,
+            'showing_all': showing_all,
+        })
 
 
 def viewer_user(request):
@@ -419,17 +397,15 @@ def viewer_user(request):
 
     location.append(user.count)
     search_data = AGOL_User.objects.all().values_list('name', flat=True).distinct()
-    agol_links = AGOL_Item.objects.all()
     
     return render(request, 'viewer_list.html',
-    {
-        'location': location,
-        'items': user,
-        'agol_links': agol_links,
-        'search_data': search_data,
-        'search_field': search_field,
-        'showing_all': showing_all,
-    })
+        {
+            'location': location,
+            'items': user,
+            'search_data': search_data,
+            'search_field': search_field,
+            'showing_all': showing_all,
+        })
 
 
 # pagination

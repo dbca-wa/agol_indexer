@@ -83,10 +83,6 @@ def dependencies_group(request):
 
 
 def dependencies_generic(request, subject):
-    #location = ['ArcGIS Online Item']
-    #showing_all = False
-    #search_field = ''
-    #search_data = []
 
     items_by_table = {
         "layer_source": [],
@@ -110,19 +106,11 @@ def dependencies_generic(request, subject):
     webmap_apps = ListWrapper(items_by_table['webmap_app'])
     groups = ListWrapper(items_by_table['group'])
 
-    layer_source_links = Layer_Source.objects.all() if mxds else None
-    mxd_links = MXD.objects.all() if (layer_sources or web_services or agols) else None
-    web_service_links = Web_Service.objects.all() if (mxds or agols) else None
-    agol_links = AGOL_Item.objects.all() if (mxds or web_services or groups) else None
-    webmap_links = Webmap.objects.all() if (agols or webmap_apps or groups) else None
-    webmap_app_links = Webmap_App.objects.all() if (webmaps or groups) else None
-    group_links = Group.objects.all() if (agols or webmaps or webmap_apps) else None
-
     return render(
         request,
         'home_search.html',
         {
-            'title': "Dependencies for: {}".format(subject.name),
+            'title': "Dependencies for {}".format(subject.name),
             'hide_search': True,
 
             'layer_sources': layer_sources,
@@ -132,15 +120,6 @@ def dependencies_generic(request, subject):
             'webmaps': webmaps,
             'webmap_apps': webmap_apps,
             'groups': groups,
-
-            'layer_source_links': layer_source_links,
-            'mxd_links': mxd_links,
-            'web_service_links': web_service_links,
-            'agol_links': agol_links,
-            'webmap_links': webmap_links,
-            'webmap_app_links': webmap_app_links,
-            'group_links': group_links,
-
         }
     )
 

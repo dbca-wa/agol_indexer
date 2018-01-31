@@ -1,81 +1,77 @@
 <div class="ui fluid card">
-	<div class="content">
-		<div class="header">
-			<a href="{% url 'viewer_webmap' %}?id={{w.id}}">{{ w.name }}</a>
-			<a href="{% url 'admin:webmap_webmap_change' w.id  %}" data-tooltip="Edit Webmap" data-position="bottom center" class="edit-card" target="_blank">
-				<i class="write icon"></i>
-			</a>
-			<a href="{% url 'dependencies_webmap' %}?id={{w.id}}" data-tooltip="View Dependency Report" data-position="bottom center" class="edit-card">
-				<i class="browser icon"></i>
-			</a>
-		</div>
-		<div class="meta">
-			<span>Created on: </span>
-			{{ w.created_date }}
-		</div>
-		<div class="meta">
-			<span> | Updated on: </span>
-			{{ w.updated_date }}
-		</div>
-		<div class="card-accordion ui fluid accordion">
-			<div class="title expand-min-item">
-				<span class="accord-exp-min">expand</span>
-				<i class="icon caret down"></i>
-			</div>
-			<div class="description content">
-				<p>
-					<span>Purpose: </span>
-					{{ w.purpose }}
-				</p>
-				<p>
-					<span>Contact: </span>
-					{{ w.contact }}
-				</p>
-				<p>
-					<span>Collector: </span>
-					{{ w.collector }}
-				</p>
-				<p>
-					<span>Collector Offline: </span>
-					{{ w.collector_offline }}
-				</p>
-				<p>
-					<span>Group Links:</span>
-					<ul>
-						{% for group in group_links.all %}
-						{% for g in group.webmap.all %}
-						{% if g == w  %}
-						<li>
-							<a href="{% url 'viewer_group' %}?id={{group.id}}" data-tooltip="Link to Group view" data-position="right center">{{ group.name }}</a>
-						</li>
-						{% endif %}
-						{% endfor %}
-						{% endfor %}
-					</ul>
-				</p>
-				<ul class="link-list">
-					<span>Webmap App Links:</span>
-					{% for webmap_app in webmap_app_links.all %}
-					{% if webmap_app.webmap == w  %}
-					<li>
-						<a href="{% url 'viewer_webmap_app' %}?id={{webmap_app.id}}" data-tooltip="Link to Webmap App view" data-position="right center">{{ webmap_app.name }}</a>
-					</li>
-					{% endif %}
-					{% endfor %}
-				</ul>
-				<ul class="link-list">
-					<span>Webmap Item Links:</span>
-					{% for webmap_item in webmap_item_links.all %}
-					{% for wi in webmap_item.webmap.all %}
-					{% if wi == w  %}
-					<li>
-						<a href="{% url 'viewer_webmap_item' %}?id={{webmap_item.id}}" data-tooltip="Link to Webmap App view" data-position="right center">{{ webmap_item.name }}</a>
-					</li>
-					{% endif %}
-					{% endfor %}
-					{% endfor %}
-				</ul>
-			</div>
-		</div>
-	</div>
+    <div class="content">
+        <div class="header">
+            <a href="{% url 'viewer_webmap' %}?id={{w.id}}">{{ w.name }}</a>
+            <a href="{% url 'admin:webmap_webmap_change' w.id  %}" data-tooltip="Edit Webmap" data-position="bottom center" class="edit-card" target="_blank">
+                <i class="write icon"></i>
+            </a>
+            <a href="{% url 'dependencies_webmap' %}?id={{w.id}}" data-tooltip="View Dependency Report" data-position="bottom center" class="edit-card">
+                <i class="browser icon"></i>
+            </a>
+        </div>
+        <div class="meta">
+            <span>Created on: </span>
+            {{ w.created_date }}
+        </div>
+        <div class="meta">
+            <span> | Updated on: </span>
+            {{ w.updated_date }}
+        </div>
+        <div class="card-accordion ui fluid accordion">
+            <div class="title expand-min-item">
+                <span class="accord-exp-min">expand</span>
+                <i class="icon caret down"></i>
+            </div>
+            <div class="description content">
+                <p>
+                    <span>Purpose: </span>
+                    {{ w.purpose }}
+                </p>
+                <p>
+                    <span>Contact: </span>
+                    {{ w.contact }}
+                </p>
+                <p>
+                    <span>Collector: </span>
+                    {{ w.collector }}
+                </p>
+                <p>
+                    <span>Collector Offline: </span>
+                    {{ w.collector_offline }}
+                </p>
+                <ul class="link-list">
+                    <span>Group Links:</span>
+                    {% for g in w.group_set.all %}
+                        <li>
+                            <a href="{% url 'viewer_group' %}?id={{g.id}}" data-tooltip="Link to Group view" data-position="right center">{{ g }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <ul class="link-list">
+                    <span>Webmap App Links:</span>
+                    {% for wa in w.webmap_app_set.all %}
+                        <li>
+                            <a href="{% url 'viewer_webmap_app' %}?id={{wa.id}}" data-tooltip="Link to Webmap App view" data-position="right center">{{ wa }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <ul class="link-list">
+                    <span>Webmap Item Links:</span>
+                    {% for webmap_item in w.webmap_item_set.all %}
+                        <li>
+                            <a href="{% url 'viewer_webmap_item' %}?id={{webmap_item.id}}" data-tooltip="Link to Webmap App view" data-position="right center">{{ webmap_item }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+                <ul class="link-list">
+                    <span>AGOL Links:</span>
+                    {% for agol_item in w.agol_item_list %}
+                        <li>
+                            <a href="{% url 'viewer_agol' %}?id={{agol_item.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol_item }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>

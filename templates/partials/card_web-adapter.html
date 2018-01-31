@@ -1,48 +1,46 @@
 <div class="ui fluid card">
-	<div class="content">
-		<div class="header">
-			<a href="{% url 'viewer_web_adapter' %}?id={{w.id}}">{{ w.machine_name }}</a>
-			<a href="{% url 'admin:web_adapter_web_adapter_change' w.id  %}" data-tooltip="Edit Web Adapter" data-position="bottom center" class="edit-card" target="_blank">
-				<i class="write icon"></i>
-			</a>
-		</div>
-		<div class="meta">
-			<span>Created on: </span>
-			{{ w.created_date }}
-		</div>
-		<div class="meta">
-			<span> | Updated on: </span>
-			{{ w.updated_date }}
-		</div>
-		<div class="ui fluid accordion card-accordion">
-			<div class="title expand-min-item">
-				<span class="accord-exp-min">expand</span>
-				<i class="icon caret down"></i>
-			</div>
-			<div class="description content">
-				<p>
-					<span>Enviroment: </span>
-					{{ w.enviroment }}
-				</p>
-				<p>
-					<span>Alias: </span>
-					<a href="{{w.alias}}" target="_blank" data-tooltip="External link" data-position="right center">{{ w.alias }}</a>
-				</p>
-				<p>
-					<span>Description: </span>
-					{{ w.description }}
-				</p>
-				<ul class="link-list">
-					<span>Web Service Links:</span>
-					{% for web_service in web_service_links.all %}
-					{% if web_service.web_adapter == w  %}
-					<li>
-						<a href="{% url 'viewer_web_service' %}?id={{web_service.id}}" data-tooltip="Link to Web Service view" data-position="right center">{{ web_service.name }}</a>
-					</li>
-					{% endif %}
-					{% endfor %}
-				</ul>
-			</div>
-		</div>
-	</div>
+    <div class="content">
+        <div class="header">
+            <a href="{% url 'viewer_web_adapter' %}?id={{w.id}}">{{ w.machine_name }}</a>
+            <a href="{% url 'admin:web_adapter_web_adapter_change' w.id  %}" data-tooltip="Edit Web Adapter" data-position="bottom center" class="edit-card" target="_blank">
+                <i class="write icon"></i>
+            </a>
+        </div>
+        <div class="meta">
+            <span>Created on: </span>
+            {{ w.created_date }}
+        </div>
+        <div class="meta">
+            <span> | Updated on: </span>
+            {{ w.updated_date }}
+        </div>
+        <div class="ui fluid accordion card-accordion">
+            <div class="title expand-min-item">
+                <span class="accord-exp-min">expand</span>
+                <i class="icon caret down"></i>
+            </div>
+            <div class="description content">
+                <p>
+                    <span>Enviroment: </span>
+                    {{ w.enviroment }}
+                </p>
+                <p>
+                    <span>Alias: </span>
+                    <a href="{{w.alias}}" target="_blank" data-tooltip="External link" data-position="right center">{{ w.alias }}</a>
+                </p>
+                <p>
+                    <span>Description: </span>
+                    {{ w.description }}
+                </p>
+                <ul class="link-list">
+                    <span>Web Service Links:</span>
+                    {% for ws in w.web_service_set.all %}
+                        <li>
+                            <a href="{% url 'viewer_web_service' %}?id={{ws.id}}" data-tooltip="Link to Web Service view" data-position="right center">{{ ws }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>

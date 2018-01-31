@@ -27,12 +27,6 @@ def index_home(request):
     webmap_item = None
     search_field = ''
     result_amount = None
-    mxd_links = None
-    group_links = None
-    agol_links = None
-    webmap_item_links = None
-    webmap_app_links = None
-    web_service_links = None
 
     if 'search' in request.GET:
         s = request.GET['search']
@@ -50,53 +44,27 @@ def index_home(request):
             webmap_app = Webmap_App.objects.filter(Q(name__icontains=s) | Q(url__icontains=s) | Q(contact__contact_name__icontains=s) | Q(webmap__name__icontains=s)).distinct()
             webmap_item = Webmap_Item.objects.filter(Q(name__icontains=s) | Q(agol__name__icontains=s) | Q(webmap__name__icontains=s)).distinct()
 
-            #MXD links
-            if layer_source:
-                mxd_links = MXD.objects.all()
-            #Group links
-            if agol or mxd or webmap_app:
-                group_links = Group.objects.all()
-            #AGOL links
-            if mxd or web_service:
-                agol_links = AGOL_Item.objects.all()
-            #Webmap Item
-            if agol:
-                webmap_item_links = Webmap_Item.objects.all()
-            #Webmap App
-            if webmap:
-                webmap_app_links = Webmap_App.objects.all()
-            #Web Service
-            if mxd or agol:
-                web_service_links = Web_Service.objects.all()
-
-            result_amount = len(agol) + len(groups) + len(layer_source) + len(mxd) + len(web_adapter) + len(web_service) + len(webmap) + len(webmap_app) + len(webmap_item)
+            result_amount = len(agol) + len(groups) + len(layer_source) + len(mxd) + len(web_adapter) + len(web_service) + len(webmap) + len(webmap_app)
             search_field = s
 
     if 'search_history' in request.COOKIES:
         search_history = getSearchHistory(request)
 
     response = render(request, 'home_search.html',
-    {
-        'agols': agol,
-        'groups': groups,
-        'layer_sources': layer_source,
-        'mxds': mxd,
-        'web_adapters': web_adapter,
-        'web_services': web_service,
-        'webmaps': webmap,
-        'webmap_apps': webmap_app,
-        'webmap_items': webmap_item,
-        'errors': errors,
-        'search_field': search_field,
-        'result_amount': result_amount,
-        'search_history': search_history,
-        'mxd_links': mxd_links,
-        'group_links': group_links,
-        'agol_links': agol_links,
-        'webmap_item_links': webmap_item_links,
-        'webmap_app_links': webmap_app_links,
-        'web_service_links': web_service_links,
-    })
+        {
+            'agols': agol,
+            'groups': groups,
+            'layer_sources': layer_source,
+            'mxds': mxd,
+            'web_adapters': web_adapter,
+            'web_services': web_service,
+            'webmaps': webmap,
+            'webmap_apps': webmap_app,
+            'errors': errors,
+            'search_field': search_field,
+            'result_amount': result_amount,
+            'search_history': search_history,
+        })
     if s:
         expireTime = datetime.datetime.now() + datetime.timedelta(days=30)
         response.set_cookie('search_history', setSearchHistory(request, s, search_history), expires=expireTime)

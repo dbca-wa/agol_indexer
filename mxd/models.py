@@ -56,4 +56,4 @@ class MXD(models.Model):
         ordering = ['name']
 
     def __str__(self):
-        return "%s - %s" % (self.name, self.created_by)
+        return self.name

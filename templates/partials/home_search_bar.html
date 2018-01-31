@@ -1,35 +1,34 @@
 <form action="{{search_url}}" method="GET" class="ui container">
-	<div class="ui search fluid icon action big input">
-		<input type="text" class="prompt search-input" placeholder="Search..." name="search" value="{{search_field}}">
-		<button class="ui big primary button search-button" type="submit">Search</button>
-		<div class="results history-results"></div>		
-	</div>
+    <div class="ui search fluid icon action big input">
+        <input type="text" class="prompt search-input" placeholder="Search..." name="search" value="{{search_field}}">
+        <button class="ui big primary button search-button" type="submit">Search</button>
+        <div class="results history-results"></div>        
+    </div>
 </form>
 
 <ul class="ui disabled move reveal history-menu">
-	{% for item in search_history  %}
-		<li class="hidden content">{{item}}</li>
-	{% endfor %}
+    {% for item in search_history  %}
+        <li class="hidden content">{{item}}</li>
+    {% endfor %}
 </ul>
 
 <script>
-	var content = []
+    var content = []
 
-	$.each($('.history-menu').find('li'), function(i, val) {
-		var item = {}
-		item.title = $(val).text()
-		content.push(item)
-	});
-	
-	content.push($('.search-input').val())
-	content.pop()
-	content.reverse()
+    $.each($('.history-menu').find('li'), function(i, val) {
+        var item = {}
+        item.title = $(val).text()
+        content.push(item)
+    });
 
-	$('.ui.search').search({
-		source: content,
-		minCharacters: 0,
-		showNoResults: false,
-		searchFullText: false
-	});
-	
+    content.push($('.search-input').val())
+    content.pop()
+    content.reverse()
+
+    $('.ui.search').search({
+        source: content,
+        minCharacters: 0,
+        showNoResults: false,
+        searchFullText: false
+    });
 </script>

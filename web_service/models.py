@@ -36,4 +36,4 @@ class Web_Service(models.Model):
         ordering = ['name']
 
     def __str__(self):
-        return self.alias_url
+        return self.name

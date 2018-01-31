@@ -1,44 +1,42 @@
 <div class="ui fluid card">
-	<div class="content">
-		<div class="header">
-			<a href="/viewer/user/?id={{u.id}}">{{ u.name }}</a>
-			<a href="{% url 'admin:agol_users_agol_user_change' u.id  %}" data-tooltip="Edit AGOL User" data-position="bottom center" class="edit-card" target="_blank">
-				<i class="write icon"></i>
-			</a>
-		</div>
-		<div class="meta">
-			<span>Created on: </span>
-			{{ u.created_date }}
-		</div>
-		<div class="meta">
-			<span> | Updated on: </span>
-			{{ u.updated_date }}
-		</div>
-		<div class="ui fluid accordion card-accordion">
-			<div class="title expand-min-item">
-				<span class="accord-exp-min">expand</span>
-				<i class="icon caret down"></i>
-			</div>
-			<div class="description content">
-				<p>
-					<span>Role: </span>
-					{{ u.role }}
-				</p>
-				<p>
-					<span>Comments: </span>
-					{{ u.comments }}
-				</p>
-				<ul class="link-list">
-					<span>ArcGIS Online Links:</span>
-					{% for agol in agol_links %}
-					{% if agol.owner == u  %}
-					<li>
-						<a href="{% url 'viewer_agol' %}?id={{agol.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol.name }}</a>
-					</li>
-					{% endif %}
-					{% endfor %}
-				</ul>
-			</div>
-		</div>
-	</div>
+    <div class="content">
+        <div class="header">
+            <a href="/viewer/user/?id={{u.id}}">{{ u.name }}</a>
+            <a href="{% url 'admin:agol_users_agol_user_change' u.id  %}" data-tooltip="Edit AGOL User" data-position="bottom center" class="edit-card" target="_blank">
+                <i class="write icon"></i>
+            </a>
+        </div>
+        <div class="meta">
+            <span>Created on: </span>
+            {{ u.created_date }}
+        </div>
+        <div class="meta">
+            <span> | Updated on: </span>
+            {{ u.updated_date }}
+        </div>
+        <div class="ui fluid accordion card-accordion">
+            <div class="title expand-min-item">
+                <span class="accord-exp-min">expand</span>
+                <i class="icon caret down"></i>
+            </div>
+            <div class="description content">
+                <p>
+                    <span>Role: </span>
+                    {{ u.role }}
+                </p>
+                <p>
+                    <span>Comments: </span>
+                    {{ u.comments }}
+                </p>
+                <ul class="link-list">
+                    <span>ArcGIS Online Links:</span>
+                    {% for agol in u.agol_item_set.all %}
+                        <li>
+                            <a href="{% url 'viewer_agol' %}?id={{agol.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol }}</a>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
 </div>
