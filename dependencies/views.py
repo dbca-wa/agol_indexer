@@ -182,6 +182,6 @@ class ListWrapper(object):
     def __len__(self):
         return len(self.list)
 
-    # will be used for pluralisation 
+    # will be used for pluralisation
     def count(self):
         return len(self.list)
