@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_extensions',
+    'admin_reorder',
     'agol',
     'groups',
     'layer_source',
@@ -64,6 +65,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'dpaw_utils.middleware.SSOLoginMiddleware',
+    'admin_reorder.middleware.ModelAdminReorder'
 ]
 
 ROOT_URLCONF = 'agol_indexer.urls'
@@ -174,3 +176,79 @@ LOGGING = {
 if DEBUG:
     LOGGING['loggers']['django.request']['level'] = 'DEBUG'
     LOGGING['loggers']['agol']['level'] = 'DEBUG'
+
+
+ADMIN_REORDER = (
+    {
+        'app': 'layer_source',
+        'models': (
+            'layer_source.Layer_Source',
+            'layer_source.Layer_Source_Format',
+            'layer_source.Layer_Source_Format_Type',
+        )
+    },
+    {
+        'app': 'mxd',
+        'models': (
+            'mxd.MXD',
+            'mxd.MXD_Creator',
+            'mxd.MXD_Client',
+        )
+    },
+    {
+        'app': 'web_service',
+        'models': (
+            'web_service.Web_Service',
+            'web_service.Web_Service_Level',
+        )
+    },
+    {
+        'app': 'agol',
+        'models': (
+            'agol.AGOL_Item',
+            'agol.AGOL_Item_Type',
+        )
+    },
+    {
+        'app': 'webmap',
+        'models': (
+            'webmap.Webmap',
+            'webmap.Webmap_App',
+            'webmap.Webmap_Contact',
+            'webmap.Webmap_Item',
+        )
+    },
+    {
+        'app': 'web_service',
+        'models': (
+            'web_service.Web_Service',
+            'web_service.Web_Service_Level',
+        )
+    },
+    {
+        'app': 'groups',
+        'models': (
+            'groups.Groups',
+        )
+    },
+    {
+        'app': 'agol_users',
+        'models': (
+            'agol_users.AGOL_User',
+            'agol_users.Role',
+        )
+    },
+    {
+        'app': 'web_adapter',
+        'models': (
+            'web_adapter.Web_Adapter',
+        )
+    },
+    {
+        'app': 'auth',
+        'models': (
+            'auth.User',
+            'auth.Group',
+        )
+    },
+)
