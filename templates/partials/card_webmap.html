@@ -61,7 +61,7 @@
                 </ul>
                 <ul class="link-list">
                     <span>AGOL Links:</span>
-                    {% for agol_item in w.agols %}
+                    {% for agol_item in w.agols.all %}
                         <li>
                             <a href="{% url 'viewer_agol' %}?id={{agol_item.id}}" data-tooltip="Link to AGOL view" data-position="right center">{{ agol_item }}</a>
                         </li>

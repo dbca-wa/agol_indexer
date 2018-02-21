@@ -2,39 +2,35 @@
 {% block content %}
 
 <div class="ui container joins-container">
-	
-	<h2 class="ui header">{{ type }} Joins</h2>
+    
+    <h2 class="ui header">{{ type }} Joins</h2>
 
-	{% include "partials/joins-searchbar.html" with si=selected_item %}
+    {% include "partials/joins-searchbar.html" with si=selected_item %}
 
-	{% if selected_item  %}
-	<h3 class="ui header">
-		{% if type == "Group" %}
-		<a href="{% url 'viewer_group' %}?id={{selected_item.id}}" data-tooltip="Link to {{type}} view" data-position="right center" class="header">{{ selected_item.name }}</a>
-		{% elif type == "MXD" %}
-		<a href="{% url 'viewer_mxd' %}?id={{selected_item.id}}" data-tooltip="Link to {{type}} view" data-position="right center" class="header">{{ selected_item.name }}</a>
-		<div class="sub header"><b>Path:</b> {{ selected_item.path }}</div>
-		<div class="sub header"><b>Client:</b> {{ selected_item.client }}</div>
-		<div class="sub header"><b>Created By:</b> {{ selected_item.created_by }}</div>
-		<div class="sub header"><b>Created On:</b> {{ selected_item.created_on }}</div>
-		{% else %}
-		<a href="{% url 'viewer_webmap_item' %}?id={{selected_item.id}}" data-tooltip="Link to {{type}} view" data-position="right center" class="header">{{ selected_item.name }}</a>
-		{% endif %}
-		<div class="sub header"><b>Description:</b> {{ selected_item.description }}</div>
-	</h3>
-	{% endif %}
+    {% if selected_item  %}
+        <h3 class="ui header">
+            {% if type == "Group" %}
+                <a href="{% url 'viewer_group' %}?id={{selected_item.id}}" data-tooltip="Link to {{type}} view" data-position="right center" class="header">{{ selected_item.name }}</a>
+            {% elif type == "MXD" %}
+                <a href="{% url 'viewer_mxd' %}?id={{selected_item.id}}" data-tooltip="Link to {{type}} view" data-position="right center" class="header">{{ selected_item.name }}</a>
+                <div class="sub header"><b>Path:</b> {{ selected_item.path }}</div>
+                <div class="sub header"><b>Client:</b> {{ selected_item.client }}</div>
+                <div class="sub header"><b>Created By:</b> {{ selected_item.created_by }}</div>
+                <div class="sub header"><b>Created On:</b> {{ selected_item.created_on }}</div>
+            {% endif %}
+            <div class="sub header"><b>Description:</b> {{ selected_item.description }}</div>
+        </h3>
+    {% endif %}
 
-	{% if selected_item %}
-	{% if type == "Group" %}
-	{% include "partials/joins-cards-group.html" %}
-	{% elif type == "MXD" %}
-	{% include "partials/joins-cards-mxd.html" %}
-	{% else %}
-	{% include "partials/joins-cards-webmapitem.html" %}
-	{% endif %}
-	{% else %}
-	{% include "partials/joins-addjoin.html" %}
-	{% endif %}
+    {% if selected_item %}
+        {% if type == "Group" %}
+            {% include "partials/joins-cards-group.html" %}
+        {% elif type == "MXD" %}
+            {% include "partials/joins-cards-mxd.html" %}
+        {% endif %}
+    {% else %}
+        {% include "partials/joins-addjoin.html" %}
+    {% endif %}
 </div>
 
 {% endblock %}

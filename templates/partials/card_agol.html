@@ -57,7 +57,7 @@
                 </ul>
                 <ul class="link-list">
                     <span>Webmap Links:</span>
-                    {% for webmap in a.webmaps %}
+                    {% for webmap in a.webmaps.all %}
                         <li>
                             <a href="{% url 'viewer_webmap' %}?id={{webmap.id}}" data-tooltip="Link to Webmap view" data-position="right center">{{ webmap }}</a>
                         </li>

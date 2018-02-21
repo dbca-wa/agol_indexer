@@ -24,7 +24,6 @@ def index_home(request):
     web_service = None
     webmap = None
     webmap_app = None
-    webmap_item = None
     search_field = ''
     result_amount = None
 

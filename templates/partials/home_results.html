@@ -8,7 +8,7 @@
         <div class="content">
             <p class="transition hidden">
                 {% for ls in layer_sources %}
-                    {% include "partials/card_layer-source.html" with ls=ls mxd_links=mxd_links %}
+                    {% include "partials/card_layer-source.html" with ls=ls %}
                 {% endfor %}
             </p>
         </div>
@@ -23,7 +23,7 @@
         <div class="content">
             <p class="transition hidden">
                 {% for m in mxds %}
-                    {% include "partials/card_mxd.html" with m=m group_links=group_links agol_links=agol_links web_service_links=web_service_links %}
+                    {% include "partials/card_mxd.html" with m=m %}
                 {% endfor %}
             </p>
         </div>
@@ -38,7 +38,7 @@
         <div class="content">
             <p class="transition hidden">
                 {% for w in web_services %}
-                    {% include "partials/card_web-service.html" with w=w agol_links=agol_links %}
+                    {% include "partials/card_web-service.html" with w=w %}
                 {% endfor %}
             </p>
         </div>
@@ -53,7 +53,7 @@
         <div class="content">
             <p class="transition hidden">
                 {% for a in agols %}
-                    {% include "partials/card_agol.html" with a=a group_links=group_links webmap_item_links=webmap_item_links web_service_links=web_service_links  %}
+                    {% include "partials/card_agol.html" with a=a %}
                 {% endfor %}
             </p>
         </div>
@@ -83,7 +83,7 @@
         <div class="content">
             <p class="transition hidden">
                 {% for w in webmap_apps %}
-                    {% include "partials/card_webmap-app.html" with w=w group_links=group_links webmap_app_links=webmap_app_links %}
+                    {% include "partials/card_webmap-app.html" with w=w %}
                 {% endfor %}
             </p>
         </div>

@@ -215,7 +215,6 @@ ADMIN_REORDER = (
             'webmap.Webmap',
             'webmap.Webmap_App',
             'webmap.Webmap_Contact',
-            'webmap.Webmap_Item',
         )
     },
     {
