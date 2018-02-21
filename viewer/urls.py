@@ -24,7 +24,6 @@ urlpatterns = [
 	url(r'^mxds/$', views.viewer_mxd, name='viewer_mxd'),
 	url(r'^webmaps/$', views.viewer_webmap, name='viewer_webmap'),
 	url(r'^webmapapps/$', views.viewer_webmap_app, name='viewer_webmap_app'),
-	url(r'^webmapitems/$', views.viewer_webmap_item, name='viewer_webmap_item'),
 	url(r'^webadapters/$', views.viewer_web_adapter, name='viewer_web_adapter'),
 	url(r'^webservices/$', views.viewer_web_service, name='viewer_web_service'),
 	url(r'^users/$', views.viewer_user, name='viewer_user'),

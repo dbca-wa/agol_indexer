@@ -9,7 +9,7 @@ from mxd.models import MXD
 from agol_users.models import AGOL_User
 from web_adapter.models import Web_Adapter
 from web_service.models import Web_Service
-from webmap.models import Webmap, Webmap_App, Webmap_Item
+from webmap.models import Webmap, Webmap_App
 
 
 def viewer_home(request):
@@ -323,45 +323,6 @@ def viewer_webmap_app(request):
         {
             'location': location,
             'items': webmap_app,
-            'search_data': search_data,
-            'search_field': search_field,
-            'showing_all': showing_all,
-        })
-
-
-def viewer_webmap_item(request):
-    location = ['Webmap Item']
-    webmap_item = None
-    showing_all = True
-    search_field = ''
-
-    if 'id' in request.GET:
-        i = request.GET['id']
-        if not i:
-            webmap_item = Webmap_Item.objects.all().order_by("name")
-        else:
-            webmap_item = Webmap_Item.objects.filter(id=i).order_by("name")
-            showing_all = False
-
-    elif 'name' in request.GET:
-        name = request.GET['name']
-        if not name:
-            webmap_item = Webmap_Item.objects.all().order_by('name')
-        else:
-            webmap_item = Webmap_Item.objects.filter(name__icontains=name).order_by('name')
-            search_field = name
-            showing_all = False
-    else:
-        webmap_item = Webmap_Item.objects.all().order_by('name')
-
-    webmap_item = paginator(request, webmap_item)
-
-    location.append(webmap_item.count)
-    search_data = Webmap_Item.objects.all().values_list('name', flat=True).distinct()
-    return render(request, 'viewer_list.html',
-        {
-            'location': location,
-            'items': webmap_item,
             'search_data': search_data,
             'search_field': search_field,
             'showing_all': showing_all,

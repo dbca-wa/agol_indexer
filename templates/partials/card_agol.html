@@ -56,17 +56,8 @@
                     {% endfor %}
                 </ul>
                 <ul class="link-list">
-                    <span>Webmap Items Links:</span>
-                    {% for webmap_item in a.webmap_item_set.all %}
-                        <li>
-                            <a href="{% url 'viewer_webmap_item' %}?id={{webmap_item.id}}" data-tooltip="Link to Webmap Item view" data-position="right center">{{ webmap_item }}</a>
-                        </li>
-                    {% endfor %}
-                </ul>
-
-                <ul class="link-list">
                     <span>Webmap Links:</span>
-                    {% for webmap in a.webmap_list %}
+                    {% for webmap in a.webmaps %}
                         <li>
                             <a href="{% url 'viewer_webmap' %}?id={{webmap.id}}" data-tooltip="Link to Webmap view" data-position="right center">{{ webmap }}</a>
                         </li>

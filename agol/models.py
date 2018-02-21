@@ -30,15 +30,7 @@ class AGOL_Item(models.Model):
     updated_date = models.DateTimeField(auto_now=True)
 
     dependencies = ['mxd', 'url']
-    reverse_dependencies = ['group_set', 'webmap_list']
-    
-    @property
-    def webmap_list(self):
-        results = []
-        for webmap_item in self.webmap_item_set.all():
-            for webmap in webmap_item.webmap.all():
-                results.append(webmap)
-        return results
+    reverse_dependencies = ['group_set', 'webmaps']
 
     class Meta:
         verbose_name = 'ArcGIS Online Item'

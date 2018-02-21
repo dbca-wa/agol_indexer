@@ -8,7 +8,7 @@ from mxd.models import MXD
 from agol_users.models import AGOL_User
 from web_adapter.models import Web_Adapter
 from web_service.models import Web_Service
-from webmap.models import Webmap, Webmap_App, Webmap_Item
+from webmap.models import Webmap, Webmap_App
 import datetime
 
 
@@ -42,7 +42,6 @@ def index_home(request):
             web_service = Web_Service.objects.filter(Q(name__icontains=s)| Q(actual_url__icontains=s) | Q(alias_url__icontains=s) | Q(mxd__name__icontains=s) | Q(web_adapter__machine_name__icontains=s)).distinct()
             webmap = Webmap.objects.filter(Q(name__icontains=s) | Q(contact__contact_name__icontains=s)).distinct()
             webmap_app = Webmap_App.objects.filter(Q(name__icontains=s) | Q(url__icontains=s) | Q(contact__contact_name__icontains=s) | Q(webmap__name__icontains=s)).distinct()
-            webmap_item = Webmap_Item.objects.filter(Q(name__icontains=s) | Q(agol__name__icontains=s) | Q(webmap__name__icontains=s)).distinct()
 
             result_amount = len(agol) + len(groups) + len(layer_source) + len(mxd) + len(web_adapter) + len(web_service) + len(webmap) + len(webmap_app)
             search_field = s

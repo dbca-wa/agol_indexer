@@ -23,19 +23,12 @@ class Webmap(models.Model):
     contact = models.ForeignKey(Webmap_Contact)
     collector = models.BooleanField()
     collector_offline = models.BooleanField()
+    agols = models.ManyToManyField(AGOL_Item, related_name='webmaps', related_query_name='agol')
     created_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
 
-    dependencies = ['agol_item_list']
+    dependencies = ['agols']
     reverse_dependencies = ['webmap_app_set']
-
-    @property
-    def agol_item_list(self):
-        results = []
-        for webmap_item in self.webmap_item_set.all():
-            for agol_item in webmap_item.agol.all():
-                results.append(agol_item)
-        return results
 
     class Meta:
         ordering = ['name']
@@ -58,33 +51,6 @@ class Webmap_App(models.Model):
 
     class Meta:
         verbose_name = 'Webmap App'
-        ordering = ['name']
-
-    def __str__(self):
-        return self.name
-
-
-class Webmap_Item_Manager(models.Manager):
-    def create_webmap_item(self, name, description):
-        webmap_item = self.create(name=name, description=description)
-        return webmap_item
-
-
-class Webmap_Item(models.Model):
-    name = models.CharField(max_length=120, blank=True)
-    webmap = models.ManyToManyField(Webmap)
-    agol = models.ManyToManyField(AGOL_Item)
-    description = models.TextField(blank=True, verbose_name='Map description')
-    created_date = models.DateTimeField(auto_now_add=True)
-    updated_date = models.DateTimeField(auto_now=True)
-
-    objects = Webmap_Item_Manager()
-
-    dependencies = ['agol']
-    reverse_dependencies = ['webmap']
-
-    class Meta:
-        verbose_name = 'Webmap Item'
         ordering = ['name']
 
     def __str__(self):
