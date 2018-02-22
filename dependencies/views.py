@@ -110,7 +110,7 @@ def dependencies_generic(request, subject):
         request,
         'home_search.html',
         {
-            'title': "Dependencies for {}".format(subject.name),
+            'title': "Dependencies for {}: {}".format(subject._meta.verbose_name, subject.name),
             'hide_search': True,
 
             'layer_sources': layer_sources,

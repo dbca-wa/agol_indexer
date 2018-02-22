@@ -31,6 +31,7 @@ class Webmap(models.Model):
     reverse_dependencies = ['webmap_app_set']
 
     class Meta:
+        verbose_name = 'Webmap'
         ordering = ['name']
 
     def __str__(self):
